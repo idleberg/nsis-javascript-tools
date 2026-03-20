@@ -20,7 +20,7 @@ import { getEOL, getVersion, getVersionKey, validateInput, valueOrDash } from '.
  * console.log(parsed.id); // 1033
  * ```
  */
-export function parse(input: string): NsisLanguageObject | string {
+export function parse(input: string): NsisLanguageObject {
 	validateInput(input);
 
 	const output: NsisLanguageObject = {
