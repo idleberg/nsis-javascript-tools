@@ -14,7 +14,7 @@ if (files.length === 0) {
 	process.exit(1);
 }
 
-const format = createFormatter({
+const { format } = createFormatter({
 	endOfLines: options.eol,
 	indentSize: options.indentSize,
 	trimEmptyLines: options.trim,
