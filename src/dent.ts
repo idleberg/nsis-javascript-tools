@@ -14,7 +14,7 @@ export type DentOptions = {
 
 export type DentFunctions = {
 	format: (fileContents: string) => string;
-	check: (fileContents: string) => boolean;
+	check: (fileContents: string) => string | null;
 };
 
 /**
@@ -64,10 +64,12 @@ export function createFormatter(options: DentOptions = {}): DentFunctions {
 	 * current format settings (i.e. formatting would not change the code).
 	 *
 	 * @param {string} fileContents - The contents of the file to check.
-	 * @returns {boolean} `true` if the file is already formatted, `false` otherwise.
+	 * @returns {string | null} `null` if the file is already formatted, otherwise the formatted string.
 	 */
-	function check(fileContents: string): boolean {
-		return format(fileContents) === fileContents;
+	function check(fileContents: string): string | null {
+		const formatted = format(fileContents);
+
+		return formatted !== fileContents ? formatted : null;
 	}
 
 	/**

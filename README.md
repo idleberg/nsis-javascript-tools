@@ -46,7 +46,7 @@ Formats the given NSIS code and returns the result as a string.
 
 ### `check(fileContents)`
 
-Returns `true` if the code is already compliant with the format settings (i.e. formatting would not change it), `false` otherwise.
+Returns `null` if the file is already formatted, otherwise the formatted string.
 
 ### Options
 
