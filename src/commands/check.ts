@@ -10,7 +10,7 @@ type CheckOptions = SharedOptions & { write: boolean };
 
 export function checkCommand(): Command {
 	const cmd = new Command('check')
-		.description('Check if NSIS scripts are formatted correctly')
+		.description('check if NSIS scripts are formatted correctly')
 		.arguments('[file...]')
 		.action(async (args: string[], _opts, command: Command) => {
 			const options = prepareAction<CheckOptions>(args, command);

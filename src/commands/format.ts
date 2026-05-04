@@ -10,7 +10,7 @@ type FormatOptions = SharedOptions & { write: boolean };
 
 export function formatCommand(): Command {
 	const cmd = new Command('format')
-		.description('Format NSIS scripts')
+		.description('format NSIS scripts')
 		.arguments('[file...]')
 		.action(async (args: string[], _opts, command: Command) => {
 			const options = prepareAction<FormatOptions>(args, command);
