@@ -46,8 +46,6 @@ The CLI exposes two sub-commands:
 - `dent format` — formats NSIS scripts
 - `dent check` — checks if a script needs formatting
 
-Run `dent --help` to list sub-commands, or `dent <command> --help` for command-specific options.
-
 ```
 Usage: dent [options] [command]
 
@@ -62,6 +60,8 @@ Commands:
   format [options] [file...]  format NSIS scripts
   check [options] [file...]   check whether NSIS scripts are formatted (exits non-zero on drift)
 ```
+
+Run `dent --help` to list sub-commands, or `dent <command> --help` for command-specific options.
 
 ## Related
 
