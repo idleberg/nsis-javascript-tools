@@ -77,12 +77,13 @@ const INSTRUCTION_LOOKUP = new Set(INSTRUCTION_KEYWORDS.map(kw => kw.toLowerCase
 }}
 
 Script
-  = lines:Line* { return lines; }
+  = lines:Line* { return lines.flat(); }
 
 Line
   = BlockComment
   / BlankLine
   / CommentLine
+  / LabelWithInstruction
   / LabelLine
   / InstructionLine
 
@@ -101,6 +102,14 @@ BlockComment
 LabelLine
   = _ label:$([a-zA-Z_.] [a-zA-Z0-9_.]*) ":" !":" trailing:TrailingComment? _ LineEnd
   { return { type: 'label', name: label, comment: trailing ?? undefined }; }
+
+LabelWithInstruction
+  = _ label:$([a-zA-Z_.] [a-zA-Z0-9_.]*) ":" !":" _ keyword:Keyword args:Arguments trailing:TrailingComment? _ LineEnd
+  { return [
+      { type: 'label', name: label },
+      { type: 'instruction', keyword, args, ...(trailing ? { comment: trailing } : {}) },
+    ];
+  }
 
 InstructionLine
   = _ keyword:Keyword args:Arguments trailing:TrailingComment? _ LineEnd
@@ -123,7 +132,7 @@ CompilerKeyword
 
 
 MacroKeyword
-  = $("${" [a-zA-Z][a-zA-Z0-9]* "}")
+  = $("${" [a-zA-Z_][a-zA-Z0-9_]* "}")
 
 PluginCallKeyword
   = $([a-zA-Z][a-zA-Z0-9_]* "::" [a-zA-Z][a-zA-Z0-9_]*)

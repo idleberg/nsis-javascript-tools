@@ -195,4 +195,21 @@ test('Label with trailing comment', () => {
 	assert.is(node.comment?.style, 'semicolon');
 });
 
+test('Label with instruction on same line', () => {
+	const nodes = parse('Start: MessageBox MB_OK "Start:"\n');
+	assert.is(nodes.length, 2);
+	assert.is((nodes[0] as LabelNode).type, 'label');
+	assert.is((nodes[0] as LabelNode).name, 'Start');
+	assert.is((nodes[1] as InstructionNode).type, 'instruction');
+	assert.is((nodes[1] as InstructionNode).keyword, 'MessageBox');
+	assert.equal((nodes[1] as InstructionNode).args, ['MB_OK', '"Start:"']);
+});
+
+test('Macro keyword with underscores', () => {
+	const node = parse('${__xpr} +2\n')[0] as InstructionNode;
+	assert.is(node.type, 'instruction');
+	assert.is(node.keyword, '${__xpr}');
+	assert.equal(node.args, ['+2']);
+});
+
 test.run();
