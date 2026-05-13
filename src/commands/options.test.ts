@@ -12,7 +12,7 @@ describe('applyFormattingOptions', () => {
 		const cmd = applyFormattingOptions(new Command('test').exitOverride());
 		const longs = cmd.options.map((opt) => opt.long);
 
-		expect(longs).toEqual(expect.arrayContaining(['--eol', '--indent-size', '--use-spaces', '--trim']));
+		expect(longs).toEqual(expect.arrayContaining(['--eol', '--indent-size', '--use-spaces', '--no-trim']));
 	});
 
 	it('applies sensible defaults when no flags are passed', () => {

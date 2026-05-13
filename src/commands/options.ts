@@ -35,7 +35,7 @@ export function applyFormattingOptions(cmd: Command): Command {
 			2,
 		)
 		.option('-s, --use-spaces', 'indent with spaces instead of tabs', false)
-		.option('-t, --trim', 'trim empty lines', true);
+		.option('-T, --no-trim', 'do not trim empty lines');
 }
 
 export function warnFormattingOptions(options: FormattingOptions): void {

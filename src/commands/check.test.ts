@@ -22,7 +22,7 @@ describe('checkCommand shape', () => {
 
 	it('exposes formatting options plus --write', () => {
 		const longs = checkCommand().options.map((opt) => opt.long);
-		expect(longs).toEqual(expect.arrayContaining(['--eol', '--indent-size', '--use-spaces', '--trim', '--write']));
+		expect(longs).toEqual(expect.arrayContaining(['--eol', '--indent-size', '--use-spaces', '--no-trim', '--write']));
 	});
 });
 
