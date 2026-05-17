@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@nsis/dent':
-        specifier: ^0.7.2
-        version: 0.7.2
+        specifier: ^0.8.0
+        version: 0.8.0
       commander:
         specifier: ^14.0.3
         version: 14.0.3
@@ -41,7 +41,7 @@ importers:
         version: 11.2.1(@types/node@24.12.4)(typescript@6.0.3)
       tsdown:
         specifier: ^0.22.0
-        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@6.0.3)(unrun@0.2.38)
+        version: 0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@6.0.3)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -659,8 +659,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@nsis/dent@0.7.2':
-    resolution: {integrity: sha512-S6sQnFke56jS5iPcFM2hDKjeocbrXluK+HhQhsoP5YHS/L58uSP6VzQ05Pk7/ryZ0Fj0QgUW6gYU9qLuT1KXGg==}
+  '@nsis/dent@0.8.0':
+    resolution: {integrity: sha512-y7DTpQZfst2h1tz5VM7qZzcLeZWxh1AC9WjLuiilYWXWe++Qce0YISytP/07q2pR8dcSEjq3mSbys+DVOe6Cig==}
     engines: {node: '>=20.0.0'}
 
   '@oxc-project/types@0.127.0':
@@ -2797,16 +2797,6 @@ packages:
     resolution: {integrity: sha512-VGXBUVwxKMBUznyffQweQABPRRW1vHZAbadFZud4pLFAqRGvv/96vafgjWFqzourzr8YonlQiPgH0YCJfawoGQ==}
     engines: {node: '>=12'}
 
-  unrun@0.2.38:
-    resolution: {integrity: sha512-vYFWSyX5Be408RX+CAd2Heh8egQRnGBWOQmZKwYPvMtTQNmRYoKdSyFIczYNxZEMqz0dJzSxp7xkcZGzvtkHyQ==}
-    engines: {node: ^22.13.0 || >=24.0.0}
-    hasBin: true
-    peerDependencies:
-      synckit: ^0.11.11
-    peerDependenciesMeta:
-      synckit:
-        optional: true
-
   update-browserslist-db@1.2.3:
     resolution: {integrity: sha512-Js0m9cx+qOgDxo0eMiFGEueWztz+d4+M3rGlmKPT+T4IS/jP4ylw3Nwpu6cpTTP8R1MAC1kF4VbdLt3ARf209w==}
     hasBin: true
@@ -3674,7 +3664,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.20.1
 
-  '@nsis/dent@0.7.2':
+  '@nsis/dent@0.8.0':
     dependencies:
       detect-newline: 4.0.1
 
@@ -5515,7 +5505,7 @@ snapshots:
 
   tree-kill@1.2.2: {}
 
-  tsdown@0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@6.0.3)(unrun@0.2.38):
+  tsdown@0.22.0(@arethetypeswrong/core@0.18.2)(publint@0.3.21)(typescript@6.0.3):
     dependencies:
       ansis: 4.3.0
       cac: 7.0.0
@@ -5536,7 +5526,6 @@ snapshots:
       '@arethetypeswrong/core': 0.18.2
       publint: 0.3.21
       typescript: 6.0.3
-      unrun: 0.2.38
     transitivePeerDependencies:
       - '@ts-macro/tsc'
       - '@typescript/native-preview'
@@ -5577,11 +5566,6 @@ snapshots:
   unique-string@3.0.0:
     dependencies:
       crypto-random-string: 4.0.0
-
-  unrun@0.2.38:
-    dependencies:
-      rolldown: 1.0.1
-    optional: true
 
   update-browserslist-db@1.2.3(browserslist@4.28.2):
     dependencies:
