@@ -1,4 +1,5 @@
 import { canonicalCasing } from './canonical-casing.ts';
+import { canonicalIncludes } from './canonical-includes.ts';
 import { globalParameterPrefixes, globalParameters, instructionParameters } from './canonical-parameters.ts';
 import type { Comment, CommentNode, CSTNode, InstructionNode, LabelNode } from './parser.ts';
 import { rules } from './rules.ts';
@@ -326,7 +327,7 @@ function joinWithCompactPipes(args: string[]): string {
 
 function printInstruction(node: InstructionNode, level: number, options: PrinterOptions): string {
 	const kwLower = node.keyword.toLowerCase();
-	const keyword = canonicalCasing.get(kwLower) ?? node.keyword;
+	const keyword = canonicalCasing.get(kwLower) ?? canonicalIncludes.get(kwLower) ?? node.keyword;
 	const instrParams = instructionParameters.get(kwLower);
 	const splitArgs = arithmeticInstructions.has(kwLower) ? splitArithmeticTokens(node.args) : splitPipeTokens(node.args);
 	const args = splitArgs.map((arg) => normalizeArg(arg, instrParams));

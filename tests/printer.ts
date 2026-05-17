@@ -47,6 +47,38 @@ test('Plugin call casing is preserved (not in canonical map)', () => {
 	assert.is(result, 'nsDialogs::Create /nounload 1018\n');
 });
 
+// --- Include macro casing ---
+
+test('LogicLib macro casing is normalised', () => {
+	const { format } = createFormatter();
+	const result = format('${if} $R0 == ""\n${endif}\n');
+	assert.is(result, '${If} $R0 == ""\n${EndIf}\n');
+});
+
+test('FileFunc macro casing is normalised', () => {
+	const { format } = createFormatter();
+	const result = format('${GETSIZE} "$INSTDIR" "/S=0K" $0 $1 $2\n');
+	assert.is(result, '${GetSize} "$INSTDIR" "/S=0K" $0 $1 $2\n');
+});
+
+test('WinVer macro with dot in name is normalised', () => {
+	const { format } = createFormatter();
+	const result = format('${atleastwin8.1} $0\n');
+	assert.is(result, '${AtLeastWin8.1} $0\n');
+});
+
+test('x64 macro casing is normalised', () => {
+	const { format } = createFormatter();
+	const result = format('${runningx64} $0\n');
+	assert.is(result, '${RunningX64} $0\n');
+});
+
+test('Unknown macro keyword is not modified', () => {
+	const { format } = createFormatter();
+	const result = format('${MyCustomMacro} "arg"\n');
+	assert.is(result, '${MyCustomMacro} "arg"\n');
+});
+
 // --- Whitespace normalisation ---
 
 test('Multiple spaces between tokens are collapsed to one', () => {
