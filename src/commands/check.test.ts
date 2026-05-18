@@ -5,6 +5,7 @@ import { Command } from 'commander';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { logger } from '../log.ts';
 import { checkCommand } from './check.ts';
+import * as shared from './shared.ts';
 
 const UNFORMATTED = 'Section "demo"\n  DetailPrint "x"\nSectionEnd\n';
 const FORMATTED = 'Section "demo"\n\tDetailPrint "x"\nSectionEnd\n';
@@ -38,7 +39,7 @@ describe('check action', () => {
 		vi.spyOn(logger, 'warn').mockImplementation(() => undefined);
 		vi.spyOn(logger, 'error').mockImplementation(() => undefined);
 		vi.spyOn(logger, 'debug').mockImplementation(() => undefined);
-		exit = vi.spyOn(process, 'exit').mockImplementation((() => undefined) as (code?: number) => never);
+		exit = vi.spyOn(process, 'exit').mockImplementation((() => undefined) as (code?: string | number | null) => never);
 	});
 
 	afterEach(async () => {
@@ -79,5 +80,41 @@ describe('check action', () => {
 		await buildRoot().parseAsync(['check', join(dir, '*.nope')], { from: 'user' });
 
 		expect(exit).toHaveBeenCalledWith(2);
+	});
+});
+
+describe('check stdin', () => {
+	let exit: ReturnType<typeof vi.spyOn>;
+
+	beforeEach(() => {
+		vi.spyOn(logger, 'start').mockImplementation(() => undefined);
+		vi.spyOn(logger, 'info').mockImplementation(() => undefined);
+		vi.spyOn(logger, 'success').mockImplementation(() => undefined);
+		vi.spyOn(logger, 'warn').mockImplementation(() => undefined);
+		vi.spyOn(logger, 'error').mockImplementation(() => undefined);
+		vi.spyOn(logger, 'debug').mockImplementation(() => undefined);
+		exit = vi.spyOn(process, 'exit').mockImplementation((() => undefined) as (code?: string | number | null) => never);
+	});
+
+	afterEach(() => {
+		vi.restoreAllMocks();
+	});
+
+	it('exits 0 for already-formatted stdin', async () => {
+		vi.spyOn(shared, 'hasStdin').mockReturnValue(true);
+		vi.spyOn(shared, 'readStdin').mockResolvedValue(FORMATTED);
+
+		await buildRoot().parseAsync(['check'], { from: 'user' });
+
+		expect(exit).not.toHaveBeenCalled();
+	});
+
+	it('exits 1 on drift from stdin', async () => {
+		vi.spyOn(shared, 'hasStdin').mockReturnValue(true);
+		vi.spyOn(shared, 'readStdin').mockResolvedValue(UNFORMATTED);
+
+		await buildRoot().parseAsync(['check'], { from: 'user' });
+
+		expect(exit).toHaveBeenCalledWith(1);
 	});
 });

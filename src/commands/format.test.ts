@@ -5,6 +5,7 @@ import { Command } from 'commander';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { logger } from '../log.ts';
 import { formatCommand } from './format.ts';
+import * as shared from './shared.ts';
 
 const UNFORMATTED = 'Section "demo"\n  DetailPrint "x"\nSectionEnd\n';
 const FORMATTED = 'Section "demo"\n\tDetailPrint "x"\nSectionEnd\n';
@@ -74,15 +75,54 @@ describe('format action', () => {
 
 		await buildRoot().parseAsync(['format', '--write', file], { from: 'user' });
 
-		const messages = (logger.info as ReturnType<typeof vi.fn>).mock.calls.map((c: unknown[]) => c[0]);
+		const messages = (logger.info as unknown as ReturnType<typeof vi.fn>).mock.calls.map((c: unknown[]) => c[0]);
 		expect(messages.some((m) => typeof m === 'string' && m.includes('already formatted'))).toBe(true);
 	});
 
 	it('exits with code 1 when no input files match', async () => {
-		const exit = vi.spyOn(process, 'exit').mockImplementation((() => undefined) as (code?: number) => never);
+		const exit = vi
+			.spyOn(process, 'exit')
+			.mockImplementation((() => undefined) as (code?: string | number | null) => never);
 
 		await buildRoot().parseAsync(['format', join(dir, '*.nope')], { from: 'user' });
 
 		expect(exit).toHaveBeenCalledWith(1);
+	});
+});
+
+describe('format stdin', () => {
+	beforeEach(() => {
+		vi.spyOn(logger, 'start').mockImplementation(() => undefined);
+		vi.spyOn(logger, 'info').mockImplementation(() => undefined);
+		vi.spyOn(logger, 'success').mockImplementation(() => undefined);
+		vi.spyOn(logger, 'warn').mockImplementation(() => undefined);
+		vi.spyOn(logger, 'error').mockImplementation(() => undefined);
+		vi.spyOn(logger, 'debug').mockImplementation(() => undefined);
+	});
+
+	afterEach(() => {
+		vi.restoreAllMocks();
+	});
+
+	it('formats stdin content to stdout when no files are given', async () => {
+		vi.spyOn(shared, 'hasStdin').mockReturnValue(true);
+		vi.spyOn(shared, 'readStdin').mockResolvedValue(UNFORMATTED);
+		const stdout = vi.spyOn(process.stdout, 'write').mockImplementation(() => true);
+
+		await buildRoot().parseAsync(['format'], { from: 'user' });
+
+		const written = stdout.mock.calls.map((call) => call[0]).join('');
+		expect(written).toBe(FORMATTED);
+	});
+
+	it('passes through already-formatted stdin unchanged', async () => {
+		vi.spyOn(shared, 'hasStdin').mockReturnValue(true);
+		vi.spyOn(shared, 'readStdin').mockResolvedValue(FORMATTED);
+		const stdout = vi.spyOn(process.stdout, 'write').mockImplementation(() => true);
+
+		await buildRoot().parseAsync(['format'], { from: 'user' });
+
+		const written = stdout.mock.calls.map((call) => call[0]).join('');
+		expect(written).toBe(FORMATTED);
 	});
 });

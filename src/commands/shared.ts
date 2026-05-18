@@ -14,10 +14,24 @@ export type DentOptions = {
 	useTabs: boolean;
 };
 
+export function hasStdin(): boolean {
+	return !process.stdin.isTTY;
+}
+
+export async function readStdin(): Promise<string> {
+	const chunks: Buffer[] = [];
+
+	for await (const chunk of process.stdin) {
+		chunks.push(chunk);
+	}
+
+	return Buffer.concat(chunks).toString();
+}
+
 export function prepareAction<T extends SharedOptions>(args: string[], command: Command): T {
 	const options = command.optsWithGlobals() as T;
 
-	if (!args.length) {
+	if (!args.length && !hasStdin()) {
 		command.help();
 	}
 

@@ -142,11 +142,16 @@ describe('prepareAction', () => {
 		expect(debug).not.toHaveBeenCalled();
 	});
 
-	it('calls command.help() when args is empty', () => {
+	it('calls command.help() when args is empty and no stdin', () => {
+		const originalIsTTY = process.stdin.isTTY;
+		process.stdin.isTTY = true;
+
 		const { root, sub } = buildCommand();
 		root.parse(['sub'], { from: 'user' });
 
 		// `command.help()` exits the process; with exitOverride it throws CommanderError.
 		expect(() => prepareAction([], sub)).toThrow();
+
+		process.stdin.isTTY = originalIsTTY;
 	});
 });

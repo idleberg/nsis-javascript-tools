@@ -4,7 +4,15 @@ import { Command } from 'commander';
 import { blue, dim } from 'kleur/colors';
 import { logger } from '../log.ts';
 import { applyFormattingOptions } from './options.ts';
-import { dentOptionsFrom, loadScript, prepareAction, resolveFiles, type SharedOptions } from './shared.ts';
+import {
+	dentOptionsFrom,
+	hasStdin,
+	loadScript,
+	prepareAction,
+	readStdin,
+	resolveFiles,
+	type SharedOptions,
+} from './shared.ts';
 
 type CheckOptions = SharedOptions & { write: boolean };
 
@@ -24,14 +32,25 @@ export function checkCommand(): Command {
 }
 
 async function runCheck(patterns: string[], options: CheckOptions): Promise<void> {
+	const { check } = createFormatter(dentOptionsFrom(options));
+
+	if (!patterns.length && hasStdin()) {
+		const rawContents = await readStdin();
+		const result = check(rawContents);
+
+		if (result !== null) {
+			process.exit(1);
+		}
+
+		return;
+	}
+
 	const files = await resolveFiles(patterns);
 
 	if (files.length === 0) {
 		logger.error('No valid input files provided, exiting.');
 		process.exit(2);
 	}
-
-	const { check } = createFormatter(dentOptionsFrom(options));
 
 	logger.start(`Checking ${patterns.length} ${patterns.length === 1 ? 'file' : 'files'}...`);
 
