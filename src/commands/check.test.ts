@@ -100,21 +100,35 @@ describe('check stdin', () => {
 		vi.restoreAllMocks();
 	});
 
-	it('exits 0 for already-formatted stdin', async () => {
+	it('exits 0 and logs "already formatted" for clean stdin', async () => {
 		vi.spyOn(shared, 'hasStdin').mockReturnValue(true);
 		vi.spyOn(shared, 'readStdin').mockResolvedValue(FORMATTED);
 
 		await buildRoot().parseAsync(['check'], { from: 'user' });
 
 		expect(exit).not.toHaveBeenCalled();
+		expect(logger.start).toHaveBeenCalledWith('Checking standard input...');
+		expect(logger.info).toHaveBeenCalledWith(expect.stringContaining('already formatted'));
+		expect(logger.success).toHaveBeenCalledWith(expect.stringContaining('Completed in'));
 	});
 
-	it('exits 1 on drift from stdin', async () => {
+	it('exits 1 and logs "has issues" on drift from stdin', async () => {
 		vi.spyOn(shared, 'hasStdin').mockReturnValue(true);
 		vi.spyOn(shared, 'readStdin').mockResolvedValue(UNFORMATTED);
 
 		await buildRoot().parseAsync(['check'], { from: 'user' });
 
 		expect(exit).toHaveBeenCalledWith(1);
+		expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('has issues'));
+		expect(logger.success).toHaveBeenCalledWith(expect.stringContaining('Completed in'));
+	});
+
+	it('warns that --write is ignored with stdin', async () => {
+		vi.spyOn(shared, 'hasStdin').mockReturnValue(true);
+		vi.spyOn(shared, 'readStdin').mockResolvedValue(FORMATTED);
+
+		await buildRoot().parseAsync(['check', '--write'], { from: 'user' });
+
+		expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('--write'));
 	});
 });
