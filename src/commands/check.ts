@@ -35,13 +35,23 @@ async function runCheck(patterns: string[], options: CheckOptions): Promise<void
 	const { check } = createFormatter(dentOptionsFrom(options));
 
 	if (!patterns.length && hasStdin()) {
+		logger.start('Checking standard input...');
+		if (options.write) {
+			logger.warn('the "--write" option is ignored when reading from stdin.');
+		}
+		const startTime = performance.now();
 		const rawContents = await readStdin();
 		const result = check(rawContents);
+		const duration = Math.round(performance.now() - startTime);
 
 		if (result !== null) {
+			logger.warn(`Script has issues ${dim(`(${duration}ms)`)}`);
+			logger.success(`Completed in ${duration}ms.`);
 			process.exit(1);
 		}
 
+		logger.info(`Script already formatted ${dim(`(${duration}ms)`)}`);
+		logger.success(`Completed in ${duration}ms.`);
 		return;
 	}
 
