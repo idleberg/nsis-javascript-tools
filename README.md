@@ -67,6 +67,11 @@ Default: `2`
 Type: `boolean`  
 Default: `true`
 
+#### `options.printWidth`
+
+Type: `numbers`  
+Default: `0`
+
 #### `options.useTabs`
 
 Type: `boolean`  
