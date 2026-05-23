@@ -241,7 +241,7 @@ function splitArithmeticTokens(args: string[]): string[] {
 	});
 }
 
-const ARITHMETIC_OPS = new Set(['||', '&&', '<<', '>>', '+', '-', '*', '/', '%', '|', '&', '^', '~', '!']);
+const ARITHMETIC_OPS = new Set(['>>>', '||', '&&', '<<', '>>', '+', '-', '*', '/', '%', '|', '&', '^', '~', '!']);
 const SINGLE_CHAR_OPS = new Set(['+', '-', '*', '/', '%', '|', '&', '^', '~', '!']);
 
 function tokenizeArithmetic(arg: string): string[] {
@@ -262,7 +262,22 @@ function tokenizeArithmetic(arg: string): string[] {
 			}
 		}
 
-		// Check two-char operators first
+		// Check three-char operators first
+		if (i + 2 < arg.length) {
+			const three = arg.slice(i, i + 3);
+			if (ARITHMETIC_OPS.has(three)) {
+				if (current) {
+					result.push(current);
+					current = '';
+				}
+				result.push(three);
+				lastWasOp = true;
+				i += 3;
+				continue;
+			}
+		}
+
+		// Check two-char operators
 		if (i + 1 < arg.length) {
 			const two = arg.slice(i, i + 2);
 			if (ARITHMETIC_OPS.has(two)) {

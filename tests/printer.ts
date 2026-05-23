@@ -410,6 +410,11 @@ test('IntOp compact shift right is spaced', () => {
 	assert.is(format('IntOp $0 $1>>$2\n'), 'IntOp $0 $1 >> $2\n');
 });
 
+test('IntOp compact unsigned shift right is spaced', () => {
+	const { format } = createFormatter();
+	assert.is(format('IntOp $0 $1>>>$2\n'), 'IntOp $0 $1 >>> $2\n');
+});
+
 test('IntOp unary bitwise NOT is spaced', () => {
 	const { format } = createFormatter();
 	assert.is(format('IntOp $0 ~$1\n'), 'IntOp $0 ~ $1\n');
