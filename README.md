@@ -52,7 +52,7 @@ Returns `null` if the file is already formatted, otherwise the formatted string.
 
 ### Options
 
-#### `options.endOfLines`
+#### `options.endOfLine`
 
 Type: `"crlf" | "lf"`  
 Default: `"crlf"` (Windows), `"lf"` (Linux, macOS)

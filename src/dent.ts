@@ -6,7 +6,7 @@ import { print } from './printer.ts';
 const defaultIndentation = 2;
 
 export type DentOptions = {
-	endOfLines?: 'crlf' | 'lf';
+	endOfLine?: 'crlf' | 'lf';
 	indentSize?: number;
 	printWidth?: number;
 	trimEmptyLines?: boolean;
@@ -82,8 +82,8 @@ export function createFormatter(options: DentOptions = {}): DentFunctions {
 	 * @returns {string} The end-of-line characters to use in the output.
 	 */
 	function detectEOL(input: string): string {
-		if (mergedOptions.endOfLines) {
-			return mergedOptions.endOfLines === 'crlf' ? '\r\n' : '\n';
+		if (mergedOptions.endOfLine) {
+			return mergedOptions.endOfLine === 'crlf' ? '\r\n' : '\n';
 		}
 
 		const detected = detectNewline(input);
