@@ -8,7 +8,7 @@ import { type FormattingOptions, warnFormattingOptions } from './options.ts';
 export type SharedOptions = FormattingOptions & { debug: boolean };
 
 export type DentOptions = {
-	endOfLines: 'crlf' | 'lf';
+	endOfLine: 'crlf' | 'lf';
 	indentSize: number;
 	printWidth: number;
 	trimEmptyLines: boolean;
@@ -47,7 +47,7 @@ export function prepareAction<T extends SharedOptions>(args: string[], command: 
 
 export function dentOptionsFrom(options: FormattingOptions): DentOptions {
 	return {
-		endOfLines: options.eol,
+		endOfLine: options.eol,
 		indentSize: options.indentSize,
 		printWidth: options.printWidth,
 		trimEmptyLines: options.trim,

@@ -10,7 +10,7 @@ import { dentOptionsFrom, loadScript, prepareAction, resolveFiles } from './shar
 describe('dentOptionsFrom', () => {
 	it('maps CLI options to dent formatter options', () => {
 		expect(dentOptionsFrom({ eol: 'lf', indentSize: 4, useSpaces: true, trim: false })).toEqual({
-			endOfLines: 'lf',
+			endOfLine: 'lf',
 			indentSize: 4,
 			trimEmptyLines: false,
 			useTabs: false,
