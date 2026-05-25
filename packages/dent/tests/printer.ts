@@ -1,7 +1,7 @@
 /** biome-ignore-all lint/suspicious/noTemplateCurlyInString: NSIS definitions */
 import { test } from 'uvu';
 import * as assert from 'uvu/assert';
-import { createFormatter } from '../src/dent.ts';
+import { createFormatter } from '../src/dent.js';
 
 // --- Canonical casing ---
 

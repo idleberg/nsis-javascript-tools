@@ -2,7 +2,7 @@ import { promises as fs } from 'node:fs';
 import { resolve } from 'node:path';
 import { test } from 'uvu';
 import * as assert from 'uvu/assert';
-import { createFormatter } from '../src/dent.ts';
+import { createFormatter } from '../src/dent.js';
 
 test('Tab indentation', async () => {
 	const { format } = createFormatter();

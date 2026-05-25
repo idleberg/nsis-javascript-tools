@@ -7,17 +7,9 @@ package-lock.json
 yarn-error.log
 yarn.lock
 
-# Build artifacts
-dist/
-src/grammar.js
-src/grammar.d.ts
-
 # Development
-.eslintcache
+.turbo/
 
 # Project specific
 *.exe
 *.nsi
-!tests/**/*.nsi
-todo.md
-test.js

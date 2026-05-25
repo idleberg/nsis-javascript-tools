@@ -1,0 +1,7 @@
+node_modules/
+bin/
+.git/
+.github/
+.vscode/
+dent
+*.exe

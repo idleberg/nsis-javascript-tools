@@ -3,8 +3,8 @@ import { promises as fs } from 'node:fs';
 import { resolve } from 'node:path';
 import { test } from 'uvu';
 import * as assert from 'uvu/assert';
-import type { CommentNode, CSTNode, InstructionNode, LabelNode } from '../src/parser.ts';
-import { parse } from '../src/parser.ts';
+import type { CommentNode, CSTNode, InstructionNode, LabelNode } from '../src/parser.js';
+import { parse } from '../src/parser.js';
 
 // --- Smoke tests: parse fixtures without throwing ---
 

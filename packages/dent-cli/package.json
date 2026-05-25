@@ -1,0 +1,49 @@
+{
+	"name": "@nsis/dent-cli",
+	"version": "0.8.2",
+	"description": "An opinionated code formatter for NSIS scripts",
+	"license": "MIT",
+	"scripts": {
+		"build": "tsdown",
+		"dev": "tsdown --watch",
+		"lint": "concurrently --prefix-colors blue,green,magenta npm:lint:*",
+		"lint:biome": "biome check",
+		"lint:biome:ci": "biome ci",
+		"lint:e18e": "e18e-cli analyze --log-level error",
+		"prepublishOnly": "npm run build",
+		"publish:jsr": "deno publish",
+		"publish:npm": "np",
+		"start": "npm run build -- --watch",
+		"test": "vitest run"
+	},
+	"files": [
+		"bin/",
+		"LICENSE",
+		"README.md"
+	],
+	"type": "module",
+	"bin": {
+		"dent": "./bin/cli.mjs"
+	},
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/idleberg/node-dent-cli.git"
+	},
+	"homepage": "https://github.com/idleberg/node-dent/tree/main/packages/dent-cli#readme",
+	"keywords": [
+		"nsis",
+		"formatter"
+	],
+	"dependencies": {
+		"@nsis/dent": "workspace:*",
+		"commander": "^14.0.3",
+		"consola": "^3.4.2",
+		"kleur": "^4.1.5"
+	},
+	"devDependencies": {
+		"vitest": "^4.1.7"
+	}
+}

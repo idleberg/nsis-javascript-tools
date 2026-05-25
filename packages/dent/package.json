@@ -1,0 +1,53 @@
+{
+	"name": "@nsis/dent",
+	"version": "0.10.0",
+	"description": "An opinionated code formatter for NSIS scripts",
+	"license": "MIT",
+	"scripts": {
+		"build": "npm run build:peggy && npm run build:lib",
+		"build:lib": "tsdown",
+		"build:peggy": "peggy --format es --dts --output src/grammar.js src/grammar.pegjs",
+		"dev": "concurrently --prefix-colors blue,green,magenta npm:dev:*",
+		"dev:lib": "npm run build:lib -- --watch",
+		"dev:peggy": "npm run build:peggy -- --watch",
+		"lint": "concurrently --prefix-colors blue,green,magenta npm:lint:*",
+		"lint:biome": "biome check",
+		"lint:biome:ci": "biome ci",
+		"lint:e18e": "e18e-cli analyze --log-level error",
+		"prepack": "npm run build",
+		"pretest": "npm run build:peggy",
+		"publish:jsr": "deno publish",
+		"publish:npm": "np",
+		"test": "uvu -r tsm tests"
+	},
+	"files": [
+		"dist/",
+		"types/",
+		"LICENSE",
+		"package.json",
+		"README.md"
+	],
+	"type": "module",
+	"typings": "dist/dent.d.mts",
+	"exports": "./dist/dent.mjs",
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/idleberg/node-dent.git"
+	},
+	"homepage": "https://github.com/idleberg/node-dent/tree/main/packages/dent#readme",
+	"keywords": [
+		"nsis",
+		"formatter"
+	],
+	"dependencies": {
+		"detect-newline": "^4.0.1"
+	},
+	"devDependencies": {
+		"peggy": "^5.1.0",
+		"tsm": "^2.3.0",
+		"uvu": "^0.5.6"
+	}
+}
