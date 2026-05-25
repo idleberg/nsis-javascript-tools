@@ -1,7 +1,7 @@
 import { Command } from 'commander';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { logger } from '../log.js';
-import { applyFormattingOptions, defaultLineEndings, warnFormattingOptions } from './options.js';
+import { logger } from '../log.ts';
+import { applyFormattingOptions, defaultLineEndings, warnFormattingOptions } from './options.ts';
 
 describe('applyFormattingOptions', () => {
 	afterEach(() => {

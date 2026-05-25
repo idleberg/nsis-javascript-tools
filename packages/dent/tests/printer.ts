@@ -618,7 +618,7 @@ test('Line under print width is unchanged', () => {
 test('Line exceeding print width is wrapped with continuations', () => {
 	const { format } = createFormatter({ printWidth: 40 });
 	const result = format('MessageBox MB_OK "A long string value" IDYES true IDNO false\n');
-	assert.is(result, 'MessageBox MB_OK "A long string value" \\\nIDYES true IDNO false\n');
+	assert.is(result, 'MessageBox MB_OK "A long string value" \\\n\tIDYES true IDNO false\n');
 });
 
 test('Wrapped lines preserve indent level', () => {
@@ -626,14 +626,14 @@ test('Wrapped lines preserve indent level', () => {
 	const result = format('Section "Test"\nMessageBox MB_OK "A long string value" IDYES true IDNO false\nSectionEnd\n');
 	assert.is(
 		result,
-		'Section "Test"\n\tMessageBox MB_OK "A long string value" IDYES \\\n\ttrue IDNO false\nSectionEnd\n',
+		'Section "Test"\n\tMessageBox MB_OK "A long string value" IDYES \\\n\t\ttrue IDNO false\nSectionEnd\n',
 	);
 });
 
 test('Single oversized arg stays on its own line', () => {
 	const { format } = createFormatter({ printWidth: 40 });
 	const result = format('DetailPrint "This is a very long string that exceeds the print width on its own"\n');
-	assert.is(result, 'DetailPrint \\\n"This is a very long string that exceeds the print width on its own"\n');
+	assert.is(result, 'DetailPrint \\\n\t"This is a very long string that exceeds the print width on its own"\n');
 });
 
 test('Trailing comment stays on last wrapped line', () => {

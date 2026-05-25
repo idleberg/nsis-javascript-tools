@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import { handleCLI } from './cli.js';
+import { handleCLI } from './cli.ts';
 
 await handleCLI();

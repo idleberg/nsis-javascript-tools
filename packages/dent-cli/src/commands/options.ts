@@ -1,6 +1,6 @@
 import { platform } from 'node:os';
 import type { Command } from 'commander';
-import { logger } from '../log.js';
+import { logger } from '../log.ts';
 
 export const defaultLineEndings = platform() === 'win32' ? 'crlf' : 'lf';
 

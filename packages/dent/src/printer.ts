@@ -1,8 +1,8 @@
-import { canonicalCasing } from './canonical-casing.js';
-import { canonicalIncludes } from './canonical-includes.js';
-import { globalParameterPrefixes, globalParameters, instructionParameters } from './canonical-parameters.js';
-import type { Comment, CommentNode, CSTNode, InstructionNode, LabelNode } from './parser.js';
-import { rules } from './rules.js';
+import { canonicalCasing } from './canonical-casing.ts';
+import { canonicalIncludes } from './canonical-includes.ts';
+import { globalParameterPrefixes, globalParameters, instructionParameters } from './canonical-parameters.ts';
+import type { Comment, CommentNode, CSTNode, InstructionNode, LabelNode } from './parser.ts';
+import { rules } from './rules.ts';
 
 export interface PrinterOptions {
 	useTabs: boolean;
@@ -388,6 +388,7 @@ function wrapInstruction(
 		return fullLine;
 	}
 
+	const contIndent = indent + (options.useTabs ? '\t' : ' '.repeat(options.indentSize));
 	const resultLines: string[] = [];
 	let current = `${indent}${keyword}`;
 
@@ -395,7 +396,7 @@ function wrapInstruction(
 		const candidate = `${current} ${arg}`;
 		if (candidate.length + 2 > options.printWidth && current.length > indent.length) {
 			resultLines.push(`${current} \\`);
-			current = `${indent}${arg}`;
+			current = `${contIndent}${arg}`;
 		} else {
 			current = candidate;
 		}
