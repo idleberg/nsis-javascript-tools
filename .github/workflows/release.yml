@@ -16,6 +16,9 @@ jobs:
           - target: windows-x64
           - target: windows-arm64
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/dent-cli
     steps:
       - uses: actions/checkout@v4
 
@@ -37,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dent-${{ matrix.target }}
-          path: dent-*.zip
+          path: packages/dent-cli/dent-*.zip
 
   release:
     needs: build
