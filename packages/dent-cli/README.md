@@ -2,9 +2,9 @@
 
 > An opinionated code formatter for NSIS scripts
 
-[![License](https://img.shields.io/github/license/idleberg/node-dent-cli?color=blue&style=for-the-badge)](https://github.com/idleberg/node-dent-cli/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/idleberg/dent-cli?color=blue&style=for-the-badge)](https://github.com/idleberg/dent-cli/blob/main/LICENSE)
 [![Version](https://img.shields.io/npm/v/@nsis/dent-cli?style=for-the-badge)](https://www.npmjs.org/package/@nsis/dent-cli)
-[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/node-dent-cli/default.yml?style=for-the-badge)](https://github.com/idleberg/node-dent-cli/actions)
+[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/dent-cli/default.yml?style=for-the-badge)](https://github.com/idleberg/dent-cli/actions)
 
 ## Installation
 
@@ -37,7 +37,7 @@ scoop install nsis/dent
 
 ### Download
 
-As a last resort, you can download [pre-compiled binaries](https://github.com/idleberg/node-dent-cli/releases/latest) for Windows.
+As a last resort, you can download [pre-compiled binaries](https://github.com/idleberg/dent-cli/releases/latest) for Windows.
 
 ## Usage
 

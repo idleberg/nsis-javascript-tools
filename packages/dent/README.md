@@ -2,9 +2,9 @@
 
 > An opinionated code formatter for NSIS scripts
 
-[![License](https://img.shields.io/github/license/idleberg/node-dent?color=blue&style=for-the-badge)](https://github.com/idleberg/node-dent/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/idleberg/dent?color=blue&style=for-the-badge)](https://github.com/idleberg/dent/blob/main/LICENSE)
 [![Version](https://img.shields.io/npm/v/@nsis/dent?style=for-the-badge)](https://www.npmjs.org/package/@nsis/dent)
-[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/node-dent/default.yml?style=for-the-badge)](https://github.com/idleberg/node-dent/actions)
+[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/dent/default.yml?style=for-the-badge)](https://github.com/idleberg/dent/actions)
 
 > [!NOTE]  
 > This is the repository for the formatting library. Chances are you are looking for the [CLI tool](https://www.npmjs.com/package/@nsis/dent-cli) instead.
