@@ -1,7 +1,7 @@
 import { platform } from 'node:os';
 import { detectNewline } from 'detect-newline';
-import { parse } from './parser.ts';
-import { print } from './printer.ts';
+import { parse } from './parser.js';
+import { print } from './printer.js';
 
 const defaultIndentation = 2;
 

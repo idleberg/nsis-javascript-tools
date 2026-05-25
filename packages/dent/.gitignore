@@ -1,0 +1,4 @@
+# Build artifacts
+dist/
+src/grammar.js
+src/grammar.d.ts

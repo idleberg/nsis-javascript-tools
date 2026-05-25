@@ -1,8 +1,8 @@
-import { canonicalCasing } from './canonical-casing.ts';
-import { canonicalIncludes } from './canonical-includes.ts';
-import { globalParameterPrefixes, globalParameters, instructionParameters } from './canonical-parameters.ts';
-import type { Comment, CommentNode, CSTNode, InstructionNode, LabelNode } from './parser.ts';
-import { rules } from './rules.ts';
+import { canonicalCasing } from './canonical-casing.js';
+import { canonicalIncludes } from './canonical-includes.js';
+import { globalParameterPrefixes, globalParameters, instructionParameters } from './canonical-parameters.js';
+import type { Comment, CommentNode, CSTNode, InstructionNode, LabelNode } from './parser.js';
+import { rules } from './rules.js';
 
 export interface PrinterOptions {
 	useTabs: boolean;
