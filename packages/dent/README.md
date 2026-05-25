@@ -2,7 +2,7 @@
 
 > An opinionated code formatter for NSIS scripts
 
-[![License](https://img.shields.io/github/license/idleberg/dent?color=blue&style=for-the-badge)](https://github.com/idleberg/dent/blob/main/LICENSE)
+![License](https://img.shields.io/npm/l/%40nsis%2Fdent?style=for-the-badge)
 [![Version](https://img.shields.io/npm/v/@nsis/dent?style=for-the-badge)](https://www.npmjs.org/package/@nsis/dent)
 [![Build](https://img.shields.io/github/actions/workflow/status/idleberg/dent/default.yml?style=for-the-badge)](https://github.com/idleberg/dent/actions)
 
