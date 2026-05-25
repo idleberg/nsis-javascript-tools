@@ -7,7 +7,7 @@
 			"inputs": ["$TURBO_DEFAULT$", ".env*"],
 			"outputs": ["dist/**", "lib/**"]
 		},
-		"lint:biome:ci": {},
+		"lint:biome": {},
 		"test": {
 			"dependsOn": ["^test"]
 		},
