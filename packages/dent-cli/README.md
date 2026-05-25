@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/github/license/idleberg/dent-cli?color=blue&style=for-the-badge)](https://github.com/idleberg/dent-cli/blob/main/LICENSE)
 [![Version](https://img.shields.io/npm/v/@nsis/dent-cli?style=for-the-badge)](https://www.npmjs.org/package/@nsis/dent-cli)
-[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/dent-cli/default.yml?style=for-the-badge)](https://github.com/idleberg/dent-cli/actions)
+[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/dent/default.yml?style=for-the-badge)](https://github.com/idleberg/dent/actions)
 
 ## Installation
 
