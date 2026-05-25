@@ -31,6 +31,7 @@
 		"type": "git",
 		"url": "git+https://github.com/idleberg/node-dent-cli.git"
 	},
+	"homepage": "https://github.com/idleberg/node-dent/tree/main/packages/dent-cli#readme",
 	"keywords": [
 		"nsis",
 		"formatter"
