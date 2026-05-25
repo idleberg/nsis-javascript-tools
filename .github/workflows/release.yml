@@ -22,12 +22,13 @@ jobs:
         working-directory: packages/dent-cli
     steps:
       - uses: actions/checkout@v4
-
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v6
       - uses: oven-sh/setup-bun@v2
 
       - name: Build executable
         run: |
-          bun install
+          pnpm install
           bun build src/main.ts --compile --target=bun-${{ matrix.target }}-modern --outfile dent
 
       - name: Get version
