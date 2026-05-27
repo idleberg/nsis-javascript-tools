@@ -23,6 +23,12 @@ $ npm install --global @nsis/dent-cli
 $ npx dent --help
 ```
 
+### Homebrew
+
+```sh
+brew install idleberg/asahi/dent
+```
+
 ### Native Builds
 
 In the past, you could download precompiled binaries from the release page. This is no longer the case. Instead, feel free to download [ardent](https://github.com/idleberg/ardent), an API-compatible implementation written in Rust.
