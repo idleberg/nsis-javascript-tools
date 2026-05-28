@@ -1,12 +1,12 @@
 # Build:
-# $ docker build -t dent .
+#   docker build -t dent .
 #
 # Usage:
-# $ docker run --rm -v "$PWD:/work" dent <command> [options] [file...]
+#   docker run --rm -v "$PWD:/work" dent <command> [options] [file...]
 
 FROM node:24-alpine AS base
 
-ENV PNPM_HOME="/pnpm"
+ENV PNPM_HOME="/.pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
 RUN corepack enable
