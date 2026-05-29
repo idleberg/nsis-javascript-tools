@@ -20,7 +20,7 @@ Or, if you prefer to install the CLI:
 
 ```sh
 $ npm install --global @nsis/dent-cli
-$ npx dent --help
+$ dent --help
 ```
 
 ### Homebrew
@@ -63,4 +63,4 @@ Run `dent --help` to list sub-commands, or `dent <command> --help` for command-s
 
 ## License
 
-This work is licensed under [The MIT License](LICENSE)
+This work is licensed under [The MIT License](LICENSE).
