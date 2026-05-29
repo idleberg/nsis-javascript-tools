@@ -1,5 +1,11 @@
 # @nsis/dent
 
+## 0.11.2
+
+### Patch Changes
+
+- 206c514: fix: handle escaped single quotes and backticks
+
 ## 0.11.1
 
 ### Patch Changes
