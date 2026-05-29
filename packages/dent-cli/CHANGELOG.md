@@ -1,5 +1,13 @@
 # @nsis/dent-cli
 
+## 0.8.5
+
+### Patch Changes
+
+- 206c514: fix: handle escaped single quotes and backticks
+- Updated dependencies [206c514]
+  - @nsis/dent@0.11.2
+
 ## 0.8.4
 
 ### Patch Changes
