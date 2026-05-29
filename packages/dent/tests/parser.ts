@@ -161,6 +161,18 @@ test('Path with backslash in quoted string', () => {
 	assert.equal(node.args, ['"$PROGRAMFILES\\Demo"']);
 });
 
+test('Single-quoted string with escaped single quote', () => {
+	const node = parse("OutFile 'Quote $\\'This$\\''\n")[0] as InstructionNode;
+	assert.is(node.keyword, 'OutFile');
+	assert.equal(node.args, ["'Quote $\\'This$\\''"]);
+});
+
+test('Backtick string with escaped backtick', () => {
+	const node = parse('OutFile `Quote $\\`This$\\``\n')[0] as InstructionNode;
+	assert.is(node.keyword, 'OutFile');
+	assert.equal(node.args, ['`Quote $\\`This$\\``']);
+});
+
 // --- Strict keyword validation ---
 
 test('Unknown keyword rejects', () => {
