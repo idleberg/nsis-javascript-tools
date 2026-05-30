@@ -1,5 +1,7 @@
 # dent
 
+[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/dent/default.yml?style=for-the-badge)](https://github.com/idleberg/dent/actions)
+
 An opinionated code formatter for NSIS scripts. This monorepo contains two packages that were previously available in two separate repositories:
 
 - [Library](packages/dent)
