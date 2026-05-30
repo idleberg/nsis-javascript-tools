@@ -1,5 +1,11 @@
 # @nsis/dent
 
+## 0.12.0
+
+### Minor Changes
+
+- 0b4f621: feat: support quote normalization
+
 ## 0.11.2
 
 ### Patch Changes

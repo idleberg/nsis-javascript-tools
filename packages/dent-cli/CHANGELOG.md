@@ -1,5 +1,16 @@
 # @nsis/dent-cli
 
+## 0.9.0
+
+### Minor Changes
+
+- 0b4f621: feat: support quote normalization
+
+### Patch Changes
+
+- Updated dependencies [0b4f621]
+  - @nsis/dent@0.12.0
+
 ## 0.8.5
 
 ### Patch Changes
