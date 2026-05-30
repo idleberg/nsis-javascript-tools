@@ -7,7 +7,7 @@
 		"test": "turbo run test"
 	},
 	"devDependencies": {
-		"@changesets/cli": "^2.29.4",
+		"@changesets/cli": "^2.31.0",
 		"@commitlint/cli": "^21.0.2",
 		"@commitlint/config-conventional": "^21.0.2",
 		"@idleberg/configs": "^0.4.4",
