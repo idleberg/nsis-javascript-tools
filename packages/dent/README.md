@@ -72,6 +72,11 @@ Default: `true`
 Type: `numbers`  
 Default: `0`
 
+#### `options.singleQuote`
+
+Type: `boolean`  
+Default: `false`
+
 #### `options.useTabs`
 
 Type: `boolean`  
