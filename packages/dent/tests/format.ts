@@ -70,4 +70,24 @@ test('Quotes', async () => {
 	assert.is(format(fixture), expected);
 });
 
+test('Directives', async () => {
+	const { format } = createFormatter();
+
+	const fixture = await fs.readFile(resolve(process.cwd(), 'tests/fixtures/directives.nsi'), 'utf8');
+
+	const expected = await fs.readFile(resolve(process.cwd(), 'tests/expected/directives.nsi'), 'utf8');
+
+	assert.is(format(fixture), expected);
+});
+
+test('Directives idempotent', async () => {
+	const { format } = createFormatter();
+
+	const fixture = await fs.readFile(resolve(process.cwd(), 'tests/fixtures/directives.nsi'), 'utf8');
+
+	const first = format(fixture);
+	const second = format(first);
+	assert.is(first, second);
+});
+
 test.run();

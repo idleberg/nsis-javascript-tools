@@ -669,4 +669,72 @@ test('Line wrapping is idempotent', () => {
 	assert.is(first, second);
 });
 
+// --- Formatter directives ---
+
+test('fmt:off skips casing normalization', () => {
+	const { format } = createFormatter();
+	const result = format('; fmt:off\ndetailprint "hello"\n');
+	assert.is(result, '; fmt:off\ndetailprint "hello"\n');
+});
+
+test('fmt:on resumes formatting', () => {
+	const { format } = createFormatter();
+	const result = format('; fmt:off\ndetailprint "hello"\n; fmt:on\ndetailprint "world"\n');
+	assert.is(result, '; fmt:off\ndetailprint "hello"\n; fmt:on\nDetailPrint "world"\n');
+});
+
+test('fmt:off skips quote normalization', () => {
+	const { format } = createFormatter();
+	const result = format("; fmt:off\nDetailPrint 'hello world'\n");
+	assert.is(result, "; fmt:off\nDetailPrint 'hello world'\n");
+});
+
+test('fmt:off skips parameter normalization', () => {
+	const { format } = createFormatter();
+	const result = format('; fmt:off\nWriteRegStr hklm "Key" "Name" "Val"\n');
+	assert.is(result, '; fmt:off\nWriteRegStr hklm "Key" "Name" "Val"\n');
+});
+
+test('fmt:ignore-next-line skips one line', () => {
+	const { format } = createFormatter();
+	const result = format('; fmt:ignore-next-line\ndetailprint "hello"\ndetailprint "world"\n');
+	assert.is(result, '; fmt:ignore-next-line\ndetailprint "hello"\nDetailPrint "world"\n');
+});
+
+test('fmt:ignore-next-line only affects one line', () => {
+	const { format } = createFormatter();
+	const result = format('; fmt:ignore-next-line\ndetailprint "a"\ndetailprint "b"\ndetailprint "c"\n');
+	assert.is(result, '; fmt:ignore-next-line\ndetailprint "a"\nDetailPrint "b"\nDetailPrint "c"\n');
+});
+
+test('fmt:off without fmt:on ignores whole file', () => {
+	const { format } = createFormatter();
+	const result = format('; fmt:off\nsection "test"\ndetailprint "hello"\nsectionend\n');
+	assert.is(result, '; fmt:off\nsection "test"\ndetailprint "hello"\nsectionend\n');
+});
+
+test('fmt:off preserves indent tracking for fmt:on', () => {
+	const { format } = createFormatter();
+	const result = format('Section "Test"\n; fmt:off\ndetailprint "a"\n; fmt:on\nDetailPrint "b"\nSectionEnd\n');
+	assert.is(result, 'Section "Test"\n\t; fmt:off\ndetailprint "a"\n\t; fmt:on\n\tDetailPrint "b"\nSectionEnd\n');
+});
+
+test('fmt:off across block boundaries preserves stack', () => {
+	const { format } = createFormatter();
+	const result = format('; fmt:off\nsection "Test"\ndetailprint "a"\nsectionend\n; fmt:on\nDetailPrint "after"\n');
+	assert.is(result, '; fmt:off\nsection "Test"\ndetailprint "a"\nsectionend\n; fmt:on\nDetailPrint "after"\n');
+});
+
+test('fmt:ignore-next-line with label', () => {
+	const { format } = createFormatter();
+	const result = format('; fmt:ignore-next-line\nmyLabel:\n');
+	assert.is(result, '; fmt:ignore-next-line\nmyLabel:\n');
+});
+
+test('fmt:off works with hash comment', () => {
+	const { format } = createFormatter();
+	const result = format('# fmt:off\ndetailprint "hello"\n');
+	assert.is(result, '# fmt:off\ndetailprint "hello"\n');
+});
+
 test.run();

@@ -19,6 +19,19 @@ export interface PrinterOptions {
  * Applies canonical keyword casing, whitespace normalisation,
  * blank-line collapsing, and stack-based indentation.
  */
+function isDirective(value: string): boolean {
+	const trimmed = value.trim();
+	return trimmed === 'fmt:off' || trimmed === 'fmt:on' || trimmed === 'fmt:ignore-next-line';
+}
+
+function rawInstruction(node: InstructionNode): string {
+	let line = node.args.length > 0 ? `${node.keyword} ${node.args.join(' ')}` : node.keyword;
+	if (node.comment) {
+		line += ` ${printTrailingComment(node.comment)}`;
+	}
+	return line;
+}
+
 export function print(nodes: CSTNode[], options: PrinterOptions): string {
 	let level = 0;
 
@@ -31,6 +44,8 @@ export function print(nodes: CSTNode[], options: PrinterOptions): string {
 	const stack: number[] = [];
 
 	const lines: string[] = [];
+	let fmtOff = false;
+	let ignoreNext = false;
 	let processed = ensureBlankAroundBlocks(nodes);
 	if (options.trimEmptyLines) {
 		processed = trimAndCollapseBlanks(processed);
@@ -43,41 +58,65 @@ export function print(nodes: CSTNode[], options: PrinterOptions): string {
 				break;
 
 			case 'comment':
+				if (isDirective(node.value)) {
+					const trimmed = node.value.trim();
+					if (trimmed === 'fmt:off') {
+						fmtOff = true;
+					} else if (trimmed === 'fmt:on') {
+						fmtOff = false;
+					} else if (trimmed === 'fmt:ignore-next-line') {
+						ignoreNext = true;
+					}
+				}
 				lines.push(printComment(node, level, options));
 				break;
 
-			case 'label':
+			case 'label': {
+				if (fmtOff || ignoreNext) {
+					let line = `${node.name}:`;
+					if (node.comment) {
+						line += ` ${printTrailingComment(node.comment)}`;
+					}
+					lines.push(line);
+					ignoreNext = false;
+					break;
+				}
 				lines.push(printLabel(node, level, options));
 				break;
+			}
 
 			case 'instruction': {
+				const skip = fmtOff || ignoreNext;
+				if (skip) {
+					ignoreNext = false;
+				}
+
 				const kw = node.keyword.toLowerCase();
 
 				if (rules.open.has(kw)) {
-					// Print at current level, then push & indent
-					lines.push(printInstruction(node, level, options));
+					lines.push(skip ? rawInstruction(node) : printInstruction(node, level, options));
 					stack.push(level);
 					level++;
 				} else if (rules.case.has(kw)) {
-					// Print one level inside parent, indent body one further
 					const parentLevel = stack.length > 0 ? (stack[stack.length - 1] as number) : 0;
 					const caseLevel = parentLevel + 1;
-					lines.push(printInstruction(node, caseLevel, options));
+					lines.push(skip ? rawInstruction(node) : printInstruction(node, caseLevel, options));
 					level = caseLevel + 1;
 				} else if (rules.close.has(kw)) {
-					// Pop to the opener's level, then print
 					level = stack.length > 0 ? (stack.pop() as number) : 0;
-					lines.push(printInstruction(node, level, options));
+					lines.push(skip ? rawInstruction(node) : printInstruction(node, level, options));
 				} else if (rules.mid.has(kw)) {
-					// Print at the opener's level (one back), keep depth the same
-					const openerLevel = stack.length > 0 ? (stack[stack.length - 1] as number) : 0;
-					lines.push(printInstruction(node, openerLevel, options));
+					if (skip) {
+						lines.push(rawInstruction(node));
+					} else {
+						const openerLevel = stack.length > 0 ? (stack[stack.length - 1] as number) : 0;
+						lines.push(printInstruction(node, openerLevel, options));
+					}
 				} else if (rules.closeAfter.has(kw)) {
-					// Print at current level, then reset to parent's content level
-					lines.push(printInstruction(node, level, options));
+					lines.push(skip ? rawInstruction(node) : printInstruction(node, level, options));
 					level = (stack.length > 0 ? (stack[stack.length - 1] as number) : 0) + 1;
 				} else {
-					lines.push(printInstruction(node, level, options));
+					lines.push(skip ? rawInstruction(node) : printInstruction(node, level, options));
 				}
 				break;
 			}
