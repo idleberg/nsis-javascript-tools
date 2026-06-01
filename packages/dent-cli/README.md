@@ -43,7 +43,7 @@ The CLI exposes two sub-commands:
 ```
 Usage: dent [options] [command]
 
-CLI tool to format NSIS scripts
+Opinionated formatter for NSIS scripts
 
 Options:
   -V, --version               output the version number
