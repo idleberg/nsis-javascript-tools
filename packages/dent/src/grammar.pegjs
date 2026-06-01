@@ -89,8 +89,8 @@ Line
   / InstructionLine
 
 BlankLine
-  = _ EOL
-  { return { type: 'blank' }; }
+  = _ EOL { return { type: 'blank' }; }
+  / [ \t]+ EOF { return { type: 'blank' }; }
 
 CommentLine
   = _ style:("#" / ";") value:$[^\r\n]* LineEnd

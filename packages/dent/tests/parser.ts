@@ -31,6 +31,14 @@ test('Blank lines produce blank nodes', () => {
 	assert.is((nodes[1] as CSTNode).type, 'blank');
 });
 
+test('Trailing whitespace at EOF is a blank node', () => {
+	const nodes = parse('FunctionEnd\n    ');
+	assert.is(nodes.length, 2);
+	assert.is((nodes[0] as InstructionNode).type, 'instruction');
+	assert.is((nodes[0] as InstructionNode).keyword, 'FunctionEnd');
+	assert.is((nodes[1] as CSTNode).type, 'blank');
+});
+
 // --- Comments ---
 
 test('Hash comment', () => {
