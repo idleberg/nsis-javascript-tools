@@ -192,6 +192,13 @@ test('Plugin call keyword', () => {
 	assert.equal(node.args, ['/NOUNLOAD', '1018']);
 });
 
+test('Plugin call with underscore prefix after ::', () => {
+	const node = parse('nsProcess::_FindProcess "foo.exe"\n')[0] as InstructionNode;
+	assert.is(node.type, 'instruction');
+	assert.is(node.keyword, 'nsProcess::_FindProcess');
+	assert.equal(node.args, ['"foo.exe"']);
+});
+
 // --- Labels ---
 
 test('Label line', () => {

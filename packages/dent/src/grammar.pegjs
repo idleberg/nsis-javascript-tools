@@ -152,7 +152,7 @@ MacroKeywordInner
   / !("${" / "}") [^ \t\r\n]
 
 PluginCallKeyword
-  = $([a-zA-Z][a-zA-Z0-9_]* "::" [a-zA-Z][a-zA-Z0-9_]*)
+  = $([a-zA-Z][a-zA-Z0-9_]* "::" [a-zA-Z_][a-zA-Z0-9_]*)
 
 InstructionKeyword
   = kw:$([a-zA-Z][a-zA-Z0-9]*) &{ return INSTRUCTION_LOOKUP.has(kw.toLowerCase()); } { return kw; }
