@@ -84,6 +84,7 @@ Line
   / BlankLine
   / CommentLine
   / LabelWithInstruction
+  / QuotedLabelLine
   / LabelLine
   / InstructionLine
 
@@ -98,6 +99,10 @@ CommentLine
 BlockComment
   = _ "/*" value:$(!"*/" (. / [\r\n]))* "*/" _ LineEnd?
   { return { type: 'comment', style: 'block', value }; }
+
+QuotedLabelLine
+  = _ "\"" label:$((!(":\"") [^"])*) ":\"" !":" trailing:TrailingComment? _ LineEnd
+  { return { type: 'label', name: label, comment: trailing ?? undefined }; }
 
 LabelLine
   = _ label:$(LabelSegment+) ":" !":" trailing:TrailingComment? _ LineEnd
