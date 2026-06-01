@@ -17,7 +17,7 @@ export async function handleCLI(): Promise<void> {
 			writeOut: (message: string) => logger.log(message),
 			writeErr: (message: string) => logger.error(message),
 		})
-		.description('CLI tool to format NSIS scripts')
+		.description('Opinionated formatter for NSIS scripts')
 		.option('-D, --debug', 'prints additional debug messages', false)
 		.addCommand(formatCommand())
 		.addCommand(checkCommand());
