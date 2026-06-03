@@ -82,3 +82,38 @@ export async function loadScript(file: string): Promise<string | null> {
 
 	return (await readFile(file)).toString();
 }
+
+export async function processFiles(
+	patterns: string[],
+	check: (input: string) => string | null,
+	emptyExitCode: number,
+	onFile: (file: string, result: string | null, rawContents: string, duration: number) => Promise<void> | void,
+	onError: (file: string, error: unknown, duration: number) => void,
+): Promise<{ duration: number }> {
+	const files = await resolveFiles(patterns);
+
+	if (files.length === 0) {
+		logger.error('No valid input files provided, exiting.');
+		process.exit(emptyExitCode);
+	}
+
+	const outerStartTime = performance.now();
+
+	for (const file of files) {
+		const startTime = performance.now();
+		const rawContents = await loadScript(file);
+		if (rawContents === null) continue;
+
+		let result: string | null;
+		try {
+			result = check(rawContents);
+		} catch (error) {
+			onError(file, error, Math.round(performance.now() - startTime));
+			continue;
+		}
+
+		await onFile(file, result, rawContents, Math.round(performance.now() - startTime));
+	}
+
+	return { duration: Math.round(performance.now() - outerStartTime) };
+}
