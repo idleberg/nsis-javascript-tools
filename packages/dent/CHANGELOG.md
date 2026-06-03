@@ -4,7 +4,8 @@
 
 ### Patch Changes
 
-- 3bf8db5: fixing changelog
+- ccec13a extract blank-line transforms
+- 2897e97 extract token transforms from printer
 
 ## 0.12.1
 
