@@ -8,10 +8,9 @@ import {
 	dentOptionsFrom,
 	formatParseError,
 	hasStdin,
-	loadScript,
 	prepareAction,
+	processFiles,
 	readStdin,
-	resolveFiles,
 	type SharedOptions,
 } from './shared.ts';
 
@@ -63,58 +62,43 @@ async function runCheck(patterns: string[], options: CheckOptions): Promise<void
 		return;
 	}
 
-	const files = await resolveFiles(patterns);
-
-	if (files.length === 0) {
-		logger.error('No valid input files provided, exiting.');
-		process.exit(2);
-	}
-
 	logger.start(`Checking ${patterns.length} ${patterns.length === 1 ? 'file' : 'files'}...`);
 
-	const outerStartTime = performance.now();
 	const drifted: string[] = [];
 	let unchanged = 0;
 
-	for (const file of files) {
-		const startTime = performance.now();
-		const rawContents = await loadScript(file);
-		if (rawContents === null) continue;
+	const { duration } = await processFiles(
+		patterns,
+		check,
+		2,
+		async (file, result, _rawContents, dur) => {
+			if (result === null) {
+				unchanged++;
+				logger.info(`${blue(file)} already formatted ${dim(`(${dur}ms)`)}`);
+				return;
+			}
 
-		let result: string | null;
-		try {
-			result = check(rawContents);
-		} catch (error) {
-			const duration = Math.round(performance.now() - startTime);
-			logger.error(`${blue(file)}: ${formatParseError(error)} ${dim(`(${duration}ms)`)}`);
-			continue;
-		}
-		const duration = Math.round(performance.now() - startTime);
+			drifted.push(file);
 
-		if (result === null) {
-			unchanged++;
-			logger.info(`${blue(file)} already formatted ${dim(`(${duration}ms)`)}`);
-			continue;
-		}
+			if (options.write) {
+				await writeFile(file, result, { encoding: 'utf-8' });
+				logger.info(`${blue(file)} formatted ${dim(`(${dur}ms)`)}`);
+			} else {
+				logger.warn(`${blue(file)} has issues ${dim(`(${dur}ms)`)}`);
+			}
+		},
+		(file, error, dur) => {
+			logger.error(`${blue(file)}: ${formatParseError(error)} ${dim(`(${dur}ms)`)}`);
+		},
+	);
 
-		drifted.push(file);
-
-		if (options.write) {
-			await writeFile(file, result, { encoding: 'utf-8' });
-			logger.info(`${blue(file)} formatted ${dim(`(${duration}ms)`)}`);
-		} else {
-			logger.warn(`${blue(file)} has issues ${dim(`(${duration}ms)`)}`);
-		}
-	}
-
-	const outerDuration = Math.round(performance.now() - outerStartTime);
 	const total = drifted.length + unchanged;
 	const summary =
 		drifted.length === 0
 			? `All ${total} ${total === 1 ? 'file' : 'files'} formatted correctly.`
 			: `Found formatting issues in ${drifted.length} of ${total} ${total === 1 ? 'file' : 'files'}.`;
 
-	logger.success(`Completed in ${outerDuration}ms. ${summary}`);
+	logger.success(`Completed in ${duration}ms. ${summary}`);
 
 	if (drifted.length >= 1) {
 		process.exit(1);

@@ -8,10 +8,9 @@ import {
 	dentOptionsFrom,
 	formatParseError,
 	hasStdin,
-	loadScript,
 	prepareAction,
+	processFiles,
 	readStdin,
-	resolveFiles,
 	type SharedOptions,
 } from './shared.ts';
 
@@ -47,61 +46,46 @@ async function runFormat(patterns: string[], options: FormatOptions): Promise<vo
 		return;
 	}
 
-	const files = await resolveFiles(patterns);
-
-	if (files.length === 0) {
-		logger.error('No valid input files provided, exiting.');
-		process.exit(1);
-	}
-
 	if (options.write) {
 		logger.start(`Formatting ${patterns.length} ${patterns.length === 1 ? 'file' : 'files'}...`);
 	}
 
-	const outerStartTime = performance.now();
 	let numFormatted = 0;
 	let numUnchanged = 0;
 
-	for (const file of files) {
-		const startTime = performance.now();
-		const rawContents = await loadScript(file);
-		if (rawContents === null) continue;
-
-		let result: string | null;
-		try {
-			result = check(rawContents);
-		} catch (error) {
-			const duration = Math.round(performance.now() - startTime);
+	const { duration } = await processFiles(
+		patterns,
+		check,
+		1,
+		async (file, result, rawContents, dur) => {
 			if (options.write) {
-				logger.error(`${blue(file)}: ${formatParseError(error)} ${dim(`(${duration}ms)`)}`);
+				if (result === null) {
+					numUnchanged++;
+					logger.info(`${blue(file)} already formatted ${dim(`(${dur}ms)`)}`);
+				} else {
+					numFormatted++;
+					await writeFile(file, result, { encoding: 'utf-8' });
+					logger.info(`${blue(file)} formatted ${dim(`(${dur}ms)`)}`);
+				}
+			} else {
+				process.stdout.write(result ?? rawContents);
+			}
+		},
+		(file, error, dur) => {
+			if (options.write) {
+				logger.error(`${blue(file)}: ${formatParseError(error)} ${dim(`(${dur}ms)`)}`);
 			} else {
 				logger.error(`${blue(file)}: ${formatParseError(error)}`);
 			}
-			continue;
-		}
-		const duration = Math.round(performance.now() - startTime);
-
-		if (options.write) {
-			if (result === null) {
-				numUnchanged++;
-				logger.info(`${blue(file)} already formatted ${dim(`(${duration}ms)`)}`);
-			} else {
-				numFormatted++;
-				await writeFile(file, result, { encoding: 'utf-8' });
-				logger.info(`${blue(file)} formatted ${dim(`(${duration}ms)`)}`);
-			}
-		} else {
-			process.stdout.write(result ?? rawContents);
-		}
-	}
+		},
+	);
 
 	if (options.write) {
-		const outerDuration = Math.round(performance.now() - outerStartTime);
 		const total = numFormatted + numUnchanged;
 		const summary =
 			numFormatted === 0
 				? `All ${total} ${total === 1 ? 'file was' : 'files'} already formatted.`
 				: `Formatted ${numFormatted} of ${total} ${total === 1 ? 'file' : 'files'}.`;
-		logger.success(`Completed in ${outerDuration}ms. ${summary}`);
+		logger.success(`Completed in ${duration}ms. ${summary}`);
 	}
 }
