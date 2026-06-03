@@ -1,5 +1,11 @@
 # @nsis/dent
 
+## 0.12.2
+
+### Patch Changes
+
+- 3bf8db5: fixing changelog
+
 ## 0.12.1
 
 ### Patch Changes
