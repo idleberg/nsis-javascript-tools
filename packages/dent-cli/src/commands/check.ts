@@ -74,6 +74,7 @@ async function runCheck(patterns: string[], options: CheckOptions): Promise<void
 
 	const outerStartTime = performance.now();
 	const drifted: string[] = [];
+	let unchanged = 0;
 
 	for (const file of files) {
 		const startTime = performance.now();
@@ -91,6 +92,7 @@ async function runCheck(patterns: string[], options: CheckOptions): Promise<void
 		const duration = Math.round(performance.now() - startTime);
 
 		if (result === null) {
+			unchanged++;
 			logger.info(`${blue(file)} already formatted ${dim(`(${duration}ms)`)}`);
 			continue;
 		}
@@ -106,8 +108,13 @@ async function runCheck(patterns: string[], options: CheckOptions): Promise<void
 	}
 
 	const outerDuration = Math.round(performance.now() - outerStartTime);
+	const total = drifted.length + unchanged;
+	const summary =
+		drifted.length === 0
+			? `All ${total} ${total === 1 ? 'file' : 'files'} formatted correctly.`
+			: `Found formatting issues in ${drifted.length} of ${total} ${total === 1 ? 'file' : 'files'}.`;
 
-	logger.success(`Completed in ${outerDuration}ms.`);
+	logger.success(`Completed in ${outerDuration}ms. ${summary}`);
 
 	if (drifted.length >= 1) {
 		process.exit(1);

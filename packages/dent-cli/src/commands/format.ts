@@ -59,6 +59,8 @@ async function runFormat(patterns: string[], options: FormatOptions): Promise<vo
 	}
 
 	const outerStartTime = performance.now();
+	let numFormatted = 0;
+	let numUnchanged = 0;
 
 	for (const file of files) {
 		const startTime = performance.now();
@@ -81,8 +83,10 @@ async function runFormat(patterns: string[], options: FormatOptions): Promise<vo
 
 		if (options.write) {
 			if (result === null) {
+				numUnchanged++;
 				logger.info(`${blue(file)} already formatted ${dim(`(${duration}ms)`)}`);
 			} else {
+				numFormatted++;
 				await writeFile(file, result, { encoding: 'utf-8' });
 				logger.info(`${blue(file)} formatted ${dim(`(${duration}ms)`)}`);
 			}
@@ -93,6 +97,11 @@ async function runFormat(patterns: string[], options: FormatOptions): Promise<vo
 
 	if (options.write) {
 		const outerDuration = Math.round(performance.now() - outerStartTime);
-		logger.success(`Completed in ${outerDuration}ms.`);
+		const total = numFormatted + numUnchanged;
+		const summary =
+			numFormatted === 0
+				? `All ${total} ${total === 1 ? 'file was' : 'files'} already formatted.`
+				: `Formatted ${numFormatted} of ${total} ${total === 1 ? 'file' : 'files'}.`;
+		logger.success(`Completed in ${outerDuration}ms. ${summary}`);
 	}
 }
