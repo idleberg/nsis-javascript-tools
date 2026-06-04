@@ -59,6 +59,17 @@ describe('resolveFiles', () => {
 		const files = await resolveFiles([join(dir, '*.nope')]);
 		expect(files).toEqual([]);
 	});
+
+	it('expands a directory to *.nsi and *.nsh files inside it', async () => {
+		await writeFile(join(dir, 'a.nsi'), '');
+		await writeFile(join(dir, 'b.nsh'), '');
+		await writeFile(join(dir, 'c.txt'), '');
+
+		const files = await resolveFiles([dir]);
+		expect(files).toHaveLength(2);
+		expect(files.some((f) => f.endsWith('a.nsi'))).toBe(true);
+		expect(files.some((f) => f.endsWith('b.nsh'))).toBe(true);
+	});
 });
 
 describe('loadScript', () => {
