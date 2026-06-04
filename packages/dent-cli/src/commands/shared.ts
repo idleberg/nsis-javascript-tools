@@ -1,4 +1,5 @@
-import { glob, readFile } from 'node:fs/promises';
+import { glob, readFile, stat } from 'node:fs/promises';
+import { join } from 'node:path';
 import type { Command } from 'commander';
 import { blue } from 'kleur/colors';
 import { logger } from '../log.ts';
@@ -58,7 +59,20 @@ export function dentOptionsFrom(options: FormattingOptions): DentOptions {
 }
 
 export async function resolveFiles(patterns: string[]): Promise<string[]> {
-	return Array.fromAsync(glob(patterns, { cwd: process.cwd() }));
+	const expanded: string[] = [];
+
+	for (const pattern of patterns) {
+		try {
+			const s = await stat(pattern);
+			if (s.isDirectory()) {
+				expanded.push(join(pattern, '*.nsi'), join(pattern, '*.nsh'));
+				continue;
+			}
+		} catch {}
+		expanded.push(pattern);
+	}
+
+	return Array.fromAsync(glob(expanded, { cwd: process.cwd() }));
 }
 
 export function formatParseError(error: unknown): string {
