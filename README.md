@@ -12,27 +12,12 @@
 
 ## Usage
 
-Simply include the `highlight.js` script package in your webpage or node app, load up this module and apply it to `hljs`.
-
-If you're not using a build system and just want to embed this in your webpage:
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/highlight.js@11/lib/index.min.js"></script>
-<script src="nsis.mjs" type="module"></script>
-<script>
-	hljs.registerLanguage("nsis", window.hljsDefineNSIS);
-	hljs.initHighlightingOnLoad();
-</script>
-```
-
-If you're using a bundler
-
 ```js
-const hljs = require("highlight.js");
-const hljsDefineNSIS = require("@nsis/highlight.js");
+import hljs from "highlight.js/lib/core";
+import nsis from "../../src/nsis.ts";
 
-hljsDefineNSIS(hljs);
-hljs.initHighlightingOnLoad();
+hljs.registerLanguage("nsis", nsis);
+hljs.highlightAll();
 ```
 
 ## License
