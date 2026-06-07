@@ -1,9 +1,8 @@
-# highlight.js-nsis
+# @nsis/highlight.js
 
-[![npm](https://flat.badgen.net/npm/license/@nsis/highlight.js)](https://www.npmjs.org/package/@nsis/highlight.js)
-[![npm](https://flat.badgen.net/npm/v/@nsis/highlight.js)](https://www.npmjs.org/package/@nsis/highlight.js)
-[![CircleCI](https://flat.badgen.net/circleci/github/highlightjs/highlightjs-nsis)](https://circleci.com/gh/highlightjs/highlightjs-nsis)
-[![David](https://flat.badgen.net/david/dev/highlightjs/highlightjs-nsis)](https://david-dm.org/highlightjs/highlightjs-nsis?)
+[![License](https://img.shields.io/github/license/NSIS-Dev/highlight.js?style=for-the-badge)](LICENSE)
+[![Version: npm](https://img.shields.io/npm/v/@nsis/highlight.js?style=for-the-badge)](https://www.npmjs.org/package/@nsis/highlight.js)
+[![CI](https://img.shields.io/github/actions/workflow/status/NSIS-Dev/highlight.js/default.yml?logo=nodedotjs&logoColor=white&style=for-the-badge)](https://github.com/NSIS-Dev/highlight.js/actions/workflows/default.yml)
 
 [highlight.js](https://github.com/highlightjs/highlight.js) syntax definition for the NSIS language
 
@@ -14,19 +13,19 @@ Simply include the `highlight.js` script package in your webpage or node app, lo
 If you're not using a build system and just want to embed this in your webpage:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/highlight.js@9/lib/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/highlight.js@11/lib/index.min.js"></script>
 <script src="nsis.js"></script>
 <script>
-    hljs.registerLanguage('nsis', window.hljsDefineNSIS);
-    hljs.initHighlightingOnLoad();
+	hljs.registerLanguage("nsis", window.hljsDefineNSIS);
+	hljs.initHighlightingOnLoad();
 </script>
 ```
 
 If you're using a bundler
-   
+
 ```js
-const hljs = require('highlight.js');
-const hljsDefineNSIS = require('@nsis/highlight.js');
+const hljs = require("highlight.js");
+const hljsDefineNSIS = require("@nsis/highlight.js");
 
 hljsDefineNSIS(hljs);
 hljs.initHighlightingOnLoad();
