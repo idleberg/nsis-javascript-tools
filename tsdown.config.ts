@@ -8,7 +8,7 @@ export default defineConfig((options) => {
 		clean: isProduction,
 		dts: isProduction,
 		entry: 'src/nsis.ts',
-		format: 'esm',
+		format: ['cjs', 'esm'],
 		minify: isProduction,
 	};
 });

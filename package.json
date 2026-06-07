@@ -15,8 +15,14 @@
 	],
 	"type": "module",
 	"exports": {
-		"types": "./dist/nsis.d.mts",
-		"import": "./dist/nsis.mjs"
+		".": {
+			"types": {
+				"import": "./dist/nsis.d.mts",
+				"require": "./dist/nsis.d.cts"
+			},
+			"import": "./dist/nsis.mjs",
+			"require": "./dist/nsis.cjs"
+		}
 	},
 	"engines": {
 		"node": "^20.19.0 || >=22.12.0"
