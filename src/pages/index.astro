@@ -10,8 +10,6 @@ import './global.css';
     <meta name="description" content="NSIS syntax highlighting for highlight.js" />
     <title>Demo | @nsis/highlight.js</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/atom-one-dark.min.css" integrity="sha512-Jk4AqjWsdSzSWCSuQTfYRIF84Rq/eV0G2+tu07byYwHcbTGfdmLrHjUSwvzp5HvbiqK4ibmNwdcG49Y5RGYPTg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js" integrity="sha512-EBLzUL8XLl+va/zAsmXwS7Z2B1F9HUHkZwyS/VKwh3S7T/U0nF4BaU29EP/ZSf6zgiIxYAnKLu6bJ8dqpmX5uw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script defer src="dist/nsis.mjs" type="module"></script>
   </head>
   <body class="flex flex-col bg-grey-lighter dark:bg-gray-800 h-screen p-4 font-sans">
     <main class="container mx-auto flex justify-center">
@@ -67,13 +65,12 @@ SectionEnd</code></pre>
     <footer class="w-full text-center p-4 pin-b">
       <a href="https://github.com/NSIS-Dev/highlight.js" class="text-indigo-600">Code on GitHub</a>
     </footer>
-    <script type="module">
+    <script>
+      import hljs from 'highlight.js/lib/core';
       import nsis from '../../src/nsis.ts';
 
-      window.addEventListener('DOMContentLoaded', () => {
-        hljs.registerLanguage('nsis', nsis);
-        hljs.highlightAll();
-      });
+      hljs.registerLanguage('nsis', nsis);
+      hljs.highlightAll();
     </script>
   </body>
 </html>

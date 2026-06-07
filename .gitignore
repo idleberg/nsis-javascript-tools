@@ -9,6 +9,7 @@ yarn.lock
 # build artifacts
 bin/
 dist/
+docs/
 lib/
 
 # caches
