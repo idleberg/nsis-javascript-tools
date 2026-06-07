@@ -6,6 +6,10 @@
 
 [highlight.js](https://github.com/highlightjs/highlight.js) syntax definition for the NSIS language
 
+> [!NOTE]
+>
+> This language file has been a part of the Highlight.js core since 2013. However, the latest fixes and changes are only available in this package.
+
 ## Usage
 
 Simply include the `highlight.js` script package in your webpage or node app, load up this module and apply it to `hljs`.
