@@ -14,7 +14,7 @@ import {
 	type SharedOptions,
 } from './shared.ts';
 
-type CheckOptions = SharedOptions & { write: boolean };
+type CheckOptions = SharedOptions & { write: boolean; silent: boolean };
 
 export function checkCommand(): Command {
 	const cmd = new Command('check')
@@ -22,11 +22,15 @@ export function checkCommand(): Command {
 		.arguments('[file...]')
 		.action(async (args: string[], _opts, command: Command) => {
 			const options = prepareAction<CheckOptions>(args, command);
+			if (options.silent) {
+				logger.level = 2;
+			}
 			await runCheck(args, options);
 		});
 
 	applyFormattingOptions(cmd);
 	cmd.option('-w, --write', 'edit files in-place, if check fails', false);
+	cmd.option('-S, --silent', 'suppress all output except errors and warnings', false);
 
 	return cmd;
 }
