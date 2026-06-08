@@ -1,5 +1,5 @@
 ---
-"@nsis/dent-cli": minor
+"@nsis/dent-cli": patch
 ---
 
 add --silent flag
