@@ -45,6 +45,8 @@ export function applyFormattingOptions(cmd: Command): Command {
 		.option('-q, --single-quote', 'prefer single quotes instead of double quotes', false)
 		.option('-s, --use-spaces', 'indent with spaces instead of tabs', false)
 		.option('-T, --no-trim', 'do not trim empty lines')
+
+		// break out of the option group
 		.optionsGroup('');
 }
 
