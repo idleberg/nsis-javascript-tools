@@ -1,4 +1,4 @@
-# nlf-cli
+# @nsis/nlf-cli
 
 > CLI tool to convert NSIS Language Files to JSON and vice versa
 
