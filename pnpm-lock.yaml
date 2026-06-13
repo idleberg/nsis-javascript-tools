@@ -94,6 +94,34 @@ importers:
         specifier: ^0.5.6
         version: 0.5.6
 
+  packages/nlf-cli:
+    dependencies:
+      '@nsis/nlf':
+        specifier: 0.13.0
+        version: 0.13.0
+      commander:
+        specifier: ^14.0.1
+        version: 14.0.3
+      get-stdin:
+        specifier: ^9.0.0
+        version: 9.0.0
+      glob:
+        specifier: ^11.0.3
+        version: 11.1.0
+      log-symbols:
+        specifier: ^7.0.1
+        version: 7.0.1
+    devDependencies:
+      execa:
+        specifier: ^9.6.0
+        version: 9.6.1
+      tsm:
+        specifier: ^2.3.0
+        version: 2.3.0
+      uvu:
+        specifier: ^0.5.6
+        version: 0.5.6
+
   packages/parser:
     devDependencies:
       peggy:
@@ -680,6 +708,10 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
+
+  '@nsis/nlf@0.13.0':
+    resolution: {integrity: sha512-PKhRUrANDoH3nkTB3PAGCTWWxI0erXE42o0D9ZVZ2+Za5My9EL5mgx/BH1Sit18WaoypO7KcF+4JZz1fILfSEg==}
+    engines: {node: '>=20.0.0'}
 
   '@oxc-project/types@0.132.0':
     resolution: {integrity: sha512-FESMOxil5Se014ui/Eq8fT5uHJo6nIRwH0PfJrZJXs6Gek3ZVFOrpUv3YIZT20m+extU98Hg1Ym72U58rlsxUQ==}
@@ -1798,6 +1830,10 @@ packages:
   get-east-asian-width@1.6.0:
     resolution: {integrity: sha512-QRbvDIbx6YklUe6RxeTeleMR0yv3cYH6PsPZHcnVn7xv7zO1BHN8r0XETu8n6Ye3Q+ahtSarc3WgtNWmehIBfA==}
     engines: {node: '>=18'}
+
+  get-stdin@9.0.0:
+    resolution: {integrity: sha512-dVKBjfWisLAicarI2Sf+JuBE/DghV4UzNAVe9yhEJuzeREd3JhOTE9cUaJTeSa77fsbQUK3pcOpJfM59+VKZaA==}
+    engines: {node: '>=12'}
 
   get-stream@6.0.1:
     resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
@@ -3882,6 +3918,10 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.20.1
 
+  '@nsis/nlf@0.13.0':
+    dependencies:
+      json5: 2.2.3
+
   '@oxc-project/types@0.132.0': {}
 
   '@oxc-project/types@0.134.0': {}
@@ -4763,6 +4803,8 @@ snapshots:
   get-caller-file@2.0.5: {}
 
   get-east-asian-width@1.6.0: {}
+
+  get-stdin@9.0.0: {}
 
   get-stream@6.0.1: {}
 

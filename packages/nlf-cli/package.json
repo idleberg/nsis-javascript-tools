@@ -1,0 +1,53 @@
+{
+	"name": "@nsis/nlf-cli",
+	"version": "0.11.0",
+	"description": "CLI tool to convert NSIS Language Files to JSON and vice versa",
+	"license": "MIT",
+	"scripts": {
+		"build": "tsdown",
+		"dev": "tsdown --watch",
+		"lint": "concurrently --prefix-colors blue,green,magenta npm:lint:*",
+		"lint:biome": "biome check",
+		"lint:knip": "knip --cache --production",
+		"lint:publint": "publint",
+		"prepack": "npm run build",
+		"publish:npm": "np --any-branch",
+		"test": "uvu -r tsm tests"
+	},
+	"files": [
+		"bin/",
+		"types/",
+		"index.mjs",
+		"LICENSE",
+		"README.md"
+	],
+	"bin": {
+		"nlf": "./bin/cli.js"
+	},
+	"type": "module",
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/idleberg/dent.git"
+	},
+	"homepage": "https://github.com/idleberg/dent/tree/main/packages/nlf-cli#readme",
+	"keywords": [
+		"nsis",
+		"nsis language file",
+		"converter"
+	],
+	"dependencies": {
+		"@nsis/nlf": "0.13.0",
+		"commander": "^14.0.1",
+		"get-stdin": "^9.0.0",
+		"glob": "^11.0.3",
+		"log-symbols": "^7.0.1"
+	},
+	"devDependencies": {
+		"execa": "^9.6.0",
+		"tsm": "^2.3.0",
+		"uvu": "^0.5.6"
+	}
+}
