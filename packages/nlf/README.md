@@ -1,8 +1,8 @@
 # nlf
 
-[![License](https://img.shields.io/github/license/idleberg/node-nlf?color=blue&style=for-the-badge)](https://github.com/idleberg/node-nlf/blob/main/LICENSE)
+![License](https://img.shields.io/npm/l/%40nsis%2Fnöf?style=for-the-badge)
 [![Version](https://img.shields.io/npm/v/@nsis/nlf?style=for-the-badge)](https://www.npmjs.org/package/@nsis/nlf)
-![GitHub branch check runs](https://img.shields.io/github/check-runs/idleberg/node-nlf/main?style=for-the-badge)
+[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/dent/default.yml?style=for-the-badge)](https://github.com/idleberg/dent/actions)
 
 Parser and stringifier for NSIS Language Files (.nlf)
 
