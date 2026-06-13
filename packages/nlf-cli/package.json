@@ -39,7 +39,7 @@
 		"converter"
 	],
 	"dependencies": {
-		"@nsis/nlf": "0.13.0",
+		"@nsis/nlf": "workspace:*",
 		"commander": "^14.0.1",
 		"get-stdin": "^9.0.0",
 		"glob": "^11.0.3",
