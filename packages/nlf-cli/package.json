@@ -8,8 +8,8 @@
 		"dev": "tsdown --watch",
 		"lint": "concurrently --prefix-colors blue,green,magenta npm:lint:*",
 		"lint:biome": "biome check",
-		"lint:knip": "knip --cache --production",
-		"lint:publint": "publint",
+		"lint:biome:ci": "biome ci",
+		"lint:e18e": "e18e-cli analyze --log-level error",
 		"prepack": "npm run build",
 		"publish:npm": "np --any-branch",
 		"test": "uvu -r tsm tests"
@@ -22,7 +22,7 @@
 		"README.md"
 	],
 	"bin": {
-		"nlf": "./bin/cli.js"
+		"nlf": "./bin/cli.mjs"
 	},
 	"type": "module",
 	"engines": {
@@ -39,7 +39,7 @@
 		"converter"
 	],
 	"dependencies": {
-		"@nsis/nlf": "0.13.0",
+		"@nsis/nlf": "workspace:*",
 		"commander": "^14.0.1",
 		"get-stdin": "^9.0.0",
 		"glob": "^11.0.3",

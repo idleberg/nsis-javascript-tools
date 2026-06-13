@@ -8,8 +8,8 @@
 		"dev": "tsdown --watch",
 		"lint": "concurrently --prefix-colors blue,green,magenta npm:lint:*",
 		"lint:biome": "biome check",
-		"lint:knip": "knip --cache --production",
-		"lint:publint": "publint",
+		"lint:biome:ci": "biome ci",
+		"lint:e18e": "e18e-cli analyze --log-level error",
 		"prepack": "npm run build",
 		"publish:npm": "np --any-branch",
 		"test": "uvu -r tsm tests"
@@ -21,7 +21,7 @@
 		"README.md"
 	],
 	"type": "module",
-	"exports": "./dist/index.js",
+	"exports": "./dist/index.mjs",
 	"typings": "./dist/index.d.ts",
 	"engines": {
 		"node": ">=20.0.0"
