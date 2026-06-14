@@ -1,10 +1,10 @@
 # @nsis/highlightjs
 
-[![License](https://img.shields.io/github/license/NSIS-Dev/highlightjs?style=for-the-badge)](LICENSE)
+> Syntax definition for the NSIS language.
+
+![License](https://img.shields.io/npm/l/%40nsis%2Fdent?style=for-the-badge)
 [![Version: npm](https://img.shields.io/npm/v/@nsis/highlightjs?style=for-the-badge)](https://www.npmjs.org/package/@nsis/highlightjs)
 [![CI](https://img.shields.io/github/actions/workflow/status/NSIS-Dev/highlightjs/ci.yml?logo=nodedotjs&logoColor=white&style=for-the-badge)](https://github.com/NSIS-Dev/highlightjs/actions/workflows/ci.yml)
-
-Syntax definition for the NSIS language.
 
 **Latest version supported: NSIS v3.12**
 
