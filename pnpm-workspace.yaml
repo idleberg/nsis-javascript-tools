@@ -4,7 +4,7 @@ packages:
 allowBuilds:
   esbuild: false
   lefthook: true
-  sharp: set this to true or false
+  sharp: false
 
 autoInstallPeers: true
 injectWorkspacePackages: true
