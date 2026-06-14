@@ -1,0 +1,61 @@
+{
+	"name": "@nsis/highlightjs",
+	"version": "0.1.0",
+	"description": "highlight.js syntax definition for the NSIS language",
+	"license": "BSD-3-Clause",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/idleberg/nsis-javascript-tools.git"
+	},
+	"homepage": "https://github.com/idleberg/nsis-javascript-tools/tree/main/packages/highlight.js#readme",
+	"keywords": [
+		"highlight.js",
+		"hljs",
+		"highlightjs",
+		"nsis"
+	],
+	"type": "module",
+	"exports": {
+		".": {
+			"types": {
+				"import": "./dist/nsis.d.mts",
+				"require": "./dist/nsis.d.cts"
+			},
+			"import": "./dist/nsis.mjs",
+			"require": "./dist/nsis.cjs"
+		}
+	},
+	"engines": {
+		"node": "^20.19.0 || >=22.12.0"
+	},
+	"files": [
+		"dist/",
+		"LICENSE",
+		"README.md"
+	],
+	"scripts": {
+		"build": "concurrently --prefix-colors blue,green,magenta npm:build:*",
+		"build:docs": "astro build",
+		"build:lib": "tsdown",
+		"dev": "concurrently --prefix-colors blue,green,magenta npm:dev:*",
+		"dev:docs": "astro dev --open",
+		"dev:lib": "tsdown --watch",
+		"lint": "concurrently --prefix-colors blue,green,magenta npm:lint:*",
+		"lint:biome": "biome check",
+		"lint:e18e": "e18e-cli analyze --log-level error",
+		"prepublishOnly": "npm run build",
+		"publish:npm": "np",
+		"test": "vitest run"
+	},
+	"devDependencies": {
+		"@tailwindcss/vite": "^4.3.0",
+		"astro": "^6.4.4",
+		"highlight.js": "^11.11.0",
+		"tailwindcss": "^4.3.0",
+		"vite": "^7.3.2",
+		"vitest": "catalog:"
+	},
+	"peerDependencies": {
+		"highlight.js": ">=11"
+	}
+}
