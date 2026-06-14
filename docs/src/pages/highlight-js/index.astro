@@ -1,5 +1,5 @@
 ---
-import './global.css';
+import '../global.css';
 ---
 
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ OutFile "example1.exe"
 RequestExecutionLevel user
 
 ; Build Unicode installer
-Unicode True
+Unicode true
 
 ; The default installation directory
 InstallDir $DESKTOP\Example1
@@ -67,7 +67,7 @@ SectionEnd</code></pre>
     </footer>
     <script>
       import hljs from 'highlight.js/lib/core';
-      import nsis from '../../src/nsis.ts';
+      import nsis from '@nsis/highlightjs';
 
       hljs.registerLanguage('nsis', nsis);
       hljs.highlightAll();
