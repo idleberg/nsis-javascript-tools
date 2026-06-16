@@ -396,6 +396,7 @@ export default function (hljs: HLJSApi) {
 		'SectionGetSize',
 		'SectionGetText',
 		'SectionIn',
+		'SectionInstType',
 		'SectionSetFlags',
 		'SectionSetInstTypes',
 		'SectionSetSize',
