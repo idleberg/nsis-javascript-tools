@@ -1,23 +1,13 @@
 # ace-nsis-mode
 
-[![BSD 3-Clause License](https://flat.badgen.net/badge/license/BSD/orange)](https://opensource.org/licenses/BSD-3-Clause)
-[![GitHub](https://flat.badgen.net/github/release/idleberg/ace-nsis-mode)](https://github.com/idleberg/ace-nsis-mode/releases)
-[![CI](https://img.shields.io/github/actions/workflow/status/idleberg/ace-nsis-mode/default.yml?style=flat-square)](https://github.com/idleberg/ace-nsis-mode/actions)
+> Add NSIS support to [Ace](https://ace.c9.io) editor (formerly known as [Mozilla Bespin](https://wiki.mozilla.org/Labs/Bespin)).
 
-
-Add NSIS support to [Ace][1] editor (formerly known as [Mozilla Bespin][2]).
+![License](https://img.shields.io/npm/l/%40nsis%2Face-mode?style=for-the-badge)
+[![Version](https://img.shields.io/npm/v/@nsis/ace-mode?style=for-the-badge)](https://www.npmjs.org/package/@nsis/ace-mode)
+[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/nsis-javascript-tools/default.yml?style=for-the-badge)](https://github.com/idleberg/nsis-javascript-tools/actions)
 
 [Demo Time](https://idleberg.github.io/ace-nsis-mode/) 🙌
 
 ## License
 
-Released under a [BSD license][3].
-
-## Donate
-
-You are welcome to support this project using [Flattr][4] or Bitcoin `17CXJuPsmhuTzFV2k4RKYwpEHVjskJktRd`
-
-[1]: https://ace.c9.io/
-[2]: https://wiki.mozilla.org/Labs/Bespin
-[3]: https://opensource.org/licenses/BSD-3-Clause
-[4]: https://flattr.com/submit/auto?user_id=idleberg&url=https://github.com/idleberg/ace-nsis-mode
+Released under a [BSD license](LICENSE).
