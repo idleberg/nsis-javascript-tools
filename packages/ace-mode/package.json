@@ -7,8 +7,6 @@
 		"bootstrap": "node ./tools/bootstrap.mjs",
 		"build": "node ./tools/build.mjs",
 		"dev": "npm run start",
-		"lint": "eslint ./src",
-		"prepare": "husky",
 		"prepack": "npm run build",
 		"start": "rollup --watch --config",
 		"serve": "sirv -B ./",
