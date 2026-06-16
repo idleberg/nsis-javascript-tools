@@ -1,0 +1,53 @@
+{
+  "name": "ace-nsis-mode",
+  "description": "Ace mode for NSIS (Nullsoft Scriptable Install System)",
+  "version": "1.8.0",
+  "author": "Jan T. Sott",
+  "license": "BSD-3-Clause",
+  "browser": "./dist/mode-nsis.noconflict.js",
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "bootstrap": "node ./tools/bootstrap.mjs",
+    "build": "node ./tools/build.mjs",
+    "dev": "npm run start",
+    "fix": "eslint --fix ./src",
+    "lint": "eslint ./src",
+    "prepare": "husky",
+    "prepack": "npm run build",
+    "start": "rollup --watch --config",
+    "serve": "sirv -B ./",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "keywords": [
+    "ace",
+    "mode",
+    "nsis",
+    "nullsoft",
+    "syntax highlighter"
+  ],
+  "homepage": "https://github.com/idleberg/ace-nsis-mode",
+  "repository": "https://github.com/idleberg/ace-nsis-mode",
+  "devDependencies": {
+    "ejs": "^3.1.9",
+    "eslint": "^8.44.0",
+    "eslint-config-recommended": "^4.1.0",
+    "husky": "^8.0.3",
+    "latest-version": "^7.0.0",
+    "lint-staged": "^13.2.3",
+    "prettier": "^2.8.8",
+    "retrie": "^0.1.1",
+    "shelljs": "^0.8.5",
+    "sirv-cli": "^2.0.2"
+  },
+  "lint-staged": {
+    "*.{js,mjs}": [
+      "eslint --cache --fix",
+      "prettier --write"
+    ]
+  },
+  "packageManager": "pnpm@11.7.0+sha512.19cc852c120c7125760f2443ee6be0ca5b40f9f50598de1a09a1f177503e010e57c23c77646e01e761de59bf874fb22a3398c33ab9691fc13eb946b6f0f4d620"
+}
