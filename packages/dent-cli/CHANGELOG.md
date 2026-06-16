@@ -1,5 +1,11 @@
 # @nsis/dent-cli
 
+## 0.9.6
+
+### Patch Changes
+
+- 109bd51: chore: update dependencies
+
 ## 0.9.5
 
 ### Patch Changes
