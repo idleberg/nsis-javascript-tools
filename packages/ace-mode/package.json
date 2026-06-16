@@ -6,7 +6,6 @@
 	"scripts": {
 		"build": "node ./tools/build.mjs",
 		"prepack": "npm run build",
-		"serve": "sirv -B ./",
 		"test": "echo \"Error: no test specified\" && exit 0"
 	},
 	"files": [
@@ -29,7 +28,6 @@
 	],
 	"devDependencies": {
 		"ejs": "^3.1.9",
-		"retrie": "^0.1.1",
-		"sirv-cli": "^2.0.2"
+		"retrie": "^0.1.1"
 	}
 }
