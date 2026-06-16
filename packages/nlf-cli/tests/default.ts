@@ -1,12 +1,14 @@
 import { spawnSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
-import { globSync } from 'glob';
 import { test } from 'uvu';
 import * as assert from 'uvu/assert';
 
 const cli = resolve(process.cwd(), 'src/cli.ts');
-const files = globSync(resolve(process.cwd(), 'tests/fixtures/*.nlf'));
+const fixturesDir = resolve(process.cwd(), 'tests/fixtures');
+const files = readdirSync(fixturesDir)
+	.filter((f) => f.endsWith('.nlf'))
+	.map((f) => join(fixturesDir, f));
 
 for (const file of files) {
 	const fileDir = dirname(file);

@@ -148,9 +148,6 @@ importers:
       get-stdin:
         specifier: ^9.0.0
         version: 9.0.0
-      glob:
-        specifier: ^11.0.3
-        version: 11.1.0
       log-symbols:
         specifier: ^7.0.1
         version: 7.0.1

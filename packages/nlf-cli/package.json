@@ -42,7 +42,6 @@
 		"@nsis/nlf": "workspace:*",
 		"commander": "catalog:",
 		"get-stdin": "^9.0.0",
-		"glob": "^11.0.3",
 		"log-symbols": "^7.0.1"
 	},
 	"devDependencies": {
