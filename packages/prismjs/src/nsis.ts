@@ -1,5 +1,9 @@
 /*! prism-nsis | MIT License | github.com/idleberg/prismjs-nsis */
 
+declare const Prism: {
+	languages: Record<string, unknown>;
+};
+
 Prism.languages.nsis = {
 	comment: {
 		pattern: /(^|[^\\])(\/\*[\s\S]*?\*\/|[#;].*)/,

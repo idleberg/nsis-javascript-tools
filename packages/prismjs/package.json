@@ -3,7 +3,6 @@
 	"version": "0.10.0",
 	"description": "NSIS support for the PrismJS syntax highlighter",
 	"license": "MIT",
-
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/idleberg/nsis-javascript-tools.git"
@@ -16,7 +15,20 @@
 		"prism.js",
 		"syntax highlighter"
 	],
-	"main": "dist/nsis.js",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": {
+				"import": "./dist/nsis.d.mts",
+				"require": "./dist/nsis.d.cts"
+			},
+			"import": "./dist/nsis.mjs",
+			"require": "./dist/nsis.cjs"
+		}
+	},
+	"engines": {
+		"node": "^20.19.0 || >=22.12.0"
+	},
 	"files:": [
 		"dist/",
 		"LICENSE",
@@ -37,6 +49,7 @@
 		"@typescript-eslint/parser": "^5.60.1",
 		"eslint": "^8.44.0",
 		"eslint-config-recommended": "^4.1.0",
+		"prismjs": "^1.30.0",
 		"retrie": "^0.1.1",
 		"rollup": "^3.26.0",
 		"rollup-plugin-entry-code-injector": "^1.0.0"
