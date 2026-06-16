@@ -27,7 +27,7 @@
 		"syntax highlighter"
 	],
 	"devDependencies": {
-		"ejs": "^3.1.9",
+		"eta": "^4.6.0",
 		"retrie": "^0.1.1"
 	}
 }

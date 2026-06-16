@@ -42,12 +42,12 @@ define(function (require, exports) {
 			start: [
 				{
 					token: 'keyword.compiler.nsis',
-					regex: /^\s*<%- replacements.NSIS_IMPORTANT %>\b/,
+					regex: /^\s*<%= it.replacements.NSIS_IMPORTANT %>\b/,
 					caseInsensitive: true,
 				},
 				{
 					token: 'keyword.command.nsis',
-					regex: /^\s*<%- replacements.NSIS_KEYWORDS %>\b/,
+					regex: /^\s*<%= it.replacements.NSIS_KEYWORDS %>\b/,
 					caseInsensitive: true,
 				},
 				{

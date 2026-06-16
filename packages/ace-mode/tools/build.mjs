@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs';
 import { resolve } from 'node:path';
-import ejs from 'ejs';
+import { Eta } from 'eta';
 import retrie from 'retrie';
 import { replacements } from './replacements.mjs';
 
@@ -50,8 +50,9 @@ function wrapBootstrap(moduleId, requireFn = 'window.require') {
 }
 
 async function main() {
-	const template = await fs.readFile(resolve(process.cwd(), './src/nsis_highlight_rules.ejs'), 'utf-8');
-	const highlightRulesSource = ejs.render(template, {
+	const eta = new Eta();
+	const template = await fs.readFile(resolve(process.cwd(), './src/nsis_highlight_rules.eta'), 'utf-8');
+	const highlightRulesSource = eta.renderString(template, {
 		replacements: {
 			NSIS_BLOCKS: retrie(replacements.NSIS_BLOCKS),
 			NSIS_PROPERTIES: retrie(replacements.NSIS_PROPERTIES),
