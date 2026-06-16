@@ -14,9 +14,9 @@
 
 ## Usage
 
-```js
+```typescript
 import hljs from "highlight.js/lib/core";
-import nsis from "nsis.mjs";
+import nsis from "@nsis/highlightjs";
 
 hljs.registerLanguage("nsis", nsis);
 hljs.highlightAll();
