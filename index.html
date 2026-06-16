@@ -74,6 +74,7 @@ SectionEnd
     </footer>
     <script>
       window.addEventListener('DOMContentLoaded', (event) => {
+        ace.config.set('basePath', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.1/');
         const editor = ace.edit("editor");
         editor.setTheme("ace/theme/one_dark");
         editor.setShowPrintMargin(false);
