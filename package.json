@@ -16,7 +16,8 @@
     "dev": "npm run start",
     "fix": "eslint --fix ./src",
     "lint": "eslint ./src",
-    "prepare": "husky install",
+    "prepare": "husky",
+    "prepack": "npm run build",
     "start": "rollup --watch --config",
     "serve": "sirv -B ./",
     "test": "echo \"Error: no test specified\" && exit 0"
