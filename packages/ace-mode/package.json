@@ -4,11 +4,8 @@
 	"description": "Ace mode for NSIS (Nullsoft Scriptable Install System)",
 	"license": "BSD-3-Clause",
 	"scripts": {
-		"bootstrap": "node ./tools/bootstrap.mjs",
 		"build": "node ./tools/build.mjs",
-		"dev": "npm run start",
 		"prepack": "npm run build",
-		"start": "rollup --watch --config",
 		"serve": "sirv -B ./",
 		"test": "echo \"Error: no test specified\" && exit 0"
 	},
@@ -32,9 +29,7 @@
 	],
 	"devDependencies": {
 		"ejs": "^3.1.9",
-		"latest-version": "^7.0.0",
 		"retrie": "^0.1.1",
-		"shelljs": "^0.8.5",
 		"sirv-cli": "^2.0.2"
 	}
 }
