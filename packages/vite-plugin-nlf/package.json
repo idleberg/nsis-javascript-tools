@@ -44,7 +44,7 @@
 		"@nsis/nlf": "workspace:*"
 	},
 	"devDependencies": {
-		"vite": "^8.0.16",
+		"vite": "catalog:",
 		"vitest": "catalog:"
 	},
 	"peerDependencies": {
