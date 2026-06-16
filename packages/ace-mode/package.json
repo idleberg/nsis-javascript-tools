@@ -1,0 +1,33 @@
+{
+	"name": "@nsis/ace-mode",
+	"version": "1.8.0",
+	"description": "Ace mode for NSIS (Nullsoft Scriptable Install System)",
+	"license": "BSD-3-Clause",
+	"scripts": {
+		"build": "node ./tools/build.mjs",
+		"prepack": "npm run build",
+		"test": "echo \"Error: no test specified\" && exit 0"
+	},
+	"files": [
+		"dist/",
+		"LICENSE",
+		"README.md"
+	],
+	"browser": "./dist/mode-nsis.noconflict.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/idleberg/nsis-javascript-tools.git"
+	},
+	"homepage": "https://github.com/idleberg/nsis-javascript-tools/tree/main/packages/ace-mode#readme",
+	"keywords": [
+		"ace",
+		"mode",
+		"nsis",
+		"nullsoft",
+		"syntax highlighter"
+	],
+	"devDependencies": {
+		"eta": "^4.6.0",
+		"retrie": "^0.1.1"
+	}
+}

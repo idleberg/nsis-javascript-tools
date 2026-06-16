@@ -1,4 +1,0 @@
-{
-	"extends": ["@idleberg/configs/biome"],
-	"root": false
-}
