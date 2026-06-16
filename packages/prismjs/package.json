@@ -1,0 +1,52 @@
+{
+  "name": "prism-nsis",
+  "version": "0.10.0",
+  "description": "NSIS support for the PrismJS syntax highlighter",
+  "repository": "https://github.com/idleberg/prismjs-nsis",
+  "license": "MIT",
+  "main": "dist/nsis.js",
+  "files:": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rollup --config",
+    "dev": "npm run start",
+    "fix": "eslint --fix ./src --ignore-path .gitignore",
+    "lint": "eslint ./src --ignore-path .gitignore",
+    "prepack": "npm run build",
+    "start": "rollup --watch --config",
+    "test": "npm run lint"
+  },
+  "keywords": [
+    "highlighter",
+    "nsis",
+    "prism",
+    "prism.js",
+    "syntax highlighter"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
+    "eslint": "^8.44.0",
+    "eslint-config-recommended": "^4.1.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "retrie": "^0.1.1",
+    "rollup": "^3.26.0",
+    "rollup-plugin-entry-code-injector": "^1.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test"
+    }
+  },
+  "lint-staged": {
+    "*.(js|json)": "eslint --cache --fix"
+  },
+  "dependencies": {
+    "@rollup/plugin-terser": "^0.4.3"
+  },
+  "packageManager": "pnpm@11.7.0+sha512.19cc852c120c7125760f2443ee6be0ca5b40f9f50598de1a09a1f177503e010e57c23c77646e01e761de59bf874fb22a3398c33ab9691fc13eb946b6f0f4d620"
+}
