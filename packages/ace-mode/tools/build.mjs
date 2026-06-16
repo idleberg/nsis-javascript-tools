@@ -1,9 +1,9 @@
-import { join, resolve } from 'node:path';
 import { promises as fs } from 'node:fs';
-import { replacements } from './replacements.mjs';
+import { join, resolve } from 'node:path';
 import ejs from 'ejs';
 import retrie from 'retrie';
 import shell from 'shelljs';
+import { replacements } from './replacements.mjs';
 
 const cacheDir = resolve(process.cwd(), '.cache');
 const distDir = resolve(process.cwd(), 'dist');
@@ -23,8 +23,8 @@ async function main() {
 				NSIS_PROPERTIES: retrie(replacements.NSIS_PROPERTIES),
 				NSIS_IMPORTANT: retrie(replacements.NSIS_IMPORTANT),
 				NSIS_IMPORTANT_BLOCKS: retrie(replacements.NSIS_IMPORTANT_BLOCKS),
-				NSIS_KEYWORDS: retrie(replacements.NSIS_KEYWORDS)
-			}
+				NSIS_KEYWORDS: retrie(replacements.NSIS_KEYWORDS),
+			},
 		});
 
 		await fs.writeFile(resolve(cacheDir, 'lib/ace/mode/nsis_highlight_rules.js'), output);
@@ -33,7 +33,7 @@ async function main() {
 	}
 
 	shell.exec('./Makefile.dryice.js normal', {
-		cwd: cacheDir
+		cwd: cacheDir,
 	});
 
 	try {

@@ -1,4 +1,4 @@
-# ace-nsis-mode
+# @nsis/ace-mode
 
 > Add NSIS support to [Ace](https://ace.c9.io) editor (formerly known as [Mozilla Bespin](https://wiki.mozilla.org/Labs/Bespin)).
 

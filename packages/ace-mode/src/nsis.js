@@ -1,6 +1,4 @@
-define(function (require, exports) {
-	'use strict';
-
+define((require, exports) => {
 	const oop = require('../lib/oop');
 	const TextMode = require('./text').Mode;
 	const NSISHighlightRules = require('./nsis_highlight_rules').NSISHighlightRules;
@@ -19,7 +17,7 @@ define(function (require, exports) {
 		this.lineCommentStart = [';', '#'];
 		this.blockComment = { start: '/*', end: '*/' };
 		this.$id = 'ace/mode/nsis';
-	}.call(Mode.prototype));
+	}).call(Mode.prototype);
 
 	exports.Mode = Mode;
 });
