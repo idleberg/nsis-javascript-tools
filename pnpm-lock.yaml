@@ -72,6 +72,12 @@ importers:
       highlight.js:
         specifier: ^11.11.0
         version: 11.11.1
+      prism-nsis:
+        specifier: workspace:*
+        version: link:../packages/prismjs
+      prismjs:
+        specifier: ^1.30.0
+        version: 1.30.0
       tailwindcss:
         specifier: ^4.3.0
         version: 4.3.1

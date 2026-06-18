@@ -6,7 +6,7 @@
 
 NSIS syntax highlighter for [PrismJS](https://github.com/PrismJS/prism), a lightweight, extensible syntax highlighter, built with modern web standards in mind.
 
-[Demo Time](https://idleberg.github.io/prismjs-nsis/) 🙌
+[Demo Time](https://idleberg.github.io/nsis-javascript-tools/prism-js/) 🙌
 
 ## Installation
 
