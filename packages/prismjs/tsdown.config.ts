@@ -1,11 +1,12 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import JSONC from 'jsonc';
 import retrie from 'retrie';
 import { defineConfig, type Rolldown } from 'tsdown';
 
 function nsisLanguagePlugin(): Rolldown.Plugin {
-	const langPath = resolve(process.cwd(), '../../data/language.json');
-	const lang = JSON.parse(readFileSync(langPath, 'utf-8'));
+	const langPath = resolve(process.cwd(), '../../data/language.jsonc');
+	const lang = JSONC.parse(readFileSync(langPath, 'utf-8'));
 
 	const replacements: Record<string, string> = {
 		'%NSIS_KEYWORDS%': retrie([...lang.keywords, ...lang.blocks]).toString(),
