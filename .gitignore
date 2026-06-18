@@ -9,6 +9,7 @@ yarn.lock
 
 # Development
 .turbo/
+!.turbo/config.json
 
 # Project specific
 *.exe
