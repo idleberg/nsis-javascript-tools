@@ -1,5 +1,5 @@
 {
-	"name": "prism-nsis",
+	"name": "@nsis/prismjs",
 	"version": "0.10.0",
 	"description": "NSIS support for the PrismJS syntax highlighter",
 	"license": "MIT",
