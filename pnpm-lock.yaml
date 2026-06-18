@@ -66,6 +66,9 @@ importers:
       '@nsis/highlightjs':
         specifier: workspace:*
         version: link:../packages/highlight.js
+      '@nsis/prismjs':
+        specifier: workspace:*
+        version: link:../packages/prismjs
       '@tailwindcss/vite':
         specifier: ^4.3.0
         version: 4.3.1(vite@8.0.16(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0))
@@ -75,9 +78,6 @@ importers:
       highlight.js:
         specifier: ^11.11.0
         version: 11.11.1
-      prism-nsis:
-        specifier: workspace:*
-        version: link:../packages/prismjs
       prismjs:
         specifier: ^1.30.0
         version: 1.30.0
