@@ -6,7 +6,7 @@
 [![Version](https://img.shields.io/npm/v/@nsis/ace-mode?style=for-the-badge)](https://www.npmjs.org/package/@nsis/ace-mode)
 [![Build](https://img.shields.io/github/actions/workflow/status/idleberg/nsis-javascript-tools/default.yml?style=for-the-badge)](https://github.com/idleberg/nsis-javascript-tools/actions)
 
-[Demo Time](https://idleberg.github.io/ace-nsis-mode/) 🙌
+[Demo Time](https://idleberg.github.io/nsis-javascript-tools/ace-mode/) 🙌
 
 ## License
 
