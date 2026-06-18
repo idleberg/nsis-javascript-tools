@@ -1,0 +1,52 @@
+{
+	"name": "@nsis/prismjs",
+	"version": "0.10.0",
+	"description": "NSIS support for the PrismJS syntax highlighter",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/idleberg/nsis-javascript-tools.git"
+	},
+	"homepage": "https://github.com/idleberg/nsis-javascript-tools/tree/main/packages/prismjs#readme",
+	"keywords": [
+		"highlighter",
+		"nsis",
+		"prism",
+		"prism.js",
+		"syntax highlighter"
+	],
+	"type": "module",
+	"exports": {
+		".": {
+			"types": {
+				"import": "./dist/nsis.d.mts",
+				"require": "./dist/nsis.d.cts"
+			},
+			"import": "./dist/nsis.mjs",
+			"require": "./dist/nsis.cjs"
+		}
+	},
+	"engines": {
+		"node": "^20.19.0 || >=22.12.0"
+	},
+	"files:": [
+		"dist/",
+		"LICENSE",
+		"README.md"
+	],
+	"scripts": {
+		"build": "tsdown",
+		"dev": "tsdown --watch",
+		"lint": "concurrently --prefix-colors blue,green,magenta npm:lint:*",
+		"lint:biome": "biome check",
+		"lint:e18e": "e18e-cli analyze --log-level error",
+		"prepublishOnly": "npm run build",
+		"publish:npm": "np"
+	},
+	"devDependencies": {
+		"jsonc": "catalog:",
+		"prismjs": "^1.30.0",
+		"retrie": "^0.1.1",
+		"rollup-plugin-entry-code-injector": "^1.0.0"
+	}
+}

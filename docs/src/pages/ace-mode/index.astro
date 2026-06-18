@@ -19,8 +19,8 @@ import DemoLayout from '../../layouts/DemoLayout.astro';
 			}
 		</style>
 
-		<script defer src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.1/ace.min.js" integrity="sha512-7Jmn5XgQKvX7kd2yARvOywZYQfC6eB7WLLdpWfGifPHe+93PwGf2BpkrX/vPRgPxllivNDnD8TSMHpYb60opMg==" crossorigin="anonymous" referrerpolicy="no-referrer" is:inline></script>
-		<script defer src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.1/theme-nord_dark.min.js" integrity="sha512-DL7jU9qDTsdJtyh2Kqm/dZp9w5Kkb7eiwOH7jC8Z9qfyQIXCtc+YA6uVz2uOcutNt5+zVzOO5hDK6C1pYOnTmQ==" crossorigin="anonymous" referrerpolicy="no-referrer" is:inline></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3/ace.min.js" integrity="sha512-BHJlu9vUXVrcxhRwbBdNv3uTsbscp8pp3LJ5z/sw9nBJUegkNlkcZnvODRgynJWhXMCsVUGZlFuzTrr5I2X3sQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3/theme-one_dark.min.js" integrity="sha512-IzwM6BfvrK5Yt8SGQXeP/k6CHHMQRsjHHiqf3txqNuAA1fOIZa1aQEWBsY9X+X+xF60e8xuSIQbNhmFmiaxs4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 		<script defer src={modeUrl} is:inline></script>
 
@@ -28,7 +28,7 @@ import DemoLayout from '../../layouts/DemoLayout.astro';
 			window.addEventListener('DOMContentLoaded', () => {
 				ace.config.set('basePath', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.7.1/');
 				const editor = ace.edit("editor");
-				editor.setTheme("ace/theme/nord_dark");
+				editor.setTheme("ace/theme/one_dark");
 				editor.setOptions({
 					fontSize: "1em",
 					maxLines: Infinity

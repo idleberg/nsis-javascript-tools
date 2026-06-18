@@ -1,0 +1,29 @@
+---
+import example from '../../data/example.nsi?raw';
+import DemoLayout from '../../layouts/DemoLayout.astro';
+---
+
+<DemoLayout
+	title="Demo | prism-nsis"
+	description="NSIS syntax highlighting for PrismJS"
+	packageName="prism-nsis"
+	footerUrl="https://github.com/idleberg/nsis-javascript-tools/tree/main/packages/prismjs"
+>
+	<Fragment slot="head">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-one-dark.min.css" integrity="sha512-c6S8OdtvoqZCbMfA1lWE0qd368pLdFvVHVILQzNizfowC+zV8rmVKdSlmL5SuidvATO0A7awDg53axd+s/9amw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	</Fragment>
+
+	<Fragment slot="description">
+		A syntax definition for <a class="text-indigo-600" href="https://nsis.sourceforge.io">NSIS</a> to use with <a class="text-indigo-600" href="https://prismjs.com/">PrismJS</a>, a lightweight syntax highlighter.
+	</Fragment>
+
+	<pre slot="example" class="mt-3"><code class="language-nsis" set:text={example} /></pre>
+
+</DemoLayout>
+
+<script>
+	import Prism from 'prismjs';
+	import '@nsis/prismjs';
+
+	Prism.highlightAll();
+</script>
