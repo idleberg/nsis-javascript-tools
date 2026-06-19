@@ -14,6 +14,13 @@
 
 [Demo Time](https://idleberg.github.io/nsis-javascript-tools/highlightjs/) 🙌
 
+## Installation
+
+```bash
+# Install
+$ npm install @nsis/highlightjs
+```
+
 ## Usage
 
 ```typescript

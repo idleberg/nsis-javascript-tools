@@ -1,4 +1,4 @@
-# @prism-nsis
+# @nsis/prismjs
 
 ![License](https://img.shields.io/npm/l/%40nsis%2Fprismjs?style=for-the-badge)
 [![Version](https://img.shields.io/npm/v/@nsis/prismjs?style=for-the-badge)](https://www.npmjs.org/package/@nsis/prismjs)
@@ -12,18 +12,17 @@ NSIS syntax highlighter for [PrismJS](https://github.com/PrismJS/prism), a light
 
 ```bash
 # Install
-$ npm install prism-nsis
-
-# Build
-$ cd prism-nsis
-$ yarn || npm install
+$ npm install @nsis/prismjs
 ```
 
 ## Usage
 
-### Build
+```typescript
+import Prism from "prismjs";
+import "@nsis/prismjs";
 
-A minified JavaScript package will be built automatically after installing with NPM. To manually trigger a build, run `npm run build`.
+Prism.highlightAll();
+```
 
 ## License
 
