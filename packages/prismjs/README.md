@@ -1,6 +1,6 @@
 # @nsis/prismjs
 
-![License](https://img.shields.io/npm/l/%40nsis%2Fprismjs?style=for-the-badge)
+![License](https://img.shields.io/npm/l/@nsis%2Fprismjs?style=for-the-badge)
 [![Version](https://img.shields.io/npm/v/@nsis/prismjs?style=for-the-badge)](https://www.npmjs.org/package/@nsis/prismjs)
 [![Build](https://img.shields.io/github/actions/workflow/status/idleberg/nsis-javascript-tools/default.yml?style=for-the-badge)](https://github.com/idleberg/nsis-javascript-tools/actions)
 
