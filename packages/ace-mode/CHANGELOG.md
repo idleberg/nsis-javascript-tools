@@ -1,5 +1,11 @@
 # @nsis/ace-mode
 
+## 1.8.2
+
+### Patch Changes
+
+- 4195951: add missing WinVer macros
+
 ## 1.8.1
 
 ### Patch Changes
