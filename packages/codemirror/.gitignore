@@ -1,0 +1,19 @@
+# package managers
+node_modules/
+npm-debug.log*
+package-lock.json
+shrinkwrap.yaml
+yarn-error.log
+yarn.lock
+
+# build artifacts
+bin/
+dist/
+docs/
+lib/
+src/parser.js
+src/parser.terms.js
+
+# tests
+coverage/
+test-results/

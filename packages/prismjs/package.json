@@ -45,7 +45,7 @@
 	},
 	"devDependencies": {
 		"jsonc": "catalog:",
-		"prismjs": "^1.30.0",
+		"prismjs": "catalog:",
 		"retrie": "^0.1.1",
 		"rollup-plugin-entry-code-injector": "^1.0.0"
 	}

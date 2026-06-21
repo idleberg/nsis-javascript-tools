@@ -1,0 +1,146 @@
+# Comments
+
+; line comment
+# hash comment
+/* block
+   comment */
+
+==>
+
+Script(
+  LineComment,
+  LineComment,
+  BlockComment)
+
+# Variables
+
+Var MyVar
+Var /GLOBAL AnotherVar
+
+==>
+
+Script(
+  VariableDeclaration(Var, Identifier),
+  VariableDeclaration(Var, Flag, Identifier))
+
+# Function block
+
+Function .onInit
+  MessageBox MB_OK "Hello"
+FunctionEnd
+
+==>
+
+Script(
+  Block(FunctionBlock(
+    Function, Identifier,
+    Command(CommandName(CommandName), Constant, String),
+    FunctionEnd)))
+
+# Section block
+
+Section "Install"
+  SetOutPath $INSTDIR
+  File "app.exe"
+SectionEnd
+
+==>
+
+Script(
+  Block(SectionBlock(
+    Section, String,
+    Command(CommandName(CommandName), Variable),
+    Command(CommandName(CommandName), String),
+    SectionEnd)))
+
+# Preprocessor
+
+!include "MUI2.nsh"
+!define VERSION "1.0.0"
+
+==>
+
+Script(
+  PreprocDirective(PreprocKeyword(PreprocKeyword), String),
+  PreprocDirective(PreprocKeyword(PreprocKeyword), Constant, String))
+
+# Conditional compilation
+
+!ifdef DEBUG
+  DetailPrint "Debug mode"
+!else
+  SetDetailsPrint none
+!endif
+
+==>
+
+Script(
+  PreprocConditional(
+    PreprocIf(PreprocIf), Constant,
+    Command(CommandName(CommandName), String),
+    PreprocElse(PreprocElse),
+    Command(CommandName(CommandName), ArgumentValue(ArgumentValue)),
+    PreprocEndif(PreprocEndif)))
+
+# Plugin call
+
+nsDialogs::Create 1018
+
+==>
+
+Script(
+  PluginCall(Identifier, ColonColon, Identifier, Number))
+
+# Define and lang string references
+
+DetailPrint "${PRODUCT_NAME}"
+
+==>
+
+Script(
+  Command(CommandName(CommandName), String(DQDefineRef)))
+
+# Lang string reference
+
+DetailPrint "$(LANG_TITLE)"
+
+==>
+
+Script(
+  Command(CommandName(CommandName), String(DQLangRef)))
+
+# String interpolation with variable
+
+DetailPrint "Installing to $INSTDIR"
+
+==>
+
+Script(
+  Command(CommandName(CommandName), String(DQVariable)))
+
+# String interpolation mixed
+
+DetailPrint "$(WELCOME) $0"
+
+==>
+
+Script(
+  Command(CommandName(CommandName), String(DQLangRef, DQVariable)))
+
+# Escape sequences
+
+DetailPrint "$\"quoted$\""
+
+==>
+
+Script(
+  Command(CommandName(CommandName), String(DQEscape, DQEscape)))
+
+# Dollar escape
+
+DetailPrint "costs $$5"
+
+==>
+
+Script(
+  Command(CommandName(CommandName), String(DQEscape)))

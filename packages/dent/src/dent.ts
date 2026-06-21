@@ -1,4 +1,3 @@
-import { platform } from 'node:os';
 import { parse } from '@nsis/parser';
 import { detectNewline } from 'detect-newline';
 import { print } from './printer.ts';
@@ -90,7 +89,7 @@ export function createFormatter(options: DentOptions = {}): DentFunctions {
 		}
 
 		const detected = detectNewline(input);
-		return detected ?? (platform() === 'win32' ? '\r\n' : '\n');
+		return detected ?? '\r\n';
 	}
 
 	return { format, check };
