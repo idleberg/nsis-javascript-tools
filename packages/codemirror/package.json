@@ -42,16 +42,14 @@
 		"syntax"
 	],
 	"dependencies": {
-		"@codemirror/autocomplete": "^6.0.0",
-		"@codemirror/language": "^6.0.0",
-		"@lezer/highlight": "^1.0.0",
-		"@lezer/lr": "^1.0.0"
+		"@codemirror/autocomplete": "catalog:",
+		"@codemirror/language": "catalog:",
+		"@lezer/highlight": "catalog:",
+		"@lezer/lr": "catalog:"
 	},
 	"devDependencies": {
-		"@lezer/generator": "^1.0.0",
-		"tsdown": "^0.22.1",
-		"typescript": "^5.0.0",
-		"vite": "^8.0.14",
-		"vitest": "^4.1.7"
+		"@lezer/generator": "catalog:",
+		"vite": "catalog:",
+		"vitest": "catalog:"
 	}
 }

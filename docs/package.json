@@ -7,11 +7,11 @@
 		"dev": "astro dev --open"
 	},
 	"devDependencies": {
-		"@codemirror/commands": "^6.10.3",
-		"@codemirror/language": "^6.0.0",
-		"@codemirror/state": "^6.0.0",
-		"@codemirror/theme-one-dark": "^6.1.0",
-		"@codemirror/view": "^6.0.0",
+		"@codemirror/commands": "catalog:",
+		"@codemirror/language": "catalog:",
+		"@codemirror/state": "catalog:",
+		"@codemirror/theme-one-dark": "catalog:",
+		"@codemirror/view": "catalog:",
 		"@nsis/ace-mode": "workspace:*",
 		"@nsis/codemirror": "workspace:*",
 		"@nsis/dent": "workspace:*",
@@ -19,8 +19,8 @@
 		"@nsis/prismjs": "workspace:*",
 		"@tailwindcss/vite": "^4.3.0",
 		"astro": "7.0.0-beta.6",
-		"highlight.js": "^11.11.0",
-		"prismjs": "^1.30.0",
+		"highlight.js": "catalog:",
+		"prismjs": "catalog:",
 		"tailwindcss": "^4.3.0",
 		"vite": "catalog:"
 	}
