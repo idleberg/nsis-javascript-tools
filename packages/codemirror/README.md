@@ -2,9 +2,9 @@
 
 > Language mode for CodeMirror 6.
 
-![License](https://img.shields.io/npm/l/%40nsis%2Fdent?style=for-the-badge)
-[![Version: npm](https://img.shields.io/npm/v/@nsis/codemirror?style=for-the-badge)](https://www.npmjs.org/package/@nsis/codemirror)
-[![CI](https://img.shields.io/github/actions/workflow/status/NSIS-Dev/codemirror/ci.yml?logo=nodedotjs&logoColor=white&style=for-the-badge)](https://github.com/NSIS-Dev/codemirror/actions/workflows/ci.yml)
+![License](https://img.shields.io/npm/l/@nsis%2Fcodemirror?style=for-the-badge)
+[![Version](https://img.shields.io/npm/v/@nsis/codemirror?style=for-the-badge)](https://www.npmjs.org/package/@nsis/codemirror)
+[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/nsis-javascript-tools/ci.yml?style=for-the-badge)](https://github.com/idleberg/nsis-javascript-tools/actions)
 
 **Latest version supported: NSIS v3.12**
 
@@ -33,4 +33,5 @@ new EditorView({
 
 ## License
 
-Released under [The MIT License](LICENSE).
+Released under [The MIT
+License](LICENSE).
