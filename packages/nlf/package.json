@@ -24,7 +24,7 @@
 	"exports": "./dist/index.mjs",
 	"typings": "./dist/index.d.mts",
 	"engines": {
-		"node": ">=20.0.0"
+		"node": ">=22.0.0"
 	},
 	"repository": {
 		"type": "git",
@@ -40,7 +40,6 @@
 		"json5": "^2.2.3"
 	},
 	"devDependencies": {
-		"glob": "^11.0.3",
 		"tsm": "^2.3.0",
 		"uvu": "^0.5.6"
 	}
