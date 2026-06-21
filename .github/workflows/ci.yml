@@ -16,6 +16,8 @@ on:
 jobs:
   default:
     runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
     strategy:
       fail-fast: false
       matrix:
