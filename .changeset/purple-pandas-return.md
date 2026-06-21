@@ -1,5 +1,6 @@
 ---
-"@nsis/nlf": patch
+"@nsis/nlf": minor
 ---
 
-replace glob package with node builtin
+chore!: require `node>=22`
+test: replace glob package with node builtin
