@@ -1,0 +1,49 @@
+---
+import example from '../../data/example.nsi?raw';
+import DemoLayout from '../../layouts/DemoLayout.astro';
+---
+
+<DemoLayout
+	title="Demo | @nsis/codemirror"
+	description="NSIS language support for CodeMirror 6"
+	packageName="@nsis/codemirror"
+	footerUrl="https://github.com/idleberg/nsis-javascript-tools/tree/main/packages/codemirror"
+>
+	<Fragment slot="description">
+		A syntax definition for <a class="text-indigo-600" href="https://nsis.sourceforge.io">NSIS</a> to use with <a class="text-indigo-600" href="https://codemirror.net/">CodeMirror 6</a>, a code editor component for the web.
+	</Fragment>
+
+	<div slot="example" id="editor" class="mt-3 rounded overflow-hidden" />
+</DemoLayout>
+
+<script is:inline define:vars={{ example }}>
+	window.__NSIS_EXAMPLE__ = example;
+</script>
+
+<script>
+	import { EditorView } from '@codemirror/view';
+	import { EditorState } from '@codemirror/state';
+	import { nsis } from '@nsis/codemirror';
+	import { oneDark } from '@codemirror/theme-one-dark';
+
+	const editorTheme = EditorView.theme({
+		'&': { fontSize: '0.875rem' },
+		'.cm-scroller': { overflow: 'auto', fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace' },
+		'.cm-content': { padding: '0.75rem 0' },
+		'.cm-line': { padding: '0 0.75rem' },
+	});
+
+	new EditorView({
+		state: EditorState.create({
+			doc: (window as any).__NSIS_EXAMPLE__,
+			extensions: [
+				nsis(),
+				oneDark,
+				editorTheme,
+				EditorState.readOnly.of(true),
+				EditorView.editable.of(false),
+			],
+		}),
+		parent: document.getElementById('editor')!,
+	});
+</script>
