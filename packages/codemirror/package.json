@@ -1,0 +1,57 @@
+{
+	"name": "@nsis/codemirror",
+	"version": "0.12.0",
+	"description": "NSIS language support for CodeMirror 6",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/idleberg/nsis-javascript-tools.git"
+	},
+	"homepage": "https://github.com/idleberg/nsis-javascript-tools/tree/main/packages/codemirror#readme",
+	"type": "module",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.mts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"files": [
+		"dist",
+		"src",
+		"LICENSE"
+	],
+	"scripts": {
+		"prebuild": "npm run build:lezer",
+		"build": "tsdown",
+		"build:lezer": "lezer-generator src/nsis.grammar --output src/parser",
+		"start": "npm run build:lezer && vite",
+		"test": "vitest run",
+		"prepare": "npm run build"
+	},
+	"keywords": [
+		"codemirror",
+		"lezer",
+		"nsis",
+		"nullsoft",
+		"syntax"
+	],
+	"dependencies": {
+		"@codemirror/autocomplete": "^6.0.0",
+		"@codemirror/language": "^6.0.0",
+		"@lezer/highlight": "^1.0.0",
+		"@lezer/lr": "^1.0.0"
+	},
+	"devDependencies": {
+		"@lezer/generator": "^1.0.0",
+		"tsdown": "^0.22.1",
+		"typescript": "^5.0.0",
+		"vite": "^8.0.14",
+		"vitest": "^4.1.7"
+	}
+}
