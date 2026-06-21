@@ -1,5 +1,11 @@
 # @nsis/dent
 
+## 0.13.0
+
+### Minor Changes
+
+- 444b78b: refactor!: remove os-specific line-end detection, default to crlf
+
 ## 0.12.3
 
 ### Patch Changes
