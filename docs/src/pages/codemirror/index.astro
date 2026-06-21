@@ -21,8 +21,9 @@ import DemoLayout from '../../layouts/DemoLayout.astro';
 </script>
 
 <script>
-	import { EditorView } from '@codemirror/view';
+	import { EditorView, keymap } from '@codemirror/view';
 	import { EditorState } from '@codemirror/state';
+	import { defaultKeymap, history, historyKeymap } from '@codemirror/commands';
 	import { nsis } from '@nsis/codemirror';
 	import { oneDark } from '@codemirror/theme-one-dark';
 
@@ -40,8 +41,8 @@ import DemoLayout from '../../layouts/DemoLayout.astro';
 				nsis(),
 				oneDark,
 				editorTheme,
-				EditorState.readOnly.of(true),
-				EditorView.editable.of(false),
+				history(),
+				keymap.of([...defaultKeymap, ...historyKeymap]),
 			],
 		}),
 		parent: document.getElementById('editor')!,
