@@ -1,6 +1,6 @@
 # @nsis/codemirror
 
-> Syntax definition for the NSIS language.
+> Language mode for CodeMirror 6.
 
 ![License](https://img.shields.io/npm/l/%40nsis%2Fdent?style=for-the-badge)
 [![Version: npm](https://img.shields.io/npm/v/@nsis/codemirror?style=for-the-badge)](https://www.npmjs.org/package/@nsis/codemirror)
@@ -33,4 +33,4 @@ new EditorView({
 
 ## License
 
-Released under the [BSD License](LICENSE).
+Released under [The MIT License](LICENSE).
