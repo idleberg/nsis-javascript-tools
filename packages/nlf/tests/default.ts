@@ -1,6 +1,5 @@
-import fs from 'node:fs';
+import { promises as fs, globSync } from 'node:fs';
 import { basename, dirname, resolve } from 'node:path';
-import { globSync } from 'glob';
 import JSON5 from 'json5';
 import { test } from 'uvu';
 import * as assert from 'uvu/assert';
@@ -13,9 +12,9 @@ for (const file of files) {
 	const fileBase = basename(file, '.nlf');
 
 	test(`Object: ${fileBase}`, async () => {
-		const nlfFile = await fs.promises.readFile(file, 'utf8');
+		const nlfFile = await fs.readFile(file, 'utf8');
 		const jsonPath = resolve(fileDir, `${fileBase}.json`);
-		const jsonFile = await fs.promises.readFile(jsonPath, 'utf8');
+		const jsonFile = await fs.readFile(jsonPath, 'utf8');
 
 		const nlfString = NLF.stringify(JSON5.parse(jsonFile));
 
@@ -30,9 +29,9 @@ for (const file of files) {
 	});
 
 	test(`JSON: ${fileBase}`, async () => {
-		const nlfFile = await fs.promises.readFile(file, 'utf8');
+		const nlfFile = await fs.readFile(file, 'utf8');
 		const jsonPath = resolve(fileDir, `${fileBase}.json`);
-		const jsonFile = await fs.promises.readFile(jsonPath, 'utf8');
+		const jsonFile = await fs.readFile(jsonPath, 'utf8');
 
 		const nlfString = NLF.stringify(jsonFile);
 
