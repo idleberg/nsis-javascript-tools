@@ -33,9 +33,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Enable Corepack
-        run: |
-          corepack prepare pnpm@9.15.3 --activate
-          corepack enable
+        run: corepack enable
 
       - name: Get pnpm store directory
         id: pnpm-cache
