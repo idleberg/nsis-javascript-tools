@@ -2,7 +2,7 @@
 
 ![License](https://img.shields.io/npm/l/@nsis%2Fprismjs?style=for-the-badge)
 [![Version](https://img.shields.io/npm/v/@nsis/prismjs?style=for-the-badge)](https://www.npmjs.org/package/@nsis/prismjs)
-[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/nsis-javascript-tools/default.yml?style=for-the-badge)](https://github.com/idleberg/nsis-javascript-tools/actions)
+[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/nsis-javascript-tools/ci.yml?style=for-the-badge)](https://github.com/idleberg/nsis-javascript-tools/actions)
 
 NSIS syntax highlighter for [PrismJS](https://github.com/PrismJS/prism), a lightweight, extensible syntax highlighter, built with modern web standards in mind.
 
