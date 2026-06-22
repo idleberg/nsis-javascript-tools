@@ -16,14 +16,13 @@ InstallDir $DESKTOP\Example1
 ;--------------------------------
 
 ; Pages
-
 Page directory
 Page instfiles
 
 ;--------------------------------
 
 ; The stuff to install
-Section "" ;No components page, name is not important
+Section "" ; No components page, name is not important
 
   ; Set output path to the installation directory.
   SetOutPath $INSTDIR
