@@ -157,7 +157,6 @@ const focusRing = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-
 	});
 
 	const commonExtensions = [
-		nsisLanguage,
 		oneDark,
 		editorTheme,
 	];
@@ -196,6 +195,7 @@ const focusRing = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-
 			doc: '',
 			extensions: [
 				...commonExtensions,
+				nsisLanguage,
 				EditorState.readOnly.of(true),
 				EditorView.editable.of(false),
 			],
