@@ -1,8 +1,7 @@
 import { promises as fs, globSync } from 'node:fs';
 import { basename, dirname, resolve } from 'node:path';
 import JSON5 from 'json5';
-import { test } from 'uvu';
-import * as assert from 'uvu/assert';
+import { expect, test } from 'vitest';
 import * as NLF from '../src/index.ts';
 
 const files = globSync(resolve(process.cwd(), 'tests/fixtures/*.nlf'));
@@ -19,7 +18,7 @@ for (const file of files) {
 		const actual = NLF.parse(nlfFile);
 		const expected = JSON.parse(jsonFile);
 
-		assert.equal(actual, expected);
+		expect(actual).toEqual(expected);
 	});
 
 	test(`stringify from object: ${fileBase}`, async () => {
@@ -36,7 +35,7 @@ for (const file of files) {
 			.replace(/^#.*(\r?\n|$)/gm, '')
 			.replace(/\r\n/g, '\n');
 
-		assert.is(actual, expected);
+		expect(actual).toBe(expected);
 	});
 
 	test(`stringify from JSON: ${fileBase}`, async () => {
@@ -53,8 +52,6 @@ for (const file of files) {
 			.replace(/^#.*(\r?\n|$)/gm, '')
 			.replace(/\r\n/g, '\n');
 
-		assert.is(actual, expected);
+		expect(actual).toBe(expected);
 	});
 }
-
-test.run();

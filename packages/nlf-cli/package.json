@@ -12,7 +12,7 @@
 		"lint:e18e": "e18e-cli analyze --log-level error",
 		"prepack": "npm run build",
 		"publish:npm": "np --any-branch",
-		"test": "uvu -r tsm tests"
+		"test": "vitest run"
 	},
 	"files": [
 		"bin/",
@@ -46,7 +46,6 @@
 	},
 	"devDependencies": {
 		"execa": "^9.6.0",
-		"tsm": "^2.3.0",
-		"uvu": "^0.5.6"
+		"vitest": "catalog:"
 	}
 }

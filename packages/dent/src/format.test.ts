@@ -1,8 +1,7 @@
 import { promises as fs } from 'node:fs';
 import { resolve } from 'node:path';
-import { test } from 'uvu';
-import * as assert from 'uvu/assert';
-import { createFormatter } from '../src/dent.js';
+import { expect, test } from 'vitest';
+import { createFormatter } from './dent.ts';
 
 test('Tab indentation', async () => {
 	const { format } = createFormatter();
@@ -11,7 +10,7 @@ test('Tab indentation', async () => {
 
 	const expected = await fs.readFile(resolve(process.cwd(), 'tests/expected/tab-indentation.nsi'), 'utf8');
 
-	assert.is(format(fixture), expected);
+	expect(format(fixture)).toBe(expected);
 });
 
 test('Explicit tab indentation', async () => {
@@ -23,7 +22,7 @@ test('Explicit tab indentation', async () => {
 
 	const expected = await fs.readFile(resolve(process.cwd(), 'tests/expected/tab-indentation.nsi'), 'utf8');
 
-	assert.is(format(fixture), expected);
+	expect(format(fixture)).toBe(expected);
 });
 
 test('Space indentation', async () => {
@@ -35,7 +34,7 @@ test('Space indentation', async () => {
 
 	const expected = await fs.readFile(resolve(process.cwd(), 'tests/expected/space-indentation.nsi'), 'utf8');
 
-	assert.is(format(fixture), expected);
+	expect(format(fixture)).toBe(expected);
 });
 
 test('Empty lines', async () => {
@@ -45,7 +44,7 @@ test('Empty lines', async () => {
 
 	const expected = await fs.readFile(resolve(process.cwd(), 'tests/expected/empty-lines.nsi'), 'utf8');
 
-	assert.is(format(fixture), expected);
+	expect(format(fixture)).toBe(expected);
 });
 
 test('Explicit empty lines', async () => {
@@ -57,7 +56,7 @@ test('Explicit empty lines', async () => {
 
 	const expected = await fs.readFile(resolve(process.cwd(), 'tests/expected/empty-lines.nsi'), 'utf8');
 
-	assert.is(format(fixture), expected);
+	expect(format(fixture)).toBe(expected);
 });
 
 test('Quotes', async () => {
@@ -67,7 +66,5 @@ test('Quotes', async () => {
 
 	const expected = await fs.readFile(resolve(process.cwd(), 'tests/expected/quotes.nsi'), 'utf8');
 
-	assert.is(format(fixture), expected);
+	expect(format(fixture)).toBe(expected);
 });
-
-test.run();
