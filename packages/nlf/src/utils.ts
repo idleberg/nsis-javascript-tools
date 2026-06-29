@@ -50,7 +50,7 @@ export function validateInput(input: string | NsisLanguageObject): void {
  * @returns The stringified value or '-' for null/undefined
  */
 export function valueOrDash(value: string | number | null | undefined): string {
-	return value ? String(value) : '-';
+	return value != null ? String(value) : '-';
 }
 
 /**
