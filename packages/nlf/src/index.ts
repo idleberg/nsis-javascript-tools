@@ -174,9 +174,8 @@ export function stringify(input: string | NsisLanguageObject, options: Stringifi
 		if (mappingKey.startsWith('^')) {
 			const key = mappingKey.substring(1);
 			const value = inputObj.strings[key];
-			if (value !== undefined) {
-				output.push(`# ${mappingKey}`, value);
-			}
+
+			output.push(`# ${mappingKey}`, value ?? '-');
 		}
 	}
 

@@ -1,8 +1,7 @@
 import { promises as fs, globSync } from 'node:fs';
 import { basename, dirname, resolve } from 'node:path';
 import JSON5 from 'json5';
-import { test } from 'uvu';
-import * as assert from 'uvu/assert';
+import { expect, test } from 'vitest';
 import * as NLF from '../src/index.ts';
 
 const files = globSync(resolve(process.cwd(), 'tests/fixtures/*.nlf'));
@@ -11,7 +10,18 @@ for (const file of files) {
 	const fileDir = dirname(file);
 	const fileBase = basename(file, '.nlf');
 
-	test(`Object: ${fileBase}`, async () => {
+	test(`parse: ${fileBase}`, async () => {
+		const nlfFile = await fs.readFile(file, 'utf8');
+		const jsonPath = resolve(fileDir, `${fileBase}.json`);
+		const jsonFile = await fs.readFile(jsonPath, 'utf8');
+
+		const actual = NLF.parse(nlfFile);
+		const expected = JSON.parse(jsonFile);
+
+		expect(actual).toEqual(expected);
+	});
+
+	test(`stringify from object: ${fileBase}`, async () => {
 		const nlfFile = await fs.readFile(file, 'utf8');
 		const jsonPath = resolve(fileDir, `${fileBase}.json`);
 		const jsonFile = await fs.readFile(jsonPath, 'utf8');
@@ -25,10 +35,10 @@ for (const file of files) {
 			.replace(/^#.*(\r?\n|$)/gm, '')
 			.replace(/\r\n/g, '\n');
 
-		assert.is(actual, expected);
+		expect(actual).toBe(expected);
 	});
 
-	test(`JSON: ${fileBase}`, async () => {
+	test(`stringify from JSON: ${fileBase}`, async () => {
 		const nlfFile = await fs.readFile(file, 'utf8');
 		const jsonPath = resolve(fileDir, `${fileBase}.json`);
 		const jsonFile = await fs.readFile(jsonPath, 'utf8');
@@ -42,8 +52,6 @@ for (const file of files) {
 			.replace(/^#.*(\r?\n|$)/gm, '')
 			.replace(/\r\n/g, '\n');
 
-		assert.is(actual, expected);
+		expect(actual).toBe(expected);
 	});
 }
-
-test.run();

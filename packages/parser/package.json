@@ -13,7 +13,7 @@
 		"lint:biome": "biome check",
 		"prepack": "npm run build",
 		"pretest": "npm run build:peggy",
-		"test": "uvu -r tsm tests"
+		"test": "vitest run"
 	},
 	"files": [
 		"dist/",
@@ -40,7 +40,6 @@
 	],
 	"devDependencies": {
 		"peggy": "^5.1.0",
-		"tsm": "^2.3.0",
-		"uvu": "^0.5.6"
+		"vitest": "catalog:"
 	}
 }

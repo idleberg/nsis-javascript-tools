@@ -1,8 +1,7 @@
 import { promises as fs } from 'node:fs';
 import { resolve } from 'node:path';
-import { test } from 'uvu';
-import * as assert from 'uvu/assert';
-import { createFormatter } from '../src/dent.js';
+import { expect, test } from 'vitest';
+import { createFormatter } from './dent.ts';
 
 // --- Already-formatted input returns null ---
 
@@ -11,7 +10,7 @@ test('Returns null for already tab-indented content', async () => {
 
 	const expected = await fs.readFile(resolve(process.cwd(), 'tests/expected/tab-indentation.nsi'), 'utf8');
 
-	assert.is(check(expected), null);
+	expect(check(expected)).toBe(null);
 });
 
 test('Returns null for already space-indented content', async () => {
@@ -21,7 +20,7 @@ test('Returns null for already space-indented content', async () => {
 
 	const expected = await fs.readFile(resolve(process.cwd(), 'tests/expected/space-indentation.nsi'), 'utf8');
 
-	assert.is(check(expected), null);
+	expect(check(expected)).toBe(null);
 });
 
 test('Returns null for already trimmed empty lines', async () => {
@@ -29,7 +28,7 @@ test('Returns null for already trimmed empty lines', async () => {
 
 	const expected = await fs.readFile(resolve(process.cwd(), 'tests/expected/empty-lines.nsi'), 'utf8');
 
-	assert.is(check(expected), null);
+	expect(check(expected)).toBe(null);
 });
 
 test('Returns null for already formatted quotes', async () => {
@@ -37,7 +36,7 @@ test('Returns null for already formatted quotes', async () => {
 
 	const expected = await fs.readFile(resolve(process.cwd(), 'tests/expected/quotes.nsi'), 'utf8');
 
-	assert.is(check(expected), null);
+	expect(check(expected)).toBe(null);
 });
 
 // --- Unformatted input returns formatted string ---
@@ -48,7 +47,7 @@ test('Returns formatted string for unformatted indentation', async () => {
 	const fixture = await fs.readFile(resolve(process.cwd(), 'tests/fixtures/indentation.nsi'), 'utf8');
 	const expected = await fs.readFile(resolve(process.cwd(), 'tests/expected/tab-indentation.nsi'), 'utf8');
 
-	assert.is(check(fixture), expected);
+	expect(check(fixture)).toBe(expected);
 });
 
 test('Returns formatted string when useTabs is false', async () => {
@@ -59,7 +58,7 @@ test('Returns formatted string when useTabs is false', async () => {
 	const fixture = await fs.readFile(resolve(process.cwd(), 'tests/fixtures/indentation.nsi'), 'utf8');
 	const expected = await fs.readFile(resolve(process.cwd(), 'tests/expected/space-indentation.nsi'), 'utf8');
 
-	assert.is(check(fixture), expected);
+	expect(check(fixture)).toBe(expected);
 });
 
 test('Returns formatted string for excess empty lines', async () => {
@@ -68,7 +67,7 @@ test('Returns formatted string for excess empty lines', async () => {
 	const fixture = await fs.readFile(resolve(process.cwd(), 'tests/fixtures/empty-lines.nsi'), 'utf8');
 	const expected = await fs.readFile(resolve(process.cwd(), 'tests/expected/empty-lines.nsi'), 'utf8');
 
-	assert.is(check(fixture), expected);
+	expect(check(fixture)).toBe(expected);
 });
 
 test('Returns formatted string for unformatted quotes', async () => {
@@ -77,26 +76,24 @@ test('Returns formatted string for unformatted quotes', async () => {
 	const fixture = await fs.readFile(resolve(process.cwd(), 'tests/fixtures/quotes.nsi'), 'utf8');
 	const expected = await fs.readFile(resolve(process.cwd(), 'tests/expected/quotes.nsi'), 'utf8');
 
-	assert.is(check(fixture), expected);
+	expect(check(fixture)).toBe(expected);
 });
 
 // --- Inline cases ---
 
 test('Returns null for canonical-cased instruction', () => {
 	const { check } = createFormatter();
-	assert.is(check('Name "demo"\n'), null);
+	expect(check('Name "demo"\n')).toBe(null);
 });
 
 test('Returns formatted string for non-canonical casing', () => {
 	const { check } = createFormatter();
-	assert.is(check('name "demo"\n'), 'Name "demo"\n');
+	expect(check('name "demo"\n')).toBe('Name "demo"\n');
 });
 
 test('Returns formatted string when indentation differs', () => {
 	const { check } = createFormatter({ useTabs: false, indentSize: 2 });
 	const input = 'Function .onInit\n\tNop\nFunctionEnd\n';
 	const expected = 'Function .onInit\n  Nop\nFunctionEnd\n';
-	assert.is(check(input), expected);
+	expect(check(input)).toBe(expected);
 });
-
-test.run();
