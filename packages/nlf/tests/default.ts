@@ -11,7 +11,18 @@ for (const file of files) {
 	const fileDir = dirname(file);
 	const fileBase = basename(file, '.nlf');
 
-	test(`Object: ${fileBase}`, async () => {
+	test(`parse: ${fileBase}`, async () => {
+		const nlfFile = await fs.readFile(file, 'utf8');
+		const jsonPath = resolve(fileDir, `${fileBase}.json`);
+		const jsonFile = await fs.readFile(jsonPath, 'utf8');
+
+		const actual = NLF.parse(nlfFile);
+		const expected = JSON.parse(jsonFile);
+
+		assert.equal(actual, expected);
+	});
+
+	test(`stringify from object: ${fileBase}`, async () => {
 		const nlfFile = await fs.readFile(file, 'utf8');
 		const jsonPath = resolve(fileDir, `${fileBase}.json`);
 		const jsonFile = await fs.readFile(jsonPath, 'utf8');
@@ -28,7 +39,7 @@ for (const file of files) {
 		assert.is(actual, expected);
 	});
 
-	test(`JSON: ${fileBase}`, async () => {
+	test(`stringify from JSON: ${fileBase}`, async () => {
 		const nlfFile = await fs.readFile(file, 'utf8');
 		const jsonPath = resolve(fileDir, `${fileBase}.json`);
 		const jsonFile = await fs.readFile(jsonPath, 'utf8');
