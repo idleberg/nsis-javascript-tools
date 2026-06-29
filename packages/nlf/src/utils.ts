@@ -23,7 +23,11 @@ export function getVersion(input: string): string {
  * @returns The version key for accessing NLFStrings mapping
  */
 export function getVersionKey(version: string): 'v2' | 'v6' {
-	return `v${version}` as 'v2' | 'v6';
+	if (version !== '2' && version !== '6') {
+		throw new Error(`Unsupported NLF version: ${version}`);
+	}
+
+	return `v${version}`;
 }
 
 /**
