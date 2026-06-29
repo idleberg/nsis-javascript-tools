@@ -1,5 +1,11 @@
 # @nsis/nlf
 
+## 0.14.1
+
+### Patch Changes
+
+- fe6d11d: fix various bugs
+
 ## 0.14.0
 
 ### Minor Changes

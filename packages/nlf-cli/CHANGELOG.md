@@ -1,5 +1,12 @@
 # @nsis/nlf-cli
 
+## 0.11.3
+
+### Patch Changes
+
+- Updated dependencies [fe6d11d]
+  - @nsis/nlf@0.14.1
+
 ## 0.11.2
 
 ### Patch Changes

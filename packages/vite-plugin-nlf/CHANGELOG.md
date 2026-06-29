@@ -1,5 +1,12 @@
 # @nsis/vite-plugin-nlf
 
+## 0.3.2
+
+### Patch Changes
+
+- Updated dependencies [fe6d11d]
+  - @nsis/nlf@0.14.1
+
 ## 0.3.1
 
 ### Patch Changes
