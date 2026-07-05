@@ -1,7 +1,0 @@
-{
-	"extends": "@idleberg/configs/tsc",
-	"compilerOptions": {
-		"module": "NodeNext",
-		"moduleResolution": "NodeNext"
-	}
-}
