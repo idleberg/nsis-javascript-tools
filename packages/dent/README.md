@@ -89,6 +89,7 @@ Default: `true`
 ## Related
 
 - [dent-cli](https://www.npmjs.com/package/@nsis/dent-cli)
+- [dent-desktop](https://www.npmjs.com/package/@nsis/dent-clihttps://github.com/idleberg/dent-desktop/)
 
 ## License
 
