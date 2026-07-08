@@ -6,15 +6,7 @@ vendor/
 package-lock.json
 yarn-error.log
 yarn.lock
-
-# Development
-.turbo/
-!.turbo/config.json
-
-# Build artifacts
 bin/
-dist/
 
-# Project specific
-*.exe
-*.nsi
+# Build
+dist/
