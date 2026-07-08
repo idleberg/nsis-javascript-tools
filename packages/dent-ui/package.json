@@ -1,0 +1,54 @@
+{
+	"name": "@nsis/dent-ui",
+	"version": "0.0.0",
+	"description": "Web UI for the Dent NSIS code formatter",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"build": "vite build",
+		"dev": "vite",
+		"lint": "concurrently --prefix-colors blue,green,magenta npm:lint:*",
+		"lint:biome": "biome check",
+		"lint:biome:ci": "biome ci",
+		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"test": "vitest run"
+	},
+	"type": "module",
+	"exports": {
+		".": "./src/main.ts",
+		"./DentUI.svelte": "./src/App.svelte"
+	},
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/idleberg/nsis-javascript-tools.git"
+	},
+	"homepage": "https://github.com/idleberg/nsis-javascript-tools/tree/main/packages/dent-ui#readme",
+	"keywords": [
+		"nsis",
+		"formatter",
+		"ui"
+	],
+	"dependencies": {
+		"@codemirror/commands": "catalog:",
+		"@codemirror/language": "catalog:",
+		"@codemirror/state": "catalog:",
+		"@codemirror/view": "catalog:",
+		"@lezer/highlight": "catalog:",
+		"@nsis/codemirror": "workspace:*",
+		"@nsis/dent": "workspace:*",
+		"svelte": "catalog:"
+	},
+	"devDependencies": {
+		"@sveltejs/vite-plugin-svelte": "catalog:",
+		"@vitest/browser": "catalog:",
+		"@vitest/browser-playwright": "catalog:",
+		"playwright": "catalog:",
+		"svelte-check": "catalog:",
+		"vite": "catalog:",
+		"vitest": "catalog:",
+		"vitest-browser-svelte": "catalog:"
+	}
+}

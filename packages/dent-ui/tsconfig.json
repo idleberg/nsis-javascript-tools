@@ -1,0 +1,10 @@
+{
+	"extends": "@idleberg/configs/tsc",
+	"compilerOptions": {
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"verbatimModuleSyntax": true,
+		"lib": ["DOM", "DOM.Iterable", "ESNext"]
+	},
+	"include": ["src/**/*", "test/**/*"]
+}
