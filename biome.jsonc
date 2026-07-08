@@ -7,5 +7,19 @@
 			"!packages/dent/src/grammar.js",
 			"!packages/dent/src/grammar.d.ts"
 		]
-	}
+	},
+	"overrides": [
+		{
+			"includes": ["**/*.svelte"],
+			"linter": {
+				"rules": {
+					"correctness": {
+						"noUnusedImports": "off",
+						"noUnusedVariables": "off",
+						"noUnusedFunctionParameters": "off"
+					}
+				}
+			}
+		}
+	]
 }
