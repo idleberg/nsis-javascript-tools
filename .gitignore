@@ -11,6 +11,10 @@ yarn.lock
 .turbo/
 !.turbo/config.json
 
+# Build artifacts
+bin/
+dist/
+
 # Project specific
 *.exe
 *.nsi
