@@ -1,5 +1,5 @@
 ---
-"@nsis/dent-ui": patch
+"@nsis/dent-ui": minor
 ---
 
 first version 🎉
