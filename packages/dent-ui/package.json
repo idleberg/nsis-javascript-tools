@@ -3,7 +3,6 @@
 	"version": "0.1.0",
 	"description": "Web UI for the Dent NSIS code formatter",
 	"license": "MIT",
-	"private": true,
 	"scripts": {
 		"build": "vite build",
 		"dev": "vite",
