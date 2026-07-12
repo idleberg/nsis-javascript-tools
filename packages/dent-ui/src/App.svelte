@@ -208,7 +208,7 @@ const outputExtensions = [
 			{dark}
 			extensions={inputExtensions}
 			label="NSIS input editor"
-			oncreate={(v) => (inputView = v)}
+			oncreate={(v) => { inputView = v; v.focus(); }}
 		/>
 	</div>
 	<div class="editor-pane">
