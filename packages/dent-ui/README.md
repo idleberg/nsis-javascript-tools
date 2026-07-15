@@ -12,27 +12,14 @@
 
 ```svelte
 <script>
-  import Editor from '@nsis/dent-ui/Editor.svelte';
+  import DentUI from '@nsis/dent-ui/DentUI.svelte';
 </script>
 
-<Editor
-  dark={true}
-  label="NSIS editor"
-  oncreate={(view) => view.focus()}
-/>
+<DentUI strict={true} />
 ```
 
-### Props
-
-| Prop         | Type                        | Default | Description                            |
-| ------------ | --------------------------- | ------- | -------------------------------------- |
-| `dark`       | `boolean`                   | `true`  | Use dark theme                         |
-| `extensions` | `Extension[]`               | `[]`    | Additional CodeMirror extensions       |
-| `label`      | `string`                    | `''`    | Accessible label for the editor        |
-| `strict`     | `boolean`                   | `false` | Case-sensitive NSIS keyword matching   |
-| `oncreate`   | `(view: EditorView) => void`| —       | Callback when the editor view is ready |
-
-By default, NSIS keywords are matched case-insensitively (e.g. `messagebox` and `MessageBox` are both highlighted). Set `strict` to `true` to require canonical casing.
+> [!NOTE]
+> By default, NSIS keywords are matched case-insensitively (e.g. `messagebox` and `MessageBox` are both highlighted). Set `strict` to `true` to require canonical casing.
 
 ## License
 
