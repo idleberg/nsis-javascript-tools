@@ -1,36 +1,50 @@
 import { completeFromList } from '@codemirror/autocomplete';
 import { foldInside, foldNodeProp, indentNodeProp, LanguageSupport, LRLanguage } from '@codemirror/language';
-import { nsisHighlighting } from './highlight';
-import { parser } from './parser';
+import { nsisHighlighting } from './highlight.ts';
+import { parser } from './parser.ts';
+import { specializeIdentifier, specializeIdentifierLoose } from './specializers.ts';
+
+const parserProps = [
+	nsisHighlighting,
+	indentNodeProp.add({
+		FunctionBlock: (cx) => cx.baseIndent + cx.unit,
+		SectionBlock: (cx) => cx.baseIndent + cx.unit,
+		SectionGroupBlock: (cx) => cx.baseIndent + cx.unit,
+		PageExBlock: (cx) => cx.baseIndent + cx.unit,
+		MacroBlock: (cx) => cx.baseIndent + cx.unit,
+		PreprocConditional: (cx) => cx.baseIndent + cx.unit,
+	}),
+	foldNodeProp.add({
+		FunctionBlock: foldInside,
+		SectionBlock: foldInside,
+		SectionGroupBlock: foldInside,
+		PageExBlock: foldInside,
+		MacroBlock: foldInside,
+		PreprocConditional: foldInside,
+		BlockComment: foldInside,
+	}),
+];
+
+const languageData = {
+	commentTokens: { line: '#', block: { open: '/*', close: '*/' } },
+	closeBrackets: { brackets: ['(', '[', '{', '"', "'", '`'] },
+};
 
 export const nsisLanguage = LRLanguage.define({
 	name: 'nsis',
 	parser: parser.configure({
-		props: [
-			nsisHighlighting,
-			indentNodeProp.add({
-				FunctionBlock: (cx) => cx.baseIndent + cx.unit,
-				SectionBlock: (cx) => cx.baseIndent + cx.unit,
-				SectionGroupBlock: (cx) => cx.baseIndent + cx.unit,
-				PageExBlock: (cx) => cx.baseIndent + cx.unit,
-				MacroBlock: (cx) => cx.baseIndent + cx.unit,
-				PreprocConditional: (cx) => cx.baseIndent + cx.unit,
-			}),
-			foldNodeProp.add({
-				FunctionBlock: foldInside,
-				SectionBlock: foldInside,
-				SectionGroupBlock: foldInside,
-				PageExBlock: foldInside,
-				MacroBlock: foldInside,
-				PreprocConditional: foldInside,
-				BlockComment: foldInside,
-			}),
-		],
+		props: parserProps,
+		specializers: [{ from: specializeIdentifier, to: specializeIdentifierLoose }],
 	}),
-	languageData: {
-		commentTokens: { line: '#', block: { open: '/*', close: '*/' } },
-		closeBrackets: { brackets: ['(', '[', '{', '"', "'", '`'] },
-	},
+	languageData,
+});
+
+export const nsisLanguageStrict = LRLanguage.define({
+	name: 'nsis',
+	parser: parser.configure({
+		props: parserProps,
+	}),
+	languageData,
 });
 
 const commands = [
@@ -315,6 +329,7 @@ const nsisCompletion = completeFromList(
 		.concat(preprocDirectives.map((d) => ({ label: d, type: 'keyword' }))),
 );
 
-export function nsis() {
-	return new LanguageSupport(nsisLanguage, [nsisLanguage.data.of({ autocomplete: nsisCompletion })]);
+export function nsis(config?: { strict?: boolean }) {
+	const language = config?.strict ? nsisLanguageStrict : nsisLanguage;
+	return new LanguageSupport(language, [language.data.of({ autocomplete: nsisCompletion })]);
 }

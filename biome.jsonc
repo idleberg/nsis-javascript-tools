@@ -4,8 +4,10 @@
 		"includes": [
 			"**",
 			// Generated files
-			"!packages/dent/src/grammar.js",
-			"!packages/dent/src/grammar.d.ts"
+			"!packages/codemirror/src/parser.ts",
+			"!packages/codemirror/src/parser.terms.ts",
+			"!packages/parser/src/grammar.js",
+			"!packages/parser/src/grammar.d.ts"
 		]
 	},
 	"overrides": [

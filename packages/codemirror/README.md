@@ -31,6 +31,16 @@ new EditorView({
 });
 ```
 
+### Case Sensitivity
+
+NSIS is a case-insensitive language. By default, the language mode matches keywords case-insensitively, so `MessageBox`, `messagebox`, and `MESSAGEBOX` are all recognized as commands.
+
+If you prefer strict, case-sensitive matching (only canonical casing is recognized), pass `{ strict: true }`:
+
+```typescript
+nsis({ strict: true })
+```
+
 ## License
 
 Released under [The MIT
