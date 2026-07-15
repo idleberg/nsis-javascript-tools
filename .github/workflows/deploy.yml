@@ -7,9 +7,6 @@ on:
     paths:
       - ".github/workflows/deploy.yml"
       - "docs/**"
-      - "packages/ace-mode/src/**"
-      - "packages/highlightjs/src/**"
-      - "packages/prismjs/src/**"
       - "pnpm-lock.yaml"
   workflow_dispatch:
 
