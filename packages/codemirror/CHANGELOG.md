@@ -1,5 +1,11 @@
 # @nsis/codemirror
 
+## 0.14.1
+
+### Patch Changes
+
+- a3fc38e: fix intendation of block keywords
+
 ## 0.14.0
 
 ### Minor Changes

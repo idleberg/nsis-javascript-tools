@@ -1,5 +1,13 @@
 # @nsis/dent-ui
 
+## 0.2.2
+
+### Patch Changes
+
+- a3fc38e: fix intendation of block keywords
+- Updated dependencies [a3fc38e]
+  - @nsis/codemirror@0.14.1
+
 ## 0.2.1
 
 ### Patch Changes
