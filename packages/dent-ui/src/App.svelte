@@ -1,5 +1,6 @@
 <script lang="ts">
 import { defaultKeymap, history, historyKeymap } from '@codemirror/commands';
+import { indentOnInput } from '@codemirror/language';
 import { EditorState } from '@codemirror/state';
 import { EditorView, keymap } from '@codemirror/view';
 import { createFormatter } from '@nsis/dent';
@@ -124,6 +125,7 @@ function clear() {
 const inputExtensions = [
 	history(),
 	keymap.of([...defaultKeymap, ...historyKeymap]),
+	indentOnInput(),
 	EditorView.lineWrapping,
 	EditorView.updateListener.of((update) => {
 		if (update.docChanged) scheduleAutoFormat();

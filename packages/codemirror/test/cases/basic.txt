@@ -53,6 +53,20 @@ Script(
     Command(CommandName, String),
     SectionEnd)))
 
+# Section with command name as argument
+
+Section Name
+  Nop
+SectionEnd
+
+==>
+
+Script(
+  Block(SectionBlock(
+    Section, CommandName,
+    Command(CommandName),
+    SectionEnd)))
+
 # Preprocessor
 
 !include "MUI2.nsh"

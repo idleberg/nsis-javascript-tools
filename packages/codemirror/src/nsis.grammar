@@ -92,6 +92,7 @@ value {
   LabelReference |
   Constant |
   ArgumentValue |
+  CommandName |
   Identifier
 }
 
