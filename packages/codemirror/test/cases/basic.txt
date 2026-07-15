@@ -34,7 +34,7 @@ FunctionEnd
 Script(
   Block(FunctionBlock(
     Function, Identifier,
-    Command(CommandName(CommandName), Constant, String),
+    Command(CommandName, Constant, String),
     FunctionEnd)))
 
 # Section block
@@ -49,8 +49,8 @@ SectionEnd
 Script(
   Block(SectionBlock(
     Section, String,
-    Command(CommandName(CommandName), Variable),
-    Command(CommandName(CommandName), String),
+    Command(CommandName, Variable),
+    Command(CommandName, String),
     SectionEnd)))
 
 # Preprocessor
@@ -61,8 +61,8 @@ Script(
 ==>
 
 Script(
-  PreprocDirective(PreprocKeyword(PreprocKeyword), String),
-  PreprocDirective(PreprocKeyword(PreprocKeyword), Constant, String))
+  PreprocDirective(PreprocKeyword, String),
+  PreprocDirective(PreprocKeyword, Constant, String))
 
 # Conditional compilation
 
@@ -76,11 +76,11 @@ Script(
 
 Script(
   PreprocConditional(
-    PreprocIf(PreprocIf), Constant,
-    Command(CommandName(CommandName), String),
-    PreprocElse(PreprocElse),
-    Command(CommandName(CommandName), ArgumentValue(ArgumentValue)),
-    PreprocEndif(PreprocEndif)))
+    PreprocIf, Constant,
+    Command(CommandName, String),
+    PreprocElse,
+    Command(CommandName, ArgumentValue),
+    PreprocEndif))
 
 # Plugin call
 
@@ -98,7 +98,7 @@ DetailPrint "${PRODUCT_NAME}"
 ==>
 
 Script(
-  Command(CommandName(CommandName), String(DQDefineRef)))
+  Command(CommandName, String(DQDefineRef)))
 
 # Lang string reference
 
@@ -107,7 +107,7 @@ DetailPrint "$(LANG_TITLE)"
 ==>
 
 Script(
-  Command(CommandName(CommandName), String(DQLangRef)))
+  Command(CommandName, String(DQLangRef)))
 
 # String interpolation with variable
 
@@ -116,7 +116,7 @@ DetailPrint "Installing to $INSTDIR"
 ==>
 
 Script(
-  Command(CommandName(CommandName), String(DQVariable)))
+  Command(CommandName, String(DQVariable)))
 
 # String interpolation mixed
 
@@ -125,7 +125,7 @@ DetailPrint "$(WELCOME) $0"
 ==>
 
 Script(
-  Command(CommandName(CommandName), String(DQLangRef, DQVariable)))
+  Command(CommandName, String(DQLangRef, DQVariable)))
 
 # Escape sequences
 
@@ -134,7 +134,7 @@ DetailPrint "$\"quoted$\""
 ==>
 
 Script(
-  Command(CommandName(CommandName), String(DQEscape, DQEscape)))
+  Command(CommandName, String(DQEscape, DQEscape)))
 
 # Dollar escape
 
@@ -143,4 +143,4 @@ DetailPrint "costs $$5"
 ==>
 
 Script(
-  Command(CommandName(CommandName), String(DQEscape)))
+  Command(CommandName, String(DQEscape)))

@@ -1,0 +1,101 @@
+# Lowercase commands
+
+messagebox MB_OK "Hello"
+
+==>
+
+Script(
+  Command(CommandName, Constant, String))
+
+# Uppercase commands
+
+SETOUTPATH $INSTDIR
+
+==>
+
+Script(
+  Command(CommandName, Variable))
+
+# Mixed case commands
+
+DetailPRINT "test"
+
+==>
+
+Script(
+  Command(CommandName, String))
+
+# Case-insensitive function block
+
+function .onInit
+  messagebox MB_OK "Hello"
+functionend
+
+==>
+
+Script(
+  Block(FunctionBlock(
+    Function, Identifier,
+    Command(CommandName, Constant, String),
+    FunctionEnd)))
+
+# Case-insensitive section block
+
+section "Install"
+  setoutpath $INSTDIR
+sectionend
+
+==>
+
+Script(
+  Block(SectionBlock(
+    Section, String,
+    Command(CommandName, Variable),
+    SectionEnd)))
+
+# Case-insensitive preprocessor
+
+!INCLUDE "MUI2.nsh"
+!DEFINE VERSION "1.0.0"
+
+==>
+
+Script(
+  PreprocDirective(PreprocKeyword, String),
+  PreprocDirective(PreprocKeyword, Constant, String))
+
+# Case-insensitive conditionals
+
+!IFDEF DEBUG
+  detailprint "Debug"
+!ELSE
+  setdetailsprint none
+!ENDIF
+
+==>
+
+Script(
+  PreprocConditional(
+    PreprocIf, Constant,
+    Command(CommandName, String),
+    PreprocElse,
+    Command(CommandName, ArgumentValue),
+    PreprocEndif))
+
+# Case-insensitive argument values
+
+SilentInstall SILENT
+
+==>
+
+Script(
+  Command(CommandName, ArgumentValue))
+
+# Case-insensitive variable declaration
+
+var MyVar
+
+==>
+
+Script(
+  VariableDeclaration(Var, Identifier))
