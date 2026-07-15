@@ -1,0 +1,10 @@
+{
+	"hooks": {
+		"PostToolUse": [
+			{
+				"matcher": "Edit|Write",
+				"command": "npx @biomejs/biome check --write --unsafe $CLAUDE_FILE_PATHS"
+			}
+		]
+	}
+}

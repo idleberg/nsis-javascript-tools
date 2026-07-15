@@ -15,6 +15,9 @@ yarn.lock
 bin/
 dist/
 
+# AI
+!.claude/settings.json
+
 # Project specific
 *.exe
 *.nsi
