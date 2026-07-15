@@ -1,18 +1,32 @@
 import { completeFromList } from '@codemirror/autocomplete';
-import { foldInside, foldNodeProp, indentNodeProp, LanguageSupport, LRLanguage } from '@codemirror/language';
+import {
+	foldInside,
+	foldNodeProp,
+	indentNodeProp,
+	LanguageSupport,
+	LRLanguage,
+	type TreeIndentContext,
+} from '@codemirror/language';
 import { nsisHighlighting } from './highlight.ts';
 import { parser } from './parser.ts';
 import { specializeIdentifier, specializeIdentifierLoose } from './specializers.ts';
 
+function blockIndent(closingPattern: RegExp) {
+	return (cx: TreeIndentContext) => {
+		if (closingPattern.test(cx.textAfter)) return cx.baseIndent;
+		return cx.baseIndent + cx.unit;
+	};
+}
+
 const parserProps = [
 	nsisHighlighting,
 	indentNodeProp.add({
-		FunctionBlock: (cx) => cx.baseIndent + cx.unit,
-		SectionBlock: (cx) => cx.baseIndent + cx.unit,
-		SectionGroupBlock: (cx) => cx.baseIndent + cx.unit,
-		PageExBlock: (cx) => cx.baseIndent + cx.unit,
-		MacroBlock: (cx) => cx.baseIndent + cx.unit,
-		PreprocConditional: (cx) => cx.baseIndent + cx.unit,
+		FunctionBlock: blockIndent(/^\s*FunctionEnd\b/i),
+		SectionBlock: blockIndent(/^\s*SectionEnd\b/i),
+		SectionGroupBlock: blockIndent(/^\s*SectionGroupEnd\b/i),
+		PageExBlock: blockIndent(/^\s*PageExEnd\b/i),
+		MacroBlock: blockIndent(/^\s*!macroend\b/i),
+		PreprocConditional: blockIndent(/^\s*!(?:endif|else)\b/i),
 	}),
 	foldNodeProp.add({
 		FunctionBlock: foldInside,
@@ -28,6 +42,7 @@ const parserProps = [
 const languageData = {
 	commentTokens: { line: '#', block: { open: '/*', close: '*/' } },
 	closeBrackets: { brackets: ['(', '[', '{', '"', "'", '`'] },
+	indentOnInput: /^\s*(?:FunctionEnd|SectionEnd|SectionGroupEnd|PageExEnd|!(?:macroend|endif|else))\s*$/i,
 };
 
 export const nsisLanguage = LRLanguage.define({

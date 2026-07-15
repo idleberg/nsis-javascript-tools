@@ -2,6 +2,7 @@
 	"name": "@nsis/monorepo",
 	"private": true,
 	"scripts": {
+		"astro": "pnpm run --filter=docs dev",
 		"build": "turbo run build",
 		"lint": "turbo run lint:biome",
 		"test": "turbo run test"

@@ -30,7 +30,7 @@
 		"prebuild": "npm run build:lezer",
 		"build": "tsdown",
 		"build:lezer": "lezer-generator src/nsis.grammar --output src/parser --typeScript",
-		"start": "npm run build:lezer && vite",
+		"dev": "tsdown --watch",
 		"test": "vitest run",
 		"prepare": "npm run build"
 	},
@@ -44,6 +44,7 @@
 	"dependencies": {
 		"@codemirror/autocomplete": "catalog:",
 		"@codemirror/language": "catalog:",
+		"@codemirror/state": "catalog:",
 		"@lezer/highlight": "catalog:",
 		"@lezer/lr": "catalog:"
 	},
