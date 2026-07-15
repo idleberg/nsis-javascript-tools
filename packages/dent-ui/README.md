@@ -8,6 +8,32 @@
 
 [Demo Time](https://idleberg.github.io/nsis-javascript-tools/dent/) 🙌
 
+## Usage
+
+```svelte
+<script>
+  import Editor from '@nsis/dent-ui/Editor.svelte';
+</script>
+
+<Editor
+  dark={true}
+  label="NSIS editor"
+  oncreate={(view) => view.focus()}
+/>
+```
+
+### Props
+
+| Prop         | Type                        | Default | Description                            |
+| ------------ | --------------------------- | ------- | -------------------------------------- |
+| `dark`       | `boolean`                   | `true`  | Use dark theme                         |
+| `extensions` | `Extension[]`               | `[]`    | Additional CodeMirror extensions       |
+| `label`      | `string`                    | `''`    | Accessible label for the editor        |
+| `strict`     | `boolean`                   | `false` | Case-sensitive NSIS keyword matching   |
+| `oncreate`   | `(view: EditorView) => void`| —       | Callback when the editor view is ready |
+
+By default, NSIS keywords are matched case-insensitively (e.g. `messagebox` and `MessageBox` are both highlighted). Set `strict` to `true` to require canonical casing.
+
 ## License
 
 This work is licensed under [The MIT License](LICENSE).

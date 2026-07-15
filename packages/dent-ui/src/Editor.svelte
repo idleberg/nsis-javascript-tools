@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Compartment, EditorState, type Extension } from '@codemirror/state';
 import { EditorView } from '@codemirror/view';
+import { nsis } from '@nsis/codemirror';
 import { onMount } from 'svelte';
 import { darkTheme, editorTheme, lightTheme } from './themes.ts';
 
@@ -8,23 +9,31 @@ let {
 	dark = true,
 	extensions = [],
 	label = '',
+	strict = false,
 	oncreate,
 }: {
 	dark?: boolean;
 	extensions?: Extension[];
 	label?: string;
+	strict?: boolean;
 	oncreate?: (view: EditorView) => void;
 } = $props();
 
 let container: HTMLDivElement;
 let view: EditorView | undefined;
 const themeCompartment = new Compartment();
+const langCompartment = new Compartment();
 
 onMount(() => {
 	view = new EditorView({
 		state: EditorState.create({
 			doc: '',
-			extensions: [themeCompartment.of(dark ? darkTheme : lightTheme), editorTheme, ...extensions],
+			extensions: [
+				themeCompartment.of(dark ? darkTheme : lightTheme),
+				langCompartment.of(nsis({ strict })),
+				editorTheme,
+				...extensions,
+			],
 		}),
 		parent: container,
 	});

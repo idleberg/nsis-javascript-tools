@@ -2,7 +2,6 @@
 import { defaultKeymap, history, historyKeymap } from '@codemirror/commands';
 import { EditorState } from '@codemirror/state';
 import { EditorView, keymap } from '@codemirror/view';
-import { nsisLanguage } from '@nsis/codemirror';
 import { createFormatter } from '@nsis/dent';
 import { onDestroy, onMount } from 'svelte';
 import Editor from './Editor.svelte';
@@ -121,7 +120,6 @@ function clear() {
 }
 
 const inputExtensions = [
-	nsisLanguage,
 	history(),
 	keymap.of([...defaultKeymap, ...historyKeymap]),
 	EditorView.lineWrapping,
@@ -130,12 +128,7 @@ const inputExtensions = [
 	}),
 ];
 
-const outputExtensions = [
-	nsisLanguage,
-	EditorState.readOnly.of(true),
-	EditorView.editable.of(false),
-	EditorView.lineWrapping,
-];
+const outputExtensions = [EditorState.readOnly.of(true), EditorView.editable.of(false), EditorView.lineWrapping];
 </script>
 
 <header>
