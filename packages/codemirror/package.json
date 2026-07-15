@@ -44,6 +44,7 @@
 	"dependencies": {
 		"@codemirror/autocomplete": "catalog:",
 		"@codemirror/language": "catalog:",
+		"@codemirror/state": "catalog:",
 		"@lezer/highlight": "catalog:",
 		"@lezer/lr": "catalog:"
 	},
