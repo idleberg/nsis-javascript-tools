@@ -55,7 +55,7 @@ jobs:
         run: pnpm run --if-present --recursive lint:biome:ci
 
       - name: Install Playwright browsers
-        run: pnpm exec playwright install --with-deps chromium
+        run: pnpm --filter @nsis/dent-ui exec playwright install --with-deps chromium
 
       - name: Build Source
         run: pnpm run --if-present build
