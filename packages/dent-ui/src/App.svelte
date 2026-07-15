@@ -6,6 +6,8 @@ import { createFormatter } from '@nsis/dent';
 import { onDestroy, onMount } from 'svelte';
 import Editor from './Editor.svelte';
 
+let { strict = false }: { strict?: boolean } = $props();
+
 let dark = $state(document.documentElement.dataset.theme !== 'light');
 let themePreference = $state(localStorage.getItem('theme') || 'system');
 
@@ -199,15 +201,20 @@ const outputExtensions = [EditorState.readOnly.of(true), EditorView.editable.of(
 		<div class="pane-header">Input</div>
 		<Editor
 			{dark}
+			{strict}
 			extensions={inputExtensions}
 			label="NSIS input editor"
-			oncreate={(v) => { inputView = v; v.focus(); }}
+			oncreate={(v) => {
+				inputView = v;
+				v.focus();
+			}}
 		/>
 	</div>
 	<div class="editor-pane">
 		<div class="pane-header">Output</div>
 		<Editor
 			{dark}
+			{strict}
 			extensions={outputExtensions}
 			label="Formatted output editor"
 			oncreate={(v) => (outputView = v)}
