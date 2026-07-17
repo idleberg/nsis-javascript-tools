@@ -3,6 +3,23 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, type Rolldown } from 'tsdown';
 
+export default defineConfig((options) => {
+	const isProduction = options.watch !== true;
+
+	return {
+		target: 'node20',
+		clean: isProduction,
+		dts: isProduction,
+		entry: ['src/index.ts', 'src/language.ts'],
+		format: ['cjs', 'esm'],
+		minify: isProduction,
+		deps: {
+			alwaysBundle: ['tree-sitter-nsis/queries/highlights.scm'],
+		},
+		plugins: [scmRawPlugin()],
+	};
+});
+
 const treeSitterNsisDir = dirname(fileURLToPath(import.meta.resolve('tree-sitter-nsis/wasm')));
 
 function scmRawPlugin(): Rolldown.Plugin {
@@ -21,20 +38,3 @@ function scmRawPlugin(): Rolldown.Plugin {
 		},
 	};
 }
-
-export default defineConfig((options) => {
-	const isProduction = options.watch !== true;
-
-	return {
-		target: 'node20',
-		clean: isProduction,
-		dts: isProduction,
-		entry: ['src/index.ts', 'src/language.ts'],
-		format: ['cjs', 'esm'],
-		minify: isProduction,
-		deps: {
-			alwaysBundle: ['tree-sitter-nsis/queries/highlights.scm'],
-		},
-		plugins: [scmRawPlugin()],
-	};
-});
