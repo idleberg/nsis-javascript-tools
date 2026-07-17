@@ -132,6 +132,12 @@ importers:
       '@codemirror/view':
         specifier: 'catalog:'
         version: 6.43.5
+      '@lumis-sh/lumis':
+        specifier: ^0.5.2
+        version: 0.5.2
+      '@lumis-sh/themes':
+        specifier: ^0.2.2
+        version: 0.2.2
       '@nsis/ace-mode':
         specifier: workspace:*
         version: link:../packages/ace-mode
@@ -147,6 +153,9 @@ importers:
       '@nsis/highlightjs':
         specifier: workspace:*
         version: link:../packages/highlightjs
+      '@nsis/lumis':
+        specifier: workspace:*
+        version: link:../packages/lumis
       '@nsis/prismjs':
         specifier: workspace:*
         version: link:../packages/prismjs
@@ -168,6 +177,9 @@ importers:
       tailwindcss:
         specifier: ^4.3.2
         version: 4.3.2
+      tree-sitter-nsis:
+        specifier: ^0.4.0
+        version: 0.4.0
       vite:
         specifier: 'catalog:'
         version: 8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0)
@@ -299,6 +311,19 @@ importers:
         specifier: '>=11'
         version: 11.11.1
     devDependencies:
+      vitest:
+        specifier: 'catalog:'
+        version: 4.1.9(@types/node@25.9.3)(@vitest/browser-playwright@4.1.10)(jsdom@29.1.1)(vite@8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0))
+
+  packages/lumis:
+    dependencies:
+      tree-sitter-nsis:
+        specifier: ^0.4.0
+        version: 0.4.0
+    devDependencies:
+      '@lumis-sh/lumis':
+        specifier: ^0.5.2
+        version: 0.5.2
       vitest:
         specifier: 'catalog:'
         version: 4.1.9(@types/node@25.9.3)(@vitest/browser-playwright@4.1.10)(jsdom@29.1.1)(vite@8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0))
@@ -1440,6 +1465,13 @@ packages:
 
   '@lezer/lr@1.4.10':
     resolution: {integrity: sha512-rnCpTIBafOx4mRp43xOxDJbFipJm/c0cia/V5TiGlhmMa+wsSdoGmUN3w5Bqrks/09Q/D4tNAmWaT8p6NRi77A==}
+
+  '@lumis-sh/lumis@0.5.2':
+    resolution: {integrity: sha512-TTTsVgiaJE7EiIGbGdLA2h2PN/xVdj9ft66v30puGICKRa4r1afTt8Rg/PmUd0qiBOoc0Y0u/28d0HuIrpClvg==}
+    engines: {node: '>=18'}
+
+  '@lumis-sh/themes@0.2.2':
+    resolution: {integrity: sha512-GmE3uEvJZUgIEBU4+w7oe0blK53QGa7Dbj1woRe9AaIZKktkyeTEWJybKDbbfj4DhVaaR+wVo4JbfaYRhOpKbw==}
 
   '@manypkg/find-root@1.1.0':
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
@@ -4568,6 +4600,9 @@ packages:
     resolution: {integrity: sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==}
     hasBin: true
 
+  tree-sitter-nsis@0.4.0:
+    resolution: {integrity: sha512-QBe3QRlbw0PoChalg9rwg8bwKrYAXAd0IXNtudDcMAixoqRiSuAo8OD4fOwvJe5dzd4W5Uidah5OM/RIeO70gA==}
+
   trim-lines@3.0.1:
     resolution: {integrity: sha512-kRj8B+YHZCc9kQYdWfJB2/oUl9rA99qbowYYBtr4ui4mZyAQ2JpvVBd/6U2YloATfqBhBTSMhTpgBHtU0Mf3Rg==}
 
@@ -4891,6 +4926,9 @@ packages:
   w3c-xmlserializer@5.0.0:
     resolution: {integrity: sha512-o8qghlI8NZHU1lLPrpi2+Uq7abh4GGPpYANlalzWxyWteJOCsr/P+oPBA49TOLu5FTZO4d3F9MnWJfiMo4BkmA==}
     engines: {node: '>=18'}
+
+  web-tree-sitter@0.26.8:
+    resolution: {integrity: sha512-4sUwi7ZyOrIk5KLgYLkc2A/F0LFMQnBhfb+2Cdl7ik4ePJ6JD+fk4ofI2sA5eGawBKBaK4Vntt7Ww5KcEsay4A==}
 
   webidl-conversions@8.0.1:
     resolution: {integrity: sha512-BMhLD/Sw+GbJC21C/UgyaZX41nPt8bUTg+jWyDeg7e7YN4xOM05YPSIXceACnXVtqyEw/LMClUQMtMZ+PGGpqQ==}
@@ -6065,6 +6103,12 @@ snapshots:
   '@lezer/lr@1.4.10':
     dependencies:
       '@lezer/common': 1.5.2
+
+  '@lumis-sh/lumis@0.5.2':
+    dependencies:
+      web-tree-sitter: 0.26.8
+
+  '@lumis-sh/themes@0.2.2': {}
 
   '@manypkg/find-root@1.1.0':
     dependencies:
@@ -9080,6 +9124,8 @@ snapshots:
 
   tree-kill@1.2.2: {}
 
+  tree-sitter-nsis@0.4.0: {}
+
   trim-lines@3.0.1: {}
 
   trough@2.2.0: {}
@@ -9312,6 +9358,8 @@ snapshots:
     dependencies:
       xml-name-validator: 5.0.0
     optional: true
+
+  web-tree-sitter@0.26.8: {}
 
   webidl-conversions@8.0.1:
     optional: true
