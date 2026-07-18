@@ -5,7 +5,7 @@
 	"scripts": {
 		"build": "astro build",
 		"dev": "astro dev --open",
-		"test:e2e": "playwright test"
+		"test": "playwright test"
 	},
 	"devDependencies": {
 		"@playwright/test": "catalog:",
