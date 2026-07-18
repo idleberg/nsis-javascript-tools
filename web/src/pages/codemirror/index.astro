@@ -1,5 +1,4 @@
 ---
-import example from '../../data/example.nsi?raw';
 import DemoLayout from '../../layouts/DemoLayout.astro';
 ---
 
@@ -16,11 +15,8 @@ import DemoLayout from '../../layouts/DemoLayout.astro';
 	<div slot="example" id="editor" class="mt-3 rounded overflow-hidden" />
 </DemoLayout>
 
-<script is:inline define:vars={{ example }}>
-	window.__NSIS_EXAMPLE__ = example;
-</script>
-
 <script>
+	import example from '../../data/example.nsi?raw';
 	import { EditorView, keymap } from '@codemirror/view';
 	import { EditorState } from '@codemirror/state';
 	import { defaultKeymap, history, historyKeymap } from '@codemirror/commands';
@@ -36,7 +32,7 @@ import DemoLayout from '../../layouts/DemoLayout.astro';
 
 	new EditorView({
 		state: EditorState.create({
-			doc: (window as any).__NSIS_EXAMPLE__,
+			doc: example,
 			extensions: [
 				nsis(),
 				oneDark,

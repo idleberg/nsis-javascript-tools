@@ -20,6 +20,8 @@
 		"@nsis/highlightjs": "workspace:*",
 		"@nsis/lumis": "workspace:*",
 		"@nsis/prismjs": "workspace:*",
+		"@nsis/textmate": "workspace:*",
+		"shiki": "^3.7.0",
 		"@lumis-sh/lumis": "^0.5.2",
 		"@lumis-sh/themes": "^0.2.2",
 		"tree-sitter-nsis": "^0.4.0",
