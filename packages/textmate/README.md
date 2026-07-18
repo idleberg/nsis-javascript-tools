@@ -34,7 +34,7 @@ Section
 SectionEnd
 `;
 
-const html = highlighter.codeToHtml('Name "Example"', {
+const html = highlighter.codeToHtml(example, {
   lang: "nsis",
   theme: "one-dark-pro",
 });
