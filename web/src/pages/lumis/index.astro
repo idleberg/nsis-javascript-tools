@@ -1,5 +1,4 @@
 ---
-import example from '../../data/example.nsi?raw';
 import DemoLayout from '../../layouts/DemoLayout.astro';
 ---
 
@@ -23,18 +22,15 @@ import DemoLayout from '../../layouts/DemoLayout.astro';
 	}
 </style>
 
-<script is:inline define:vars={{ example }}>
-	window.__NSIS_EXAMPLE__ = example;
-</script>
-
 <script>
+	import example from '../../data/example.nsi?raw';
 	import { highlight } from '@lumis-sh/lumis';
 	import { htmlInline } from '@lumis-sh/lumis/formatters';
 	import { nsis } from '@nsis/lumis';
 	import tokyonightMoon from '@lumis-sh/themes/tokyonight_moon';
 
 	document.getElementById('output')!.innerHTML = await highlight(
-		(window as any).__NSIS_EXAMPLE__,
+		example,
 		htmlInline({ language: nsis, theme: tokyonightMoon }),
 	);
 </script>

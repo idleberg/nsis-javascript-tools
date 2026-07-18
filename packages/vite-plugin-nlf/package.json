@@ -30,7 +30,7 @@
 		"lint:biome": "biome check",
 		"lint:biome:ci": "biome ci",
 		"lint:e18e": "e18e-cli analyze --log-level error",
-		"prepack": "npm run build",
+		"prepublishOnly": "npm run build",
 		"publish:npm": "np --any-branch",
 		"test": "vitest run"
 	},
@@ -44,7 +44,7 @@
 		"@nsis/nlf": "workspace:*"
 	},
 	"devDependencies": {
-		"vite": "^8.1.3",
+		"vite": "catalog:",
 		"vitest": "catalog:"
 	},
 	"peerDependencies": {

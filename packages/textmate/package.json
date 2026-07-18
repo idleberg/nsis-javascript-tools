@@ -1,0 +1,52 @@
+{
+	"name": "@nsis/textmate",
+	"version": "0.0.0",
+	"description": "NSIS TextMate grammar for Shiki and other highlighters",
+	"license": "MIT OR Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/idleberg/nsis-javascript-tools.git"
+	},
+	"homepage": "https://github.com/idleberg/nsis-javascript-tools/tree/main/packages/textmate#readme",
+	"keywords": [
+		"nsis",
+		"shiki",
+		"syntax-highlighting",
+		"textmate",
+		"textmate-grammar"
+	],
+	"type": "module",
+	"exports": {
+		".": {
+			"types": {
+				"import": "./dist/index.d.mts",
+				"require": "./dist/index.d.cts"
+			},
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"engines": {
+		"node": "^20.19.0 || >=22.12.0"
+	},
+	"files": [
+		"dist/",
+		"LICENSE",
+		"README.md"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"build": "tsdown",
+		"dev": "tsdown --watch",
+		"lint:biome": "biome check",
+		"prepublishOnly": "npm run build",
+		"publish:npm": "np",
+		"test": "vitest run"
+	},
+	"devDependencies": {
+		"shiki": "^3.7.0",
+		"vitest": "catalog:"
+	}
+}

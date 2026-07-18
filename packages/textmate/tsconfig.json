@@ -1,0 +1,9 @@
+{
+	"extends": "@idleberg/configs/tsc",
+	"compilerOptions": {
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"resolveJsonModule": true,
+		"types": ["@types/node", "vitest/globals"]
+	}
+}

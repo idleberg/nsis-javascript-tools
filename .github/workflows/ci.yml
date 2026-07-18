@@ -54,17 +54,7 @@ jobs:
       - name: Lint Source
         run: pnpm run --if-present --recursive lint:biome:ci
 
-      - name: Detect dent-ui changes
-        id: dent-ui-changes
-        run: |
-          if git diff --name-only HEAD~1 HEAD | grep -q '^packages/dent-ui/'; then
-            echo "changed=true" >> $GITHUB_OUTPUT
-          else
-            echo "changed=false" >> $GITHUB_OUTPUT
-          fi
-
       - name: Install Playwright browsers
-        if: steps.dent-ui-changes.outputs.changed == 'true'
         run: pnpm --filter @nsis/dent-ui exec playwright install --with-deps chromium
 
       - name: Build Source

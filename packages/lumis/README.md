@@ -13,7 +13,6 @@
 ## Installation
 
 ```bash
-# Install
 $ npm install @nsis/lumis
 ```
 
