@@ -12,7 +12,7 @@
 >
 > This language file has been a part of the highlight.js core since 2013. However, the latest fixes and changes are only available in this package.
 
-[Demo Time](https://idleberg.github.io/nsis-javascript-tools/highlightjs/) 🙌
+[Demo Time](https://idleberg.github.io/nsis-org/highlightjs/) 🙌
 
 ## Installation
 

@@ -4,11 +4,11 @@
 
 ![License](https://img.shields.io/npm/l/@nsis%2Fcodemirror?style=for-the-badge)
 [![Version](https://img.shields.io/npm/v/@nsis/codemirror?style=for-the-badge)](https://www.npmjs.org/package/@nsis/codemirror)
-[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/nsis-javascript-tools/ci.yml?style=for-the-badge)](https://github.com/idleberg/nsis-javascript-tools/actions)
+[![Build](https://img.shields.io/github/actions/workflow/status/idleberg/nsis-org/ci.yml?style=for-the-badge)](https://github.com/idleberg/nsis-org/actions)
 
 **Latest version supported: NSIS v3.12**
 
-[Demo Time](https://idleberg.github.io/nsis-javascript-tools/codemirror/) 🙌
+[Demo Time](https://idleberg.github.io/nsis-org/codemirror/) 🙌
 
 ## Installation
 

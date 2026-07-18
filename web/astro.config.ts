@@ -4,7 +4,7 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
 	site: 'https://idleberg.github.io',
-	base: process.env.CI ? '/nsis-javascript-tools/' : '/',
+	base: process.env.CI ? '/nsis-org/' : '/',
 	outDir: 'dist',
 	integrations: [svelte()],
 	vite: {
