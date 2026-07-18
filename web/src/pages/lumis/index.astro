@@ -30,11 +30,8 @@ import DemoLayout from '../../layouts/DemoLayout.astro';
 <script>
 	import { highlight } from '@lumis-sh/lumis';
 	import { htmlInline } from '@lumis-sh/lumis/formatters';
-	import { createLanguage } from '@nsis/lumis';
-	import treeSitterNsisWasm from 'tree-sitter-nsis/wasm?url';
+	import { nsis } from '@nsis/lumis';
 	import tokyonightMoon from '@lumis-sh/themes/tokyonight_moon';
-
-	const nsis = createLanguage({ wasm: new URL(treeSitterNsisWasm, import.meta.url) });
 
 	document.getElementById('output')!.innerHTML = await highlight(
 		(window as any).__NSIS_EXAMPLE__,

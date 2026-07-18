@@ -1,6 +1,6 @@
 packages:
-  - "docs"
   - "packages/*"
+  - "web"
 
 allowBuilds:
   esbuild: false
