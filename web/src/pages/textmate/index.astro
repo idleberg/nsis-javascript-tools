@@ -29,7 +29,7 @@ import DemoLayout from '../../layouts/DemoLayout.astro';
 	import grammar from '@nsis/textmate';
 
 	const highlighter = await createHighlighter({
-		themes: ['one-dark-pro'],
+		themes: ['tokyo-night'],
 		langs: [{
 			...grammar,
 			name: 'nsis',
@@ -38,6 +38,6 @@ import DemoLayout from '../../layouts/DemoLayout.astro';
 
 	document.getElementById('output')!.innerHTML = highlighter.codeToHtml(
 		example,
-		{ lang: 'nsis', theme: 'one-dark-pro' },
+		{ lang: 'nsis', theme: 'tokyo-night' },
 	);
 </script>
