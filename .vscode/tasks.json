@@ -16,7 +16,7 @@
 		{
 			"label": "Watch",
 			"type": "npm",
-			"script": "dev",
+			"script": "start",
 			"presentation": {
 				"clear": true,
 				"focus": false,
