@@ -5,9 +5,9 @@
 	"license": "MIT OR Apache-2.0",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/idleberg/nsis-javascript-tools.git"
+		"url": "git+https://github.com/idleberg/nsis-org.git"
 	},
-	"homepage": "https://github.com/idleberg/nsis-javascript-tools/tree/main/packages/textmate#readme",
+	"homepage": "https://github.com/idleberg/nsis-org/tree/main/packages/textmate#readme",
 	"keywords": [
 		"nsis",
 		"shiki",

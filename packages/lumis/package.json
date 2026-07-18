@@ -5,9 +5,9 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/idleberg/nsis-javascript-tools.git"
+		"url": "git+https://github.com/idleberg/nsis-org.git"
 	},
-	"homepage": "https://github.com/idleberg/nsis-javascript-tools/tree/main/packages/lumis#readme",
+	"homepage": "https://github.com/idleberg/nsis-org/tree/main/packages/lumis#readme",
 	"keywords": [
 		"lumis",
 		"nsis",

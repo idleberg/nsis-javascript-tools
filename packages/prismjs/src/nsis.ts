@@ -1,4 +1,4 @@
-/*! @nsis/prismjs | MIT License | github.com/idleberg/nsis-javascript-tools */
+/*! @nsis/prismjs | MIT License | github.com/idleberg/nsis-org */
 
 declare const Prism: {
 	languages: Record<string, unknown>;

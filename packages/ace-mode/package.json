@@ -16,9 +16,9 @@
 	"browser": "./dist/mode-nsis.noconflict.js",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/idleberg/nsis-javascript-tools.git"
+		"url": "git+https://github.com/idleberg/nsis-org.git"
 	},
-	"homepage": "https://github.com/idleberg/nsis-javascript-tools/tree/main/packages/ace-mode#readme",
+	"homepage": "https://github.com/idleberg/nsis-org/tree/main/packages/ace-mode#readme",
 	"keywords": [
 		"ace",
 		"mode",

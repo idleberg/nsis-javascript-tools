@@ -54,11 +54,11 @@ jobs:
       - name: Lint Source
         run: pnpm run --if-present --recursive lint:biome:ci
 
-      - name: Install Playwright browsers
-        run: pnpm --filter @nsis/dent-ui exec playwright install --with-deps chromium
-
       - name: Build Source
         run: pnpm run --if-present build
+
+      - name: Install Playwright browsers
+        run: pnpm --filter @nsis/dent-ui exec playwright install --with-deps chromium
 
       - name: Run Tests
         run: pnpm run --if-present test
