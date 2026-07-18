@@ -17,7 +17,6 @@
 ## Installation
 
 ```bash
-# Install
 $ npm install @nsis/highlightjs
 ```
 
