@@ -61,6 +61,7 @@
 	},
 	"devDependencies": {
 		"@lumis-sh/lumis": "^0.5.2",
+		"unplugin-macros": "^0.20.2",
 		"vitest": "catalog:"
 	}
 }
