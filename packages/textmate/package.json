@@ -24,7 +24,8 @@
 			},
 			"import": "./dist/index.mjs",
 			"require": "./dist/index.cjs"
-		}
+		},
+		"./grammar.json": "./data/nsis.json"
 	},
 	"engines": {
 		"node": "^20.19.0 || >=22.12.0"
