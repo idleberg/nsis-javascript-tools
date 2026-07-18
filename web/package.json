@@ -27,7 +27,7 @@
 		"astro": "7.1.1",
 		"highlight.js": "catalog:",
 		"prismjs": "catalog:",
-		"shiki": "^3.7.0",
+		"shiki": "^4.3.1",
 		"svelte": "catalog:",
 		"tailwindcss": "^4.3.3",
 		"tree-sitter-nsis": "^0.4.0",

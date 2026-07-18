@@ -46,7 +46,7 @@
 		"test": "vitest run"
 	},
 	"devDependencies": {
-		"shiki": "^3.7.0",
+		"shiki": "^4.3.1",
 		"vitest": "catalog:"
 	}
 }
