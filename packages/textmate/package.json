@@ -34,6 +34,9 @@
 		"LICENSE",
 		"README.md"
 	],
+	"publishConfig": {
+		"access": "public"
+	},
 	"scripts": {
 		"build": "tsdown",
 		"dev": "tsdown --watch",
