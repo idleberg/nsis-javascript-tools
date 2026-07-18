@@ -26,6 +26,14 @@ const highlighter = await createHighlighter({
   langs: [{ ...grammar, name: "nsis" }],
 });
 
+const example = `
+OutFile "demo.exe"
+
+Section
+	DetailPrint "Hello, world!"
+SectionEnd
+`;
+
 const html = highlighter.codeToHtml('Name "Example"', {
   lang: "nsis",
   theme: "one-dark-pro",
