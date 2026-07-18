@@ -15,6 +15,10 @@ yarn.lock
 bin/
 dist/
 
+# Test
+test-results/
+playwright-report/
+
 # AI
 !.claude/settings.json
 

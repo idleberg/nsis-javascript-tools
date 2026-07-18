@@ -9,5 +9,8 @@ export default defineConfig({
 	integrations: [svelte()],
 	vite: {
 		plugins: [tailwindcss()],
+		optimizeDeps: {
+			include: ['@nsis/codemirror'],
+		},
 	},
 });

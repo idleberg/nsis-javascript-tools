@@ -34,6 +34,9 @@ catalogs:
     '@lezer/lr':
       specifier: ^1.4.10
       version: 1.4.10
+    '@playwright/test':
+      specifier: ^1.53.0
+      version: 1.61.1
     '@sveltejs/vite-plugin-svelte':
       specifier: ^7.2.0
       version: 7.2.0
@@ -376,7 +379,7 @@ importers:
         version: file:packages/dent-ui
       '@nsis/highlightjs':
         specifier: workspace:*
-        version: file:packages/highlightjs(highlight.js@11.11.1)
+        version: link:../packages/highlightjs
       '@nsis/lumis':
         specifier: workspace:*
         version: link:../packages/lumis
@@ -386,6 +389,9 @@ importers:
       '@nsis/textmate':
         specifier: workspace:*
         version: link:../packages/textmate
+      '@playwright/test':
+        specifier: 'catalog:'
+        version: 1.61.1
       '@tailwindcss/vite':
         specifier: ^4.3.3
         version: 4.3.3(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0))
@@ -1533,12 +1539,6 @@ packages:
     resolution: {directory: packages/dent, type: directory}
     engines: {node: '>=20.0.0'}
 
-  '@nsis/highlightjs@file:packages/highlightjs':
-    resolution: {directory: packages/highlightjs, type: directory}
-    engines: {node: ^20.19.0 || >=22.12.0}
-    peerDependencies:
-      highlight.js: '>=11'
-
   '@nsis/parser@file:packages/parser':
     resolution: {directory: packages/parser, type: directory}
     engines: {node: '>=20.0.0'}
@@ -1661,6 +1661,11 @@ packages:
   '@peggyjs/from-mem@3.1.3':
     resolution: {integrity: sha512-LLlgtfXIaeYXoOYovOI0spLM8ZXaqkAlmcRRrLzHJzLMqkU6Sw0R4KMoCoHx1PjaP815pSCBlS+BN6aD8t1Jgg==}
     engines: {node: '>=20.8'}
+
+  '@playwright/test@1.61.1':
+    resolution: {integrity: sha512-8nKv6+0RJSL9FE4jYOEGXnPeM/Hg12qZpmqzZjRh3qM0Y7c3z1mrOTfFLids72RDQYVh9WpLEfR5WdpNX4fkig==}
+    engines: {node: '>=18'}
+    hasBin: true
 
   '@pnpm/config.env-replace@1.1.0':
     resolution: {integrity: sha512-htyl8TWnKL7K/ESFa1oW2UB5lVDxuF5DpM7tBi6Hu2LNL3mWkIzNLG6N4zoCUP1lCKNxWy/3iu8mS8MvToGd6w==}
@@ -6544,10 +6549,6 @@ snapshots:
       '@nsis/parser': file:packages/parser
       detect-newline: 4.0.1
 
-  '@nsis/highlightjs@file:packages/highlightjs(highlight.js@11.11.1)':
-    dependencies:
-      highlight.js: 11.11.1
-
   '@nsis/parser@file:packages/parser': {}
 
   '@oslojs/encoding@1.1.0': {}
@@ -6622,6 +6623,10 @@ snapshots:
   '@peggyjs/from-mem@3.1.3':
     dependencies:
       semver: 7.7.4
+
+  '@playwright/test@1.61.1':
+    dependencies:
+      playwright: 1.61.1
 
   '@pnpm/config.env-replace@1.1.0': {}
 
