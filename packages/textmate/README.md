@@ -34,4 +34,4 @@ const html = highlighter.codeToHtml('Name "Example"', {
 
 ## License
 
-Released under the [Apache License 2.0](LICENSE).
+Released under the [MIT License](LICENSE-MIT) or [Apache License 2.0](LICENSE-APACHE).

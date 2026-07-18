@@ -2,7 +2,7 @@
 	"name": "@nsis/textmate",
 	"version": "0.1.0",
 	"description": "NSIS TextMate grammar for Shiki and other highlighters",
-	"license": "Apache-2.0",
+	"license": "MIT OR Apache-2.0",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/idleberg/nsis-javascript-tools.git"
