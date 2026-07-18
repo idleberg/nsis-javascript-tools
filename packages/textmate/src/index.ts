@@ -1,3 +1,3 @@
-import grammar from './nsis.json' with { type: 'json' };
+import grammar from '../data/nsis.json' with { type: 'json' };
 
 export default grammar;

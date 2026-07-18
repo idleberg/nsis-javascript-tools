@@ -30,6 +30,7 @@
 		"node": "^20.19.0 || >=22.12.0"
 	},
 	"files": [
+		"data/",
 		"dist/",
 		"LICENSE",
 		"README.md"
@@ -46,7 +47,7 @@
 		"test": "vitest run"
 	},
 	"devDependencies": {
-		"shiki": "^3.7.0",
+		"shiki": "^4.3.1",
 		"vitest": "catalog:"
 	}
 }
