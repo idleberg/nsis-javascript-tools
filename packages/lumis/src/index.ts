@@ -1,2 +1,2 @@
-export type { LanguageOptions, WasmInput } from './language.ts';
-export { createLanguage } from './language.ts';
+export type { LanguageOptions, RuntimeWasmInput } from './language.ts';
+export { createLanguage, nsis } from './language.ts';

@@ -112,78 +112,6 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3
 
-  docs:
-    devDependencies:
-      '@astrojs/svelte':
-        specifier: ^9.0.1
-        version: 9.0.1(@types/node@25.9.3)(astro@7.0.6(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@25.9.3)(jiti@2.7.0)(rollup@4.62.0)(terser@5.48.0)(yaml@2.9.0))(esbuild@0.28.1)(jiti@2.7.0)(svelte@5.56.4)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0)
-      '@codemirror/commands':
-        specifier: 'catalog:'
-        version: 6.10.4
-      '@codemirror/language':
-        specifier: 'catalog:'
-        version: 6.12.4
-      '@codemirror/state':
-        specifier: 'catalog:'
-        version: 6.7.1
-      '@codemirror/theme-one-dark':
-        specifier: 'catalog:'
-        version: 6.1.3
-      '@codemirror/view':
-        specifier: 'catalog:'
-        version: 6.43.5
-      '@lumis-sh/lumis':
-        specifier: ^0.5.2
-        version: 0.5.2
-      '@lumis-sh/themes':
-        specifier: ^0.2.2
-        version: 0.2.2
-      '@nsis/ace-mode':
-        specifier: workspace:*
-        version: link:../packages/ace-mode
-      '@nsis/codemirror':
-        specifier: workspace:*
-        version: link:../packages/codemirror
-      '@nsis/dent':
-        specifier: workspace:*
-        version: link:../packages/dent
-      '@nsis/dent-ui':
-        specifier: workspace:*
-        version: link:../packages/dent-ui
-      '@nsis/highlightjs':
-        specifier: workspace:*
-        version: link:../packages/highlightjs
-      '@nsis/lumis':
-        specifier: workspace:*
-        version: link:../packages/lumis
-      '@nsis/prismjs':
-        specifier: workspace:*
-        version: link:../packages/prismjs
-      '@tailwindcss/vite':
-        specifier: ^4.3.2
-        version: 4.3.2(vite@8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0))
-      astro:
-        specifier: 7.0.6
-        version: 7.0.6(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@25.9.3)(jiti@2.7.0)(rollup@4.62.0)(terser@5.48.0)(yaml@2.9.0)
-      highlight.js:
-        specifier: 'catalog:'
-        version: 11.11.1
-      prismjs:
-        specifier: 'catalog:'
-        version: 1.30.0
-      svelte:
-        specifier: 'catalog:'
-        version: 5.56.4
-      tailwindcss:
-        specifier: ^4.3.2
-        version: 4.3.2
-      tree-sitter-nsis:
-        specifier: ^0.4.0
-        version: 0.4.0
-      vite:
-        specifier: 'catalog:'
-        version: 8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0)
-
   packages/ace-mode:
     devDependencies:
       eta:
@@ -316,14 +244,16 @@ importers:
         version: 4.1.9(@types/node@25.9.3)(@vitest/browser-playwright@4.1.10)(jsdom@29.1.1)(vite@8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0))
 
   packages/lumis:
-    dependencies:
-      tree-sitter-nsis:
-        specifier: ^0.4.0
-        version: 0.4.0
     devDependencies:
       '@lumis-sh/lumis':
         specifier: ^0.5.2
         version: 0.5.2
+      tree-sitter-nsis:
+        specifier: ^0.4.0
+        version: 0.4.0
+      unplugin-macros:
+        specifier: ^0.20.2
+        version: 0.20.2(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(rolldown@1.1.4)(rollup@4.62.0)(terser@5.48.0)(yaml@2.9.0)
       vitest:
         specifier: 'catalog:'
         version: 4.1.9(@types/node@25.9.3)(@vitest/browser-playwright@4.1.10)(jsdom@29.1.1)(vite@8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0))
@@ -396,6 +326,78 @@ importers:
       vitest:
         specifier: 'catalog:'
         version: 4.1.9(@types/node@25.9.3)(@vitest/browser-playwright@4.1.10)(jsdom@29.1.1)(vite@8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0))
+
+  web:
+    devDependencies:
+      '@astrojs/svelte':
+        specifier: ^9.0.1
+        version: 9.0.1(@types/node@25.9.3)(astro@7.0.6(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@25.9.3)(jiti@2.7.0)(rollup@4.62.0)(terser@5.48.0)(yaml@2.9.0))(esbuild@0.28.1)(jiti@2.7.0)(svelte@5.56.4)(terser@5.48.0)(typescript@6.0.3)(yaml@2.9.0)
+      '@codemirror/commands':
+        specifier: 'catalog:'
+        version: 6.10.4
+      '@codemirror/language':
+        specifier: 'catalog:'
+        version: 6.12.4
+      '@codemirror/state':
+        specifier: 'catalog:'
+        version: 6.7.1
+      '@codemirror/theme-one-dark':
+        specifier: 'catalog:'
+        version: 6.1.3
+      '@codemirror/view':
+        specifier: 'catalog:'
+        version: 6.43.5
+      '@lumis-sh/lumis':
+        specifier: ^0.5.2
+        version: 0.5.2
+      '@lumis-sh/themes':
+        specifier: ^0.2.2
+        version: 0.2.2
+      '@nsis/ace-mode':
+        specifier: workspace:*
+        version: link:../packages/ace-mode
+      '@nsis/codemirror':
+        specifier: workspace:*
+        version: link:../packages/codemirror
+      '@nsis/dent':
+        specifier: workspace:*
+        version: link:../packages/dent
+      '@nsis/dent-ui':
+        specifier: workspace:*
+        version: link:../packages/dent-ui
+      '@nsis/highlightjs':
+        specifier: workspace:*
+        version: link:../packages/highlightjs
+      '@nsis/lumis':
+        specifier: workspace:*
+        version: link:../packages/lumis
+      '@nsis/prismjs':
+        specifier: workspace:*
+        version: link:../packages/prismjs
+      '@tailwindcss/vite':
+        specifier: ^4.3.2
+        version: 4.3.2(vite@8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0))
+      astro:
+        specifier: 7.0.6
+        version: 7.0.6(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(@types/node@25.9.3)(jiti@2.7.0)(rollup@4.62.0)(terser@5.48.0)(yaml@2.9.0)
+      highlight.js:
+        specifier: 'catalog:'
+        version: 11.11.1
+      prismjs:
+        specifier: 'catalog:'
+        version: 1.30.0
+      svelte:
+        specifier: 'catalog:'
+        version: 5.56.4
+      tailwindcss:
+        specifier: ^4.3.2
+        version: 4.3.2
+      tree-sitter-nsis:
+        specifier: ^0.4.0
+        version: 0.4.0
+      vite:
+        specifier: 'catalog:'
+        version: 8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0)
 
 packages:
 
@@ -3684,8 +3686,15 @@ packages:
     resolution: {integrity: sha512-O2S8voA+pMfCHhBn/TIYDXzJ1qNHpPDU32oFxglKnVdJABiYYITt45oLkV9yhwA3E2FDwn3tQqUFrTsr1p3sBQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
+  magic-string-ast@2.1.1:
+    resolution: {integrity: sha512-pO1I6nw3/xeGpFhYikPhTzG9s2lw7oAbNElLJ9dhHfXa8r5K3PzrRdoshw4gdADagOjGKO40ae+ZnXNuqQEN4w==}
+    engines: {node: ^22.18.0 || >=24.0.0}
+
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
+
+  magic-string@1.0.0:
+    resolution: {integrity: sha512-CGvjzMN08iv6w1mm4/x3Gh1hLb4VnyRUA15FFpl6CsCIGGoe36k7kY5KNz9QDbSBN5I/fWHM6ZlIkUTa5xdUEA==}
 
   magicast@0.5.3:
     resolution: {integrity: sha512-pVKE4UdSQ7DvHzivsCIFx2BJn1mHG6KsyrFcaxFx6tONdneEuThrDx0Cj3AMg58KyN4pzYT+LHOotxDQDjNvkw==}
@@ -4200,6 +4209,15 @@ packages:
       typescript:
         optional: true
       vue-tsc:
+        optional: true
+
+  rolldown-string@0.3.1:
+    resolution: {integrity: sha512-dv8GOXkYqUQdI0rsXB8hmzO95pKWSuX2eg5/JSJa9czfEVIFuKNR7ZJDfat8LlmD35RAhWY+evS7/wXXqFDfSg==}
+    engines: {node: '>=20.19.0'}
+    peerDependencies:
+      rolldown: '*'
+    peerDependenciesMeta:
+      rolldown:
         optional: true
 
   rolldown@1.1.2:
@@ -4737,6 +4755,43 @@ packages:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
     engines: {node: '>= 4.0.0'}
 
+  unplugin-macros@0.20.2:
+    resolution: {integrity: sha512-kyBmRPN36USoODFnL7s1pBt5qjwsWMuHbB6HCL2bduPWhSCpcZVbstJCKTY7qt/FLe/mjshp8sgjwlR15in9Ig==}
+    engines: {node: ^22.18.0 || >=24.11.0}
+
+  unplugin@3.3.0:
+    resolution: {integrity: sha512-qa66K+crbfyE6JK10GjvbJeRrOsuC/JpbnHctfyp/i4oBTxWOzJfRZyDiOk1PtErMFRu8JhsU/wPvOdBNWe5Rg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    peerDependencies:
+      '@farmfe/core': '*'
+      '@rspack/core': '*'
+      bun-types-no-globals: '*'
+      esbuild: '*'
+      rolldown: '*'
+      rollup: '*'
+      unloader: '*'
+      vite: '*'
+      webpack: '*'
+    peerDependenciesMeta:
+      '@farmfe/core':
+        optional: true
+      '@rspack/core':
+        optional: true
+      bun-types-no-globals:
+        optional: true
+      esbuild:
+        optional: true
+      rolldown:
+        optional: true
+      rollup:
+        optional: true
+      unloader:
+        optional: true
+      vite:
+        optional: true
+      webpack:
+        optional: true
+
   unstorage@1.17.5:
     resolution: {integrity: sha512-0i3iqvRfx29hkNntHyQvJTpf5W9dQ9ZadSoRU8+xVlhVtT7jAX57fazYO9EHvcRCfBCyi5YRya7XCDOsbTgkPg==}
     peerDependencies:
@@ -4821,6 +4876,11 @@ packages:
 
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
+
+  vite-node@6.0.0:
+    resolution: {integrity: sha512-oj4PVrT+pDh6GYf5wfUXkcZyekYS8kKPfLPXVl8qe324Ec6l4K2DUKNadRbZ3LQl0qGcDz+PyOo7ZAh00Y+JjQ==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    hasBin: true
 
   vite@8.1.3:
     resolution: {integrity: sha512-Ds+gBRbj0lwRO2Y5hwnUBdxSwlAve9LeRyU4sNnAr0ewW0gWF0n5bgXgUzbgZ49MV9BVUAQUFYVcDUcilUExMA==}
@@ -4933,6 +4993,9 @@ packages:
   webidl-conversions@8.0.1:
     resolution: {integrity: sha512-BMhLD/Sw+GbJC21C/UgyaZX41nPt8bUTg+jWyDeg7e7YN4xOM05YPSIXceACnXVtqyEw/LMClUQMtMZ+PGGpqQ==}
     engines: {node: '>=20'}
+
+  webpack-virtual-modules@0.6.2:
+    resolution: {integrity: sha512-66/V2i5hQanC51vBQKPH4aI8NMAcBW59FVBs+rC7eGHupMyfn34q7rZIE+ETlJ+XTevqfUhVVBgSUNSW2flEUQ==}
 
   whatwg-mimetype@5.0.0:
     resolution: {integrity: sha512-sXcNcHOC51uPGF0P/D4NVtrkjSU2fNsm9iog4ZvZJsL3rjoDAzXZhkm2MWt1y+PUdggKAYVoMAIYcs78wJ51Cw==}
@@ -8119,9 +8182,17 @@ snapshots:
 
   macos-version@6.0.0:
     dependencies:
-      semver: 7.8.2
+      semver: 7.8.5
+
+  magic-string-ast@2.1.1:
+    dependencies:
+      magic-string: 1.0.0
 
   magic-string@0.30.21:
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.5
+
+  magic-string@1.0.0:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
 
@@ -8230,7 +8301,7 @@ snapshots:
   normalize-package-data@8.0.0:
     dependencies:
       hosted-git-info: 9.0.3
-      semver: 7.8.2
+      semver: 7.8.5
       validate-npm-package-license: 3.0.4
 
   normalize-path@3.0.0: {}
@@ -8419,7 +8490,7 @@ snapshots:
       ky: 1.14.3
       registry-auth-token: 5.1.1
       registry-url: 6.0.1
-      semver: 7.8.2
+      semver: 7.8.5
 
   package-manager-detector@0.2.11:
     dependencies:
@@ -8649,6 +8720,12 @@ snapshots:
       typescript: 6.0.3
     transitivePeerDependencies:
       - oxc-resolver
+
+  rolldown-string@0.3.1(rolldown@1.1.4):
+    dependencies:
+      magic-string: 1.0.0
+    optionalDependencies:
+      rolldown: 1.1.4
 
   rolldown@1.1.2:
     dependencies:
@@ -9089,8 +9166,8 @@ snapshots:
 
   tinyglobby@0.2.17:
     dependencies:
-      fdir: 6.5.0(picomatch@4.0.4)
-      picomatch: 4.0.4
+      fdir: 6.5.0(picomatch@4.0.5)
+      picomatch: 4.0.5
 
   tinyrainbow@3.1.0: {}
 
@@ -9251,6 +9328,47 @@ snapshots:
 
   universalify@0.1.2: {}
 
+  unplugin-macros@0.20.2(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(rolldown@1.1.4)(rollup@4.62.0)(terser@5.48.0)(yaml@2.9.0):
+    dependencies:
+      '@babel/types': 8.0.0
+      ast-kit: 3.0.0
+      magic-string-ast: 2.1.1
+      rolldown-string: 0.3.1(rolldown@1.1.4)
+      unplugin: 3.3.0(esbuild@0.28.1)(rolldown@1.1.4)(rollup@4.62.0)(vite@8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0))
+      vite: 8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0)
+      vite-node: 6.0.0(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0)
+    transitivePeerDependencies:
+      - '@farmfe/core'
+      - '@rspack/core'
+      - '@types/node'
+      - '@vitejs/devtools'
+      - bun-types-no-globals
+      - esbuild
+      - jiti
+      - less
+      - rolldown
+      - rollup
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - terser
+      - tsx
+      - unloader
+      - webpack
+      - yaml
+
+  unplugin@3.3.0(esbuild@0.28.1)(rolldown@1.1.4)(rollup@4.62.0)(vite@8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0)):
+    dependencies:
+      '@jridgewell/remapping': 2.3.5
+      picomatch: 4.0.5
+      webpack-virtual-modules: 0.6.2
+    optionalDependencies:
+      esbuild: 0.28.1
+      rolldown: 1.1.4
+      rollup: 4.62.0
+      vite: 8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0)
+
   unstorage@1.17.5:
     dependencies:
       anymatch: 3.1.3
@@ -9297,6 +9415,27 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
+
+  vite-node@6.0.0(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0):
+    dependencies:
+      cac: 7.0.0
+      es-module-lexer: 2.3.0
+      obug: 2.1.3
+      pathe: 2.0.3
+      vite: 8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0)
+    transitivePeerDependencies:
+      - '@types/node'
+      - '@vitejs/devtools'
+      - esbuild
+      - jiti
+      - less
+      - sass
+      - sass-embedded
+      - stylus
+      - sugarss
+      - terser
+      - tsx
+      - yaml
 
   vite@8.1.3(@types/node@25.9.3)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.0):
     dependencies:
@@ -9363,6 +9502,8 @@ snapshots:
 
   webidl-conversions@8.0.1:
     optional: true
+
+  webpack-virtual-modules@0.6.2: {}
 
   whatwg-mimetype@5.0.0:
     optional: true

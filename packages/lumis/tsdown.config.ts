@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, type Rolldown } from 'tsdown';
+import Macros from 'unplugin-macros/rolldown';
 
 export default defineConfig((options) => {
 	const isProduction = options.watch !== true;
@@ -16,7 +17,7 @@ export default defineConfig((options) => {
 		deps: {
 			alwaysBundle: ['tree-sitter-nsis/queries/highlights.scm'],
 		},
-		plugins: [scmRawPlugin()],
+		plugins: [Macros(), scmRawPlugin()],
 	};
 });
 

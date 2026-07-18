@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import Macros from 'unplugin-macros/vite';
 import { defineConfig, type Plugin } from 'vitest/config';
 
 const treeSitterNsisDir = dirname(fileURLToPath(import.meta.resolve('tree-sitter-nsis/wasm')));
@@ -23,7 +24,7 @@ function scmRawPlugin(): Plugin {
 }
 
 export default defineConfig({
-	plugins: [scmRawPlugin()],
+	plugins: [Macros(), scmRawPlugin()],
 	test: {
 		include: ['**/*.test.ts'],
 	},

@@ -22,11 +22,7 @@ $ npm install @nsis/lumis
 ```typescript
 import { highlight } from "@lumis-sh/lumis";
 import { htmlInline } from "@lumis-sh/lumis/formatters";
-import { createLanguage } from "@nsis/lumis";
-
-const nsis = createLanguage({
-  wasm: new URL("tree-sitter-nsis/wasm", import.meta.url),
-});
+import { nsis } from "@nsis/lumis";
 
 const html = await highlight(
   'Name "Example"\nOutFile "example.exe"',
