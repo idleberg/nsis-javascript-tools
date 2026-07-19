@@ -1,9 +1,16 @@
 {
 	"hooks": {
-		"PostToolUse": [
+		"PreToolUse": [
 			{
 				"matcher": "Edit|Write",
-				"command": "npx @biomejs/biome check --write --unsafe $CLAUDE_FILE_PATHS"
+				"hooks": [
+					{
+						"type": "command",
+						"if": "Bash(rm *)",
+						"command": "npx @biomejs/biome check --write --unsafe $CLAUDE_FILE_PATHS",
+						"args": []
+					}
+				]
 			}
 		]
 	}
