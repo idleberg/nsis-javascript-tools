@@ -4,10 +4,20 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
 	site: 'https://idleberg.github.io',
-	base: process.env.CI ? '/nsis-org/' : '/',
+	base: process.env.GITHUB_PAGES ? '/nsis-org/' : '/',
 	outDir: 'dist',
 	integrations: [svelte()],
 	vite: {
 		plugins: [tailwindcss()],
+		resolve: {
+			dedupe: [
+				'@codemirror/view',
+				'@codemirror/state',
+				'@codemirror/language',
+				'@lezer/common',
+				'@lezer/highlight',
+				'@lezer/lr',
+			],
+		},
 	},
 });

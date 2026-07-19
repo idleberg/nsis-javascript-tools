@@ -4,9 +4,11 @@
 	"type": "module",
 	"scripts": {
 		"build": "astro build",
-		"dev": "astro dev --open"
+		"dev": "astro dev --open",
+		"test": "playwright test"
 	},
 	"devDependencies": {
+		"@playwright/test": "catalog:",
 		"@astrojs/svelte": "^9.0.1",
 		"@codemirror/commands": "catalog:",
 		"@codemirror/language": "catalog:",

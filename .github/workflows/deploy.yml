@@ -23,6 +23,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      GITHUB_PAGES: true
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
 
     steps:
