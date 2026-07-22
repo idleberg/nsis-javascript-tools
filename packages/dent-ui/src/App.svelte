@@ -283,6 +283,7 @@ const outputExtensions = [EditorState.readOnly.of(true), EditorView.editable.of(
 		background: var(--bg);
 		color: var(--text);
 		height: 100vh;
+		height: 100dvh;
 		display: flex;
 		flex-direction: column;
 		overflow: hidden;
@@ -390,6 +391,7 @@ const outputExtensions = [EditorState.readOnly.of(true), EditorView.editable.of(
 
 	footer {
 		padding: 8px 16px;
+		padding-bottom: max(8px, env(safe-area-inset-bottom));
 		display: flex;
 		align-items: center;
 		gap: 12px;
@@ -451,5 +453,12 @@ const outputExtensions = [EditorState.readOnly.of(true), EditorView.editable.of(
 	button:disabled {
 		opacity: 0.4;
 		cursor: default;
+	}
+
+	button:focus-visible,
+	select:focus-visible,
+	input:focus-visible {
+		outline: 2px solid var(--mauve);
+		outline-offset: 2px;
 	}
 </style>
