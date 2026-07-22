@@ -1,12 +1,10 @@
 {
 	"hooks": {
-		"PreToolUse": [
+		"TaskCompleted": [
 			{
-				"matcher": "Edit|Write",
 				"hooks": [
 					{
 						"type": "command",
-						"if": "Bash(rm *)",
 						"command": "npx @biomejs/biome check --write --unsafe $CLAUDE_FILE_PATHS",
 						"args": []
 					}
