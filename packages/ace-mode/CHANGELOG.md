@@ -1,5 +1,11 @@
 # @nsis/ace-mode
 
+## 1.8.3
+
+### Patch Changes
+
+- 85bd3e3: add missing language features
+
 ## 1.8.2
 
 ### Patch Changes

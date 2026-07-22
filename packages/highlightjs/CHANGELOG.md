@@ -1,5 +1,11 @@
 # @nsis/highlightjs
 
+## 0.1.3
+
+### Patch Changes
+
+- 85bd3e3: add missing language features
+
 ## 0.1.2
 
 ### Patch Changes

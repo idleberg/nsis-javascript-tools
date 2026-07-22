@@ -1,5 +1,11 @@
 # @nsis/codemirror
 
+## 0.14.2
+
+### Patch Changes
+
+- 85bd3e3: add missing language features
+
 ## 0.14.1
 
 ### Patch Changes
